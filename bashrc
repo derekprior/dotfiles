@@ -58,7 +58,7 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 # Comman Aliases
 alias systail='tail -f /var/log/system.log'
 alias ls='ls -lGh'
-alias lsa='ls -lGha'
+alias la='ls -lGha'
 alias finder='open .'
 
 # Common CD commands
