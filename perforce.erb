@@ -1,0 +1,5 @@
+P4CLIENT=<%= print("Perforce Client Name: "); STDOUT.flush; STDIN.gets.chomp %>
+P4EDITOR=mate -w
+P4USER=<%= print("Perforce Username: "); STDOUT.flush; STDIN.gets.chomp %>
+P4PORT=rsh:ssh -q -a -x -1 -l p4ssh <%= print("Perforce Hostname: "); STDOUT.flush; STDIN.gets.chomp %> /bin /true
+
