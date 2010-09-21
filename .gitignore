@@ -1,1 +1,7 @@
-*.local
+.DS_Store
+.*un~
+*.swp
+*~
+.*.sw*
+vim/tmp/swap/*
+vim/tmp/backups/*

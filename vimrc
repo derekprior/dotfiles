@@ -155,9 +155,6 @@ nmap <leader>R :RainbowParenthesesToggle<CR>
 nmap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <leader>sv :source $MYVIMRC<cr>
 
-" VCS Stuff
-let VCSCommandMapPrefix = "<leader>h"
-
 " Shouldn't need shift
 nnoremap ; :
 
