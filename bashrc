@@ -84,7 +84,6 @@ export EDITOR='mate -w'
 
 # Set Path
 export PATH=$PATH:/usr/local/bin:/usr/local/mysql/bin
-:if expand("%") == ""|browse confirm w|else|confirm w|endif
 
 # Oracle Client
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:~/bin/ohome/instantclient
