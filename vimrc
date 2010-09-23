@@ -26,9 +26,7 @@ set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
-set relativenumber
 set laststatus=2
-"set undofile
 
 " Backups
 set backupdir=~/.vim/tmp/backup// " backups
@@ -56,12 +54,15 @@ vmap <tab> %
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+
+" 7.3 features
+if (v:version >= 703)
+    set colorcolumn=85
+    set relativenumber
+endif
 
 " Color scheme (terminal)
 syntax on
-set background=dark
-colorscheme delek
 
 " Use Pathogen to load bundles
 call pathogen#runtime_append_all_bundles()
@@ -172,7 +173,7 @@ nnoremap <leader>p4d :!p4 diff %<cr>
 
 if has('gui_running')
     set guifont=Monaco:h12
-    colorscheme molokai
+    colorscheme railscasts
     set background=dark
 
     set go-=T
