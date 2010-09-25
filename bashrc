@@ -83,7 +83,7 @@ export VISUAL='mate -w'
 export EDITOR='mate -w'
 
 # Set Path
-export PATH=$PATH:/usr/local/bin:/usr/local/mysql/bin
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
 
 # Oracle Client
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:~/bin/ohome/instantclient
