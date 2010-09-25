@@ -26,7 +26,7 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
 # Prompt Settings
-if [ -f ~/.rvm/bin/rvm-prompt ]; then
+if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
   export PS1="\n\[${COLOR_CYAN}\][\$(~/.rvm/bin/rvm-prompt s i v p g)]\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
 else
   export PS1="\n\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
@@ -89,7 +89,7 @@ export PATH=$PATH:/usr/local/bin:/usr/local/mysql/bin
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:~/bin/ohome/instantclient
 
 # RVM
-if [[ -s /Users/dprior/.rvm/scripts/rvm ]] ; then source /Users/dprior/.rvm/scripts/rvm ; fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
   
 # mkdir & cd to it
 function mcd() { 
