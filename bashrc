@@ -80,9 +80,15 @@ export P4CONFIG=.perforce
 # Rails\Bart Environment Settings
 export REMOTE_USER=dprior
 
-# Editors 
-export VISUAL='mate -w'
-export EDITOR='mate -w'
+# Set Editor
+unamestr=`uname`
+if [[ "$unamestr" == 'Darwin' ]]; then
+	export VISUAL='mate -w'
+	export EDITOR='mate -w'
+else
+  export VISUAL='pico'
+	export EDITOR='pico'
+fi
 
 # Set Path
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
