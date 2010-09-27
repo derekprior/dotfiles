@@ -26,12 +26,14 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
 # Prompt Settings
+if [ -n "$SSH_CLIENT" ]; then
+  PREFIX="\n\[${COLOR_LIGHT_RED}\]\u@\h"
+fi
 if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
-  export PS1="\n\[${COLOR_CYAN}\][\$(~/.rvm/bin/rvm-prompt s i v p g)]\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
+  export PS1=$PREFIX"\n\[${COLOR_CYAN}\][\$(~/.rvm/bin/rvm-prompt s i v p g)]\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
 else
   export PS1="\n\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
-fi
-#export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
+fi 
 
 # Bash History
 export HISTFILESIZE=1000000000
