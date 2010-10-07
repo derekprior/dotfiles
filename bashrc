@@ -96,6 +96,10 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
 # Oracle Client
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:~/bin/ohome/instantclient
 
+# Postgres Stuff
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
   
