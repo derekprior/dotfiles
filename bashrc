@@ -64,9 +64,9 @@ alias la='ls -lGha'
 alias finder='open .'
 
 # Common CD commands
-alias views='cd ~/code/ese-siebel-db/cmn_int/views/'
-alias sbx='cd ~/code/sandbox/dprior/'
-alias br='cd ~/code/bart-dev/akamai/bart-rails/'
+alias views='cd ~/code/p4/siebel/ese-siebel-db/cmn_int/views/'
+alias sbx='cd ~/code/p4/sandbox/'
+alias br='cd ~/code/p4/bart-dev/akamai/bart-rails/'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 
