@@ -26,12 +26,14 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
 # Prompt Settings
+if [ -n "$SSH_CLIENT" ]; then
+  PREFIX="\n\[${COLOR_LIGHT_RED}\]\u@\h"
+fi
 if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
-  export PS1="\n\[${COLOR_CYAN}\][\$(~/.rvm/bin/rvm-prompt s i v p g)]\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
+  export PS1=$PREFIX"\n\[${COLOR_CYAN}\][\$(~/.rvm/bin/rvm-prompt s i v p g)]\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
 else
   export PS1="\n\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
-fi
-#export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
+fi 
 
 # Bash History
 export HISTFILESIZE=1000000000
@@ -62,9 +64,9 @@ alias la='ls -lGha'
 alias finder='open .'
 
 # Common CD commands
-alias views='cd ~/code/ese-siebel-db/cmn_int/views/'
-alias sbx='cd ~/code/sandbox/dprior/'
-alias br='cd ~/code/bart-dev/akamai/bart-rails/'
+alias views='cd ~/code/p4/siebel/ese-siebel-db/cmn_int/views/'
+alias sbx='cd ~/code/p4/sandbox/'
+alias br='cd ~/code/p4/bart-dev/akamai/bart-rails/'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 
@@ -78,15 +80,25 @@ export P4CONFIG=.perforce
 # Rails\Bart Environment Settings
 export REMOTE_USER=dprior
 
-# Editors 
-export VISUAL='mate -w'
-export EDITOR='mate -w'
+# Set Editor
+unamestr=`uname`
+if [[ "$unamestr" == 'Darwin' ]]; then
+	export VISUAL='mate -w'
+	export EDITOR='mate -w'
+else
+  export VISUAL='pico'
+	export EDITOR='pico'
+fi
 
 # Set Path
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
 
 # Oracle Client
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:~/bin/ohome/instantclient
+
+# Postgres Stuff
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
