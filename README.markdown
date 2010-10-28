@@ -1,8 +1,8 @@
 ## dotfiles ##
 
-dotfiles is a repository of my OS X configuration files. There is support for providing confidential data via standard input when [installing](#install) (hat tip, [Ryan Bates][ryanb]).
+dotfiles is a repository of my OS X configuration files. There is support for providing confidential data via standard input when installing (hat tip, [Ryan Bates][ryanb]).
 
-## Install ## {#install}
+## Install ##
 
 Installation requires Ruby with the Rake gem - standard on OS X. To install:
 1. git clone git://github.com/derekprior/dotfiles.git
