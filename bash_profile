@@ -3,7 +3,7 @@ if [ -d ~/bin ]; then
 fi
 
 # Source Machine Local Settings for overrides or additions
-if [-f ~/.bash_profilelocal]
+if [- f ~/.bash_profile.local ]; then
 	source ~/.bash_profile.local
 fi
 

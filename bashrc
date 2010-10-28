@@ -64,15 +64,23 @@ alias la='ls -lGha'
 alias finder='open .'
 
 # Common CD commands
-alias views='cd ~/code/p4/siebel/ese-siebel-db/cmn_int/views/'
-alias sbx='cd ~/code/p4/sandbox/'
-alias br='cd ~/code/p4/bart-dev/akamai/bart-rails/'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 
 # Rails Commands
 alias r='rails'
 alias dbm='rake db:migrate'
+
+# Git Aliases
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit'
+alias gpush='git push origin master'
+alias gpull='git pull origin master'
+
+# Postgres Stuff
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # Perforce Settings
 export P4CONFIG=.perforce
@@ -85,20 +93,15 @@ unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
 	export VISUAL='mate -w'
 	export EDITOR='mate -w'
+	export P4EDITOR='mate -w'
 else
   export VISUAL='pico'
 	export EDITOR='pico'
+	export P4EDITOR='pico'
 fi
 
 # Set Path
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
-
-# Oracle Client
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:~/bin/ohome/instantclient
-
-# Postgres Stuff
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
@@ -109,6 +112,6 @@ function mcd() {
 }
 
 # Source Machine Local Settings for overrides or additions
-if [-f ~/.bashrc.local]
+if [ -f ~/.bashrc.local ]; then
 	source ~/.bashrc.local
 fi
