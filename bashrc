@@ -95,3 +95,8 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:~/bin/ohome/instantclient
 function mcd() { 
   mkdir -p "$1" && cd "$1"; 
 }
+
+# Source Machine Local Settings for overrides or additions
+if [-f ~/.bashrc.local]
+	source ~/.bashrc.local
+fi
