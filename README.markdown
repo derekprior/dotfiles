@@ -5,9 +5,9 @@ dotfiles is a repository of my OS X configuration files. There is support for pr
 ## Install ##
 
 Installation requires Ruby with the Rake gem - standard on OS X. To install:
-1. git clone git://github.com/derekprior/dotfiles.git
-2. cd dotfiles
-3. rake install
+1.  git clone git://github.com/derekprior/dotfiles.git
+2.  cd dotfiles
+3.  rake install
 
 You will be prompted for information such as your email address and GitHub API key, which will be inserted into the appropriate configuration files at runtime. This avoids storing this information on GitHub.
 
