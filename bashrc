@@ -83,8 +83,8 @@ alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/serv
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # MYSQL Stuff
-alias mystart='sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist'
-alias mystop='sudo launchctl unload -w /Library/LaunchDaemons/com.mysql.mysqld.plist'
+alias mystart='sudo launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist'
+alias mystop='sudo launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist'
 
 # Perforce Settings
 export P4CONFIG=.perforce
