@@ -57,7 +57,7 @@ fi
 if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
   ruby_version="\n\[${txtred}\][$(~/.rvm/bin/rvm-prompt s i v p g)] "
 else
-  ruby_version="\n\[${txtred}\][system] '"
+  ruby_version="\n\[${txtred}\][system] "
 fi
 directory="\[${txtcyn}\]\w"
 prompt_char="\n\[${bldcyn}\]➜  \[${txtrst}\]"
