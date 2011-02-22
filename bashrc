@@ -2,7 +2,7 @@
 export TERM=xterm-color
 export CLICOLOR=1
 export LSCOLORS='gafxcxdxbxegedabagacad'
-export LS_COLORS='di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CUCUMBER_FORMAT='pretty'
 
@@ -58,7 +58,7 @@ export PS1=$host_info$ruby_version$directory$prompt_char
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoredups
-export HISTIGNORE="&:ls:ls *:lsa:lsa *:sbx:lnx:dbm"
+#export HISTIGNORE="&:ls:ls *:lsa:lsa *:sbx:lnx:dbm"
 
 # bash completion settings (actually, these are readline settings)
 bind "set completion-ignore-case on" # note: bind is used instead of setting these in .inputrc.  This ignores case in bash completion
@@ -78,9 +78,6 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 
 # Comman Aliases
 alias systail='tail -f /var/log/system.log'
-alias ls='ls -lGh'
-alias la='ls -lGha'
-alias finder='open .'
 
 # Common CD commands
 alias ..='cd ..'
@@ -105,25 +102,30 @@ alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias mystart='sudo launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist'
 alias mystop='sudo launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist'
 
-# Clean up ASL logs to speed up terminal startup time
-alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
-
 # Perforce Settings
 export P4CONFIG=.perforce
 
 # Rails\Bart Environment Settings
 export REMOTE_USER=dprior
 
-# Set Editor
+# Check OS
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
+	# Mac OS X
 	export VISUAL='mate -w'
 	export EDITOR='mate -w'
 	export P4EDITOR='mate -w'
+	alias ls='ls -lGh'
+	alias la='ls -lGha'
+	alias finder='open .'
+	alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
 else
-  export VISUAL='pico'
-	export EDITOR='pico'
-	export P4EDITOR='pico'
+	# Linux
+  	export VISUAL='nano'
+	export EDITOR='nano'
+	export P4EDITOR='nano'
+	alias ls='ls -lGh --color'
+	alias la='ls -lGha --color'
 fi
 
 # Set Path
