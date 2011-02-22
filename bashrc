@@ -40,22 +40,12 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
-# Prompt Settings
-#if [ -n "$SSH_CLIENT" ]; then
-#  PREFIX="\n\[${COLOR_LIGHT_RED}\]\u@\h"
-#fi
-#if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
-#  export PS1=$PREFIX"\n\[${COLOR_CYAN}\][\$(~/.rvm/bin/rvm-prompt s i v p g)]\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
-#else
-#  export PS1="\n\[${COLOR_CYAN}\] \w\n∴ \[${COLOR_NC}\]"
-#fi 
-
 if [ -n "$SSH_CLIENT" ]; then
   host_info="\n\[${bldylw}\]\u@\h"
 fi
 
 if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
-  ruby_version="\n\[${txtred}\][$(~/.rvm/bin/rvm-prompt s i v p g)] "
+  ruby_version="\n\[${txtred}\][\$(~/.rvm/bin/rvm-prompt s i v p g)]"
 else
   ruby_version="\n\[${txtred}\][system] "
 fi
