@@ -102,6 +102,13 @@ alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias mystart='sudo launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist'
 alias mystop='sudo launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist'
 
+# Oracle Stuff
+if [ -d ~/bin/ohome ]; then
+    export PATH=~/bin/ohome:$PATH
+    export DYLD_LIBRARY_PATH=~/bin/ohome
+    export TNS_ADMIN=~/bin/ohome/
+fi
+
 # Perforce Settings
 export P4CONFIG=.perforce
 
@@ -121,15 +128,15 @@ if [[ "$unamestr" == 'Darwin' ]]; then
 	alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
 else
 	# Linux
-  	export VISUAL='nano'
+  export VISUAL='nano'
 	export EDITOR='nano'
 	export P4EDITOR='nano'
 	alias ls='ls -lGh --color'
 	alias la='ls -lGha --color'
 fi
 
-# Set Path
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
+# Set PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
