@@ -6,3 +6,5 @@ else
   colorscheme vividchalk
 endif
 
+" disable the intro text
+set shortmess=filnxtToOI
