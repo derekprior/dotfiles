@@ -119,18 +119,18 @@ export REMOTE_USER=dprior
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
 	# Mac OS X
-	export VISUAL='mate -w'
-	export EDITOR='mate -w'
-	export P4EDITOR='mate -w'
+	export VISUAL='mvim -f'
+	export EDITOR='mvim -f'
+	export P4EDITOR='mvim -f'
 	alias ls='ls -lGh'
 	alias la='ls -lGha'
 	alias finder='open .'
 	alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
 else
 	# Linux
-  export VISUAL='nano'
-	export EDITOR='nano'
-	export P4EDITOR='nano'
+  export VISUAL='vim'
+	export EDITOR='vim'
+	export P4EDITOR='vim'
 	alias ls='ls -lGh --color'
 	alias la='ls -lGha --color'
 fi
