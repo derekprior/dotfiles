@@ -1,6 +1,7 @@
 " Disable the splash screen
 set shortmess+=I
 
+syntax enable
 set background=dark
-colorscheme vividchalk
+colorscheme solarized
 
