@@ -104,9 +104,9 @@ alias mystop='sudo launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.p
 
 # Oracle Stuff
 if [ -d ~/bin/ohome ]; then
-    export PATH=~/bin/ohome:$PATH
-    export DYLD_LIBRARY_PATH=~/bin/ohome
-    export TNS_ADMIN=~/bin/ohome/
+  export PATH=~/bin/ohome:$PATH
+  export DYLD_LIBRARY_PATH=~/bin/ohome
+  export TNS_ADMIN=~/bin/ohome/
 fi
 
 # Perforce Settings
@@ -118,29 +118,29 @@ export REMOTE_USER=dprior
 # Check OS
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
-	# Mac OS X
-	export VISUAL='mvim -f'
-	export EDITOR='mvim -f'
-	export P4EDITOR='mvim -f'
-	alias ls='ls -lGh'
-	alias la='ls -lGha'
-	alias finder='open .'
-	alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
+  # Mac OS X
+  export VISUAL='mvim -f'
+  export EDITOR='mvim -f'
+  export P4EDITOR='mvim -f'
+  alias ls='ls -lGh'
+  alias la='ls -lGha'
+  alias finder='open .'
+  alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
 else
-	# Linux
+  # Linux
   export VISUAL='vim'
-	export EDITOR='vim'
-	export P4EDITOR='vim'
-	alias ls='ls -lGh --color'
-	alias la='ls -lGha --color'
+  export EDITOR='vim'
+  export P4EDITOR='vim'
+  alias ls='ls -lGh --color'
+  alias la='ls -lGha --color'
 fi
 
 # Set PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH
 
 # RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-  
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
 # mkdir & cd to it
 function mcd() { 
   mkdir -p "$1" && cd "$1"; 
@@ -148,5 +148,5 @@ function mcd() {
 
 # Source Machine Local Settings for overrides or additions
 if [ -f ~/.bashrc.local ]; then
-	source ~/.bashrc.local
+  source ~/.bashrc.local
 fi

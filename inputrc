@@ -1,4 +1,4 @@
 $if Bash
   # ESC + C to copy current terminal line to OS X Clipboard
-	"\ec": "\C-aecho '\C-e' | pbcopy\n"
+  "\ec": "\C-aecho '\C-e' | pbcopy\n"
 $endif
