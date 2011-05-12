@@ -88,11 +88,12 @@ alias r='rails'
 alias dbm='rake db:migrate'
 
 # Git Aliases
+alias g='git'
 alias gs='git status'
-alias ga='git add .'
+alias ga='git add'
 alias gc='git commit'
-alias gpush='git push origin master'
-alias gpull='git pull origin master'
+alias gpush='git push'
+alias gpull='git pull'
 
 # Postgres Stuff
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
@@ -111,6 +112,11 @@ fi
 
 # Perforce Settings
 export P4CONFIG=.perforce
+alias p4c='p4 commit'
+alias p4a='p4 add'
+alias p4e='p4 edit'
+alias p4o='p4 opened'
+alias p4d='p4 describe'
 
 # Rails\Bart Environment Settings
 export REMOTE_USER=dprior
