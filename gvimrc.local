@@ -6,3 +6,4 @@ set background=dark
 colorscheme solarized
 
 set list listchars=tab:->,trail:·
+
