@@ -4,3 +4,4 @@ set shortmess+=I
 set background=dark
 colorscheme vividchalk
 
+set list listchars=tab:->,trail:·

@@ -5,3 +5,4 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+set list listchars=tab:->,trail:·
