@@ -112,7 +112,7 @@ fi
 
 # Perforce Settings
 export P4CONFIG=.perforce
-alias p4c='p4 commit'
+alias p4s='p4 submit'
 alias p4a='p4 add'
 alias p4e='p4 edit'
 alias p4o='p4 opened'
