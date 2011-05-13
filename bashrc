@@ -117,6 +117,7 @@ alias p4a='p4 add'
 alias p4e='p4 edit'
 alias p4o='p4 opened'
 alias p4d='p4 describe'
+alias p4aa='find . -type f -print | p4 -x - add'
 
 # Rails\Bart Environment Settings
 export REMOTE_USER=dprior
