@@ -41,6 +41,11 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "("${ref#refs/heads/}")"
+}
+
 if [ -n "$SSH_CLIENT" ]; then
   host_info="\n\[${bldylw}\]\u@\h"
 fi
@@ -51,8 +56,9 @@ else
   ruby_version="\n\[${txtred}\][system] "
 fi
 directory="\[${txtcyn}\]\w"
+git_branch="\[${txtgrn} \$(parse_git_branch) "
 prompt_char="\n\[${bldcyn}\]➜  \[${txtrst}\]"
-export PS1=$host_info$ruby_version$directory$prompt_char
+export PS1=$host_info$ruby_version$directory$git_branch$prompt_char
 
 # Bash History
 export HISTFILESIZE=1000000000
@@ -92,8 +98,14 @@ alias g='git'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+alias gb='git branch'
 alias gpush='git push'
 alias gpull='git pull'
+
+# RVM Aliases
+alias gemset='rvm gemset'
+alias rgl='rvm gemset list'
+alias rgu='rvm gemset use'
 
 # Postgres Stuff
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
