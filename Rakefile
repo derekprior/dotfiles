@@ -1,30 +1,11 @@
-# Copyright (c) 2009 Ryan Bates
-#
-# Permission is hereby granted, free of charge, to any person obtaining
-# a copy of this software and associated documentation files (the
-# "Software"), to deal in the Software without restriction, including
-# without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to
-# permit persons to whom the Software is furnished to do so, subject to
-# the following conditions:
-#
-# The above copyright notice and this permission notice shall be
-# included in all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 require 'rake'
 require 'erb'
 
+TEXTMATE_BUNDLES = File.expand_path "~/Library/Application Support/TextMate/Bundles"
+
 task :default => [:install]
 
-desc "install the dot files into user's home directory"
+desc "install the dot files into home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
@@ -55,6 +36,19 @@ task :install do
   end
 end
 
+desc "install/refresh textmate bundles"
+task :tmbundles do
+  FileUtils.mkdir TEXTMATE_BUNDLES unless File.exists?(TEXTMATE_BUNDLES) 
+  git_bundle 'git://github.com/rspec/rspec-tmbundle.git', 'RSpec.tmbundle'
+  git_bundle 'git://github.com/drnic/ruby-on-rails-tmbundle.git', 'Ruby on Rails.tmbundle'
+  git_bundle 'git://github.com/cucumber/cucumber-tmbundle.git', 'Cucumber.tmbundle'
+  git_bundle 'git://github.com/kuroir/SCSS.tmbundle.git', 'SCSS.tmbundle'
+  git_bundle 'git://github.com/jcf/git-tmbundle.git', 'Git.tmbundle'
+  git_bundle 'git://github.com/jondruse/perforce-tmbundle.git', 'Perforce.tmbundle'
+  git_bundle 'git://github.com/jashkenas/coffee-script-tmbundle', 'CoffeeScript.tmbundle'
+  git_bundle 'git://github.com/kswedberg/jquery-tmbundle.git', 'JavaScript jQuery.tmbundle'
+end
+
 def replace_file(file)
   system %Q{rm -rf "$HOME/.#{file.sub('.erb', '')}"}
   link_file(file)
@@ -72,3 +66,18 @@ def link_file(file)
   end
 end
 
+def svn_bundle(repo, name=nil)
+  sh "cd #{escape_path(TEXTMATE_BUNDLES)}; svn co #{escape_path(repo)} #{escape_path(name)}"
+end
+
+def git_bundle(repo, name)
+  if File.exists?("#{TEXTMATE_BUNDLES}/#{name}")
+    sh "cd #{escape_path(TEXTMATE_BUNDLES)}; cd #{escape_path(name)}; git pull"
+  else
+    sh "cd #{escape_path(TEXTMATE_BUNDLES)}; git clone #{repo} #{escape_path(name)}"
+  end
+end
+
+def escape_path(name)
+  name.gsub(' ', '\ ')
+end
