@@ -139,9 +139,9 @@ export REMOTE_USER=dprior
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
   # Mac OS X
-  export VISUAL='mvim -f'
-  export EDITOR='mvim -f'
-  export P4EDITOR='mvim -f'
+  export VISUAL='mate -w'
+  export EDITOR='mate -w'
+  export P4EDITOR='mate -w'
   alias ls='ls -lGh'
   alias la='ls -lGha'
   alias finder='open .'
