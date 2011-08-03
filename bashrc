@@ -51,7 +51,7 @@ if [ -n "$SSH_CLIENT" ]; then
 fi
 
 if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
-  ruby_version="\n\[${txtred}\][\$(~/.rvm/bin/rvm-prompt s i v p g)] "
+  ruby_version="\n\[${txtred}\][\$(~/.rvm/bin/rvm-prompt i v p g s)] "
 else
   ruby_version="\n\[${txtred}\][system] "
 fi

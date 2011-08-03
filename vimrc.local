@@ -1,8 +1,17 @@
 " Disable the splash screen
 set shortmess+=I
 
+" theme
 set background=dark
 colorscheme vividchalk
 
+" whitespace stuff
 set list listchars=tab:->,trail:·
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
 
