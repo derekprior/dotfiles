@@ -91,8 +91,10 @@ alias ...='cd .. ; cd ..'
 
 # Rails Commands
 alias r='rails'
-alias dbm='bundle exec rake db:migrate'
 alias be='bundle exec'
+alias dbm='bundle exec rake db:migrate'
+alias dbtp='bundle exec rake db:test:prepare'
+alias guard='bundle exec guard'
 
 # Git Aliases
 alias g='git'
