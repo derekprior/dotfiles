@@ -141,13 +141,14 @@ export REMOTE_USER=dprior
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
   # Mac OS X
-  export VISUAL='mate -w'
-  export EDITOR='mate -w'
-  export P4EDITOR='mate -w'
+  export VISUAL='bbedit -w'
+  export EDITOR='bbedit -w'
+  export P4EDITOR='bbedit -w'
   alias ls='ls -lGh'
   alias la='ls -lGha'
   alias finder='open .'
   alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
+  alias mate='bbedit' # old habits die hard
 else
   # Linux
   export VISUAL='vim'
@@ -164,8 +165,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # mkdir & cd to it
-function mcd() { 
-  mkdir -p "$1" && cd "$1"; 
+function mcd() {
+  mkdir -p "$1" && cd "$1";
 }
 
 # Source Machine Local Settings for overrides or additions
