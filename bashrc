@@ -128,7 +128,7 @@ fi
 # Perforce Settings
 export P4CONFIG=.perforce
 export P4USER=dprior
-export P4PORT=rsh:ssh -q -a -x -l p4ssh perforce /bin /true
+export P4PORT='rsh:ssh -q -a -x -l p4ssh perforce /bin /true'
 alias p4s='p4 submit'
 alias p4a='p4 add'
 alias p4e='p4 edit'
