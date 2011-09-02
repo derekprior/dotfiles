@@ -134,7 +134,7 @@ alias p4a='p4 add'
 alias p4e='p4 edit'
 alias p4o='p4 opened'
 alias p4d='p4 describe'
-alias p4aa='find . -type f -print | p4 -x - add'
+alias p4aa='find . -type f ! -name ".DS_Store" -print | p4 -x - add'
 
 # Rails\Bart Environment Settings
 export REMOTE_USER=dprior
@@ -143,14 +143,13 @@ export REMOTE_USER=dprior
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
   # Mac OS X
-  export VISUAL='bbedit -w'
-  export EDITOR='bbedit -w'
-  export P4EDITOR='bbedit -w'
+  export VISUAL='mvim -f'
+  export EDITOR='mvim -f'
+  export P4EDITOR='mvim -f'
   alias ls='ls -lGh'
   alias la='ls -lGha'
   alias finder='open .'
   alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
-  alias mate='bbedit' # old habits die hard
 else
   # Linux
   export VISUAL='vim'

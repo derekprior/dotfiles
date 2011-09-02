@@ -30,3 +30,7 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
+" Perforce Integration
+nnoremap @p4a :!p4 add %
+nnoremap @p4e :!p4 edit %
+nnoremap @p4d :!p4 diff %

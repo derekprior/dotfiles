@@ -2,5 +2,5 @@
 *.sassc
 .sass-cache
 .rspec
-/.bundle
-
+.bundle/
+.idea/
