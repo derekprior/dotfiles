@@ -90,7 +90,7 @@ alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 
 # Rails Commands
-alias r='rails'
+alias r='be rails'
 alias be='bundle exec'
 alias dbm='bundle exec rake db:migrate'
 alias dbtp='bundle exec rake db:test:prepare'
