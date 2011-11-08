@@ -2,32 +2,21 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
-function s:setupWrapping()
-  set wrap
-  set wrapmargin=2
-  set textwidth=72
-endfunction
-
-function s:setupMarkup()
-  call s:setupWrapping()
-  map <buffer> <Leader>p :Hammer<CR>
-endfunction
-
-fun! <SID>StripTrailingWhitespaces()
+function! <SID>StripTrailingWhitespaces()
   let l = line(".")
   let c = col(".")
   %s/\s\+$//e
   call cursor(l, c)
-endfun
+endfunction
 
 set nocompatible
-set number
-set ruler
+set number            " line numbers
+set ruler             " line and column numbers
 set showcmd
 set encoding=utf-8
 
 " Disable the splash screen
-set shortmess+=I
+" set shortmess+=I
 
 " Whitespace stuff
 set nowrap
@@ -36,29 +25,26 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set list listchars=tab:->,trail:·
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Always show at least 3 lines on either side of the cursor
+set scrolloff=3
 
 " Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+set hlsearch          " highlight searches (:noh to turn off)
+set incsearch         " highlight while typing search
+set ignorecase        " case insensitive searching
+set smartcase         " overrides ignorecase when pattern contains caps
 
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
-set wildignore+=.idea,tmp,vendor/bundle/**,*.png,*.jpg,*.gif 
+set wildignore+=.idea,tmp,vendor/bundle/**,*.png,*.jpg,*.gif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 " Status bar
-set laststatus=2
-
-" File Type Settings
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
-au BufNewFile,BufRead *.json set ft=javascript
-au BufRead,BufNewFile *.txt call s:setupWrapping()
+set laststatus=2      " always show the status bar
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
@@ -74,20 +60,10 @@ let g:syntastic_quiet_warnings=1
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
-" If a file is read-only, try p4-edit
-let s:IgnoreChange=0
-autocmd! FileChangedRO * nested
-    \ let s:IgnoreChange=1 |
-    \ call system("p4 edit " . expand("%")) |
-    \ set noreadonly
-autocmd! FileChangedShell *
-    \ if 1 == s:IgnoreChange |
-    \   let v:fcs_choice="" |
-    \   let s:IgnoreChange=0 |
-    \ else |
-    \   let v:fcs_choice="ask" |
-    \ endif
-    
+" jj to switch back to normal mode
+:inoremap jj <Esc>
+
+" Set the leader key
 let mapleader=","
 
 " File Navigation
@@ -110,52 +86,37 @@ map <leader>gr :topleft 100 :split config/routes.rb<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
 
 " Make active split big, while minimizing others
-set winwidth=84
-set winheight=5
-set winminheight=5
-set winheight=999
+" set winwidth=84
+" set winheight=5
+" set winminheight=5
+" set winheight=999
 
 " Switch between last two open files
 nnoremap <leader><leader> <c-^>
 
-" Running Tests
-function! RunTests(filename)
-    :w
-    :silent !echo;echo;echo;echo;echo
-    exec ":!bundle exec rspec " . a:filename
-endfunction
+if has('autocmd')
+  " Remove trailing spaces from all lines
+  au BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-function! SetTestFile()
-    let t:grb_test_file=@%
-endfunction
+  " File Type Settings
+  au FileType text setlocal textwidth=78
+  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+  au BufNewFile,BufRead *.json set ft=javascript
 
-function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
-    if in_spec_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number)
-endfunction
-
-" Run this file
-map <leader>t :call RunTestFile()<cr>
-" Run only the example under the cursor
-map <leader>T :call RunNearestTest()<cr>
-" Run all test files
-map <leader>a :call RunTests('spec')<cr>
+  " If a file is read-only, try p4-edit
+  let s:IgnoreChange=0
+  autocmd! FileChangedRO * nested
+      \ let s:IgnoreChange=1 |
+      \ call system("p4 edit " . expand("%")) |
+      \ set noreadonly
+  autocmd! FileChangedShell *
+      \ if 1 == s:IgnoreChange |
+      \   let v:fcs_choice="" |
+      \   let s:IgnoreChange=0 |
+      \ else |
+      \   let v:fcs_choice="ask" |
+      \ endif
+endif
 
 " Color Scheme
 if has('gui_running')
@@ -221,7 +182,7 @@ if has("gui_macvim")
 
   " Adjust viewports to the same size
   map <Leader>= <C-w>=
-  imap <Leader>= <Esc> <C-w>=
+  " imap <Leader>= <Esc> <C-w>=
 
   " Don't beep
   set visualbell
