@@ -91,10 +91,32 @@ map <leader>gg :topleft 100 :split Gemfile<cr>
 " set winminheight=5
 " set winheight=999
 
+" Easy buffer navigation
+noremap <C-h>  <C-w>h
+noremap <C-j>  <C-w>j
+noremap <C-k>  <C-w>k
+noremap <C-l>  <C-w>l
+noremap <leader>v <C-w>v
+
 " Switch between last two open files
 nnoremap <leader><leader> <c-^>
 
+" Substitute
+nnoremap <leader>s :%s//<left>
+
+" Tab configuration
+map <leader>tn :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+" Hide highlighted terms
+map <silent> <leader><cr> :noh<cr>
+
 if has('autocmd')
+  " Resize splits when the window is resized
+  au VimResized * exe "normal! \<c-w>="
+
   " Remove trailing spaces from all lines
   au BufWritePre * :call <SID>StripTrailingWhitespaces()
 
