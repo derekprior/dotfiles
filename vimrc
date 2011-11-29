@@ -85,6 +85,10 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
 map <leader>gr :topleft 100 :split config/routes.rb<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
 
+" Coffee Script Compilation
+vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
+map <leader>c :CoffeeCompile<CR>
+
 " Make active split big, while minimizing others
 " set winwidth=84
 " set winheight=5
