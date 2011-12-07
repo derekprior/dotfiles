@@ -50,11 +50,12 @@ if [ -n "$SSH_CLIENT" ]; then
   host_info="\n\[${bldylw}\]\u@\h"
 fi
 
-if [ -f $HOME/.rvm/bin/rvm-prompt ]; then
-  ruby_version="\n\[${txtred}\][\$(~/.rvm/bin/rvm-prompt i v p g s)] "
+if [ -d "$HOME/.rbenv/" ]; then
+  ruby_version="\n\[${txtred}\][\$(rbenv version-name)] "
 else
   ruby_version="\n\[${txtred}\][system] "
 fi
+
 directory="\[${txtcyn}\]\w"
 git_branch="\[${txtgrn} \$(parse_git_branch) "
 prompt_char="\n\[${bldcyn}\]➜  \[${txtrst}\]"
@@ -104,11 +105,6 @@ alias gc='git commit'
 alias gb='git branch'
 alias gpush='git push'
 alias gpull='git pull'
-
-# RVM Aliases
-alias gemset='rvm gemset'
-alias rgl='rvm gemset list'
-alias rgu='rvm gemset use'
 
 # Postgres Stuff
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
@@ -162,8 +158,8 @@ fi
 # Set PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# Initialize rbenv
+eval "$(rbenv init -)"
 
 # mkdir & cd to it
 function mcd() {
