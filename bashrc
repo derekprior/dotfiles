@@ -91,11 +91,16 @@ alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 
 # Rails Commands
-alias r='be rails'
+# For the most part, I rely on rbenv-bundler to issue bundle exec
+alias r='rails'
 alias be='bundle exec'
-alias dbm='bundle exec rake db:migrate'
-alias dbtp='bundle exec rake db:test:prepare'
-alias guard='bundle exec guard'
+alias dbm='rake db:migrate'
+alias dbtp='rake db:test:prepare'
+
+#rbenv aliases - typos and old habbits!
+alias rvm='rbenv'
+alias rbenc='rbenv'
+alias rbe='rbenv'
 
 # Git Aliases
 alias g='git'
