@@ -126,7 +126,7 @@ if has('autocmd')
 
   " File Type Settings
   au FileType text setlocal textwidth=78
-  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Guardfile,config.ru}    set ft=ruby
   au BufNewFile,BufRead *.json set ft=javascript
 
   " If a file is read-only, try p4-edit
