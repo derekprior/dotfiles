@@ -1,6 +1,37 @@
-call pathogen#infect()
+set nocompatible
+filetype off          " required for vundle
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-rails'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-endwise'
+Bundle 'tsaleh/vim-align'
+Bundle 'scrooloose/syntastic'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-haml'
+Bundle 'mileszs/ack.vim'
+Bundle 'git://github.com/wincent/Command-T.git'
+filetype plugin indent on     " required!
+ "
+ " Brief help
+ " :BundleList          - list configured bundles
+ " :BundleInstall(!)    - install(update) bundles
+ " :BundleSearch(!) foo - search(or refresh cache first) for foo
+ " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " NOTE: comments after Bundle command are not allowed..
+
+
 syntax on
-filetype plugin indent on
 
 function! <SID>StripTrailingWhitespaces()
   let l = line(".")
@@ -9,14 +40,10 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 
-set nocompatible
 set number            " line numbers
 set ruler             " line and column numbers
 set showcmd
 set encoding=utf-8
-
-" Disable the splash screen
-" set shortmess+=I
 
 " Whitespace stuff
 set nowrap
@@ -46,9 +73,6 @@ set backspace=indent,eol,start
 " Status bar
 set laststatus=2      " always show the status bar
 
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
@@ -77,23 +101,12 @@ map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
 map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gj :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
-
-" Gemfile and Routes in their own split on top, 100% width
-map <leader>gr :topleft 100 :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
 
 " Coffee Script Compilation
 vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
 map <leader>c :CoffeeCompile<CR>
-
-" Make active split big, while minimizing others
-" set winwidth=84
-" set winheight=5
-" set winminheight=5
-" set winheight=999
 
 " Easy buffer navigation
 noremap <C-h>  <C-w>h
@@ -208,7 +221,6 @@ if has("gui_macvim")
 
   " Adjust viewports to the same size
   map <Leader>= <C-w>=
-  " imap <Leader>= <Esc> <C-w>=
 
   " Don't beep
   set visualbell
