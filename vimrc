@@ -18,6 +18,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-haml'
 Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-markdown'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
