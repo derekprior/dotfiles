@@ -54,6 +54,16 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:->,trail:·
 
+" Disabling Arrow Keys to force normal mode movement.
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
 " Always show at least 3 lines on either side of the cursor
 set scrolloff=3
 
