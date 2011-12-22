@@ -19,6 +19,7 @@ Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-haml'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-markdown'
+Bundle 'derekprior/vim-colorpack'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
@@ -172,12 +173,26 @@ endif
 if has('gui_running')
   syntax enable
   set background=dark
-  colorscheme solarized
+  colorscheme grb4
 else
-  let g:solarized_termcolors=256
+  if &term =~ "xterm-256"
+    set t_Co=256
+    let g:solarized_termcolors=256
+  else
+    set t_Co=16
+  end
   syntax enable
   set background=dark
-  colorscheme solarized
+  colorscheme grb4
+endif
+
+if !has('gui_running')
+  " solid underscore
+  let &t_SI .= "\<Esc>[4 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
 endif
 
 if has("gui_macvim")

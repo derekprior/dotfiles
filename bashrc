@@ -1,5 +1,4 @@
 # Enable Colors in various scripts
-export TERM=xterm-color
 export CLICOLOR=1
 export LSCOLORS='gafxcxdxbxegedabagacad'
 export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
@@ -65,7 +64,6 @@ export PS1=$host_info$ruby_version$directory$git_branch$prompt_char
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoredups
-#export HISTIGNORE="&:ls:ls *:lsa:lsa *:sbx:lnx:dbm"
 
 # bash completion settings (actually, these are readline settings)
 bind "set completion-ignore-case on" # note: bind is used instead of setting these in .inputrc.  This ignores case in bash completion
@@ -110,6 +108,9 @@ alias gc='git commit'
 alias gb='git branch'
 alias gpush='git push'
 alias gpull='git pull'
+
+# tmux
+alias t='tmux -u'
 
 # Postgres Stuff
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'

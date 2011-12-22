@@ -1,7 +1,6 @@
 require 'rake'
 require 'erb'
 
-
 task :default => [:install]
 
 desc "install the dot files into home directory"
@@ -9,14 +8,15 @@ task :install do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README README.markdown].include? file
+    target = File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
 
-    if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
-      if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
-        puts "identical ~/.#{file.sub('.erb', '')}"
+    if File.exist? target
+      if File.identical? file, target
+        puts "identical #{target}"
       elsif replace_all
         replace_file(file)
       else
-        print "overwrite ~/.#{file.sub('.erb', '')}? [ynaq] "
+        print "overwrite #{target} [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
@@ -26,13 +26,20 @@ task :install do
         when 'q'
           exit
         else
-          puts "skipping ~/.#{file.sub('.erb', '')}"
+          puts "skipping #{target}"
         end
       end
     else
       link_file(file)
     end
   end
+end
+
+desc "bootstrap vim installation"
+task "vim:bootstrap" do
+  path = File.join(ENV['HOME'], ".vim/bundle/vundle/")
+  system "git clone http://github.com/gmarik/vundle.git #{path}" unless File.directory? path
+  system "mkdir -p ~/.vim/backup/"
 end
 
 def replace_file(file)
