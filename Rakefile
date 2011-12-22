@@ -1,7 +1,6 @@
 require 'rake'
 require 'erb'
 
-TEXTMATE_BUNDLES = File.expand_path "~/Library/Application Support/TextMate/Bundles"
 
 task :default => [:install]
 
@@ -36,19 +35,6 @@ task :install do
   end
 end
 
-desc "install/refresh textmate bundles"
-task :tmbundles do
-  FileUtils.mkdir TEXTMATE_BUNDLES unless File.exists?(TEXTMATE_BUNDLES) 
-  git_bundle 'git://github.com/rspec/rspec-tmbundle.git', 'RSpec.tmbundle'
-  git_bundle 'git://github.com/drnic/ruby-on-rails-tmbundle.git', 'Ruby on Rails.tmbundle'
-  git_bundle 'git://github.com/cucumber/cucumber-tmbundle.git', 'Cucumber.tmbundle'
-  git_bundle 'git://github.com/kuroir/SCSS.tmbundle.git', 'SCSS.tmbundle'
-  git_bundle 'git://github.com/jcf/git-tmbundle.git', 'Git.tmbundle'
-  git_bundle 'git://github.com/jondruse/perforce-tmbundle.git', 'Perforce.tmbundle'
-  git_bundle 'git://github.com/jashkenas/coffee-script-tmbundle', 'CoffeeScript.tmbundle'
-  git_bundle 'git://github.com/kswedberg/jquery-tmbundle.git', 'JavaScript jQuery.tmbundle'
-end
-
 def replace_file(file)
   system %Q{rm -rf "$HOME/.#{file.sub('.erb', '')}"}
   link_file(file)
@@ -66,18 +52,3 @@ def link_file(file)
   end
 end
 
-def svn_bundle(repo, name=nil)
-  sh "cd #{escape_path(TEXTMATE_BUNDLES)}; svn co #{escape_path(repo)} #{escape_path(name)}"
-end
-
-def git_bundle(repo, name)
-  if File.exists?("#{TEXTMATE_BUNDLES}/#{name}")
-    sh "cd #{escape_path(TEXTMATE_BUNDLES)}; cd #{escape_path(name)}; git pull"
-  else
-    sh "cd #{escape_path(TEXTMATE_BUNDLES)}; git clone #{repo} #{escape_path(name)}"
-  end
-end
-
-def escape_path(name)
-  name.gsub(' ', '\ ')
-end
