@@ -1,44 +1,26 @@
 # Enable Colors in various scripts
 export CLICOLOR=1
-export LSCOLORS='gafxcxdxbxegedabagacad'
-export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CUCUMBER_FORMAT='pretty'
 
-# Color Shorthand
-txtblk='\e[0;30m' # Black - Regular
-txtred='\e[0;31m' # Red
-txtgrn='\e[0;32m' # Green
-txtylw='\e[0;33m' # Yellow
-txtblu='\e[0;34m' # Blue
-txtpur='\e[0;35m' # Purple
-txtcyn='\e[0;36m' # Cyan
-txtwht='\e[0;37m' # White
-bldblk='\e[1;30m' # Black - Bold
-bldred='\e[1;31m' # Red
-bldgrn='\e[1;32m' # Green
-bldylw='\e[1;33m' # Yellow
-bldblu='\e[1;34m' # Blue
-bldpur='\e[1;35m' # Purple
-bldcyn='\e[1;36m' # Cyan
-bldwht='\e[1;37m' # White
-unkblk='\e[4;30m' # Black - Underline
-undred='\e[4;31m' # Red
-undgrn='\e[4;32m' # Green
-undylw='\e[4;33m' # Yellow
-undblu='\e[4;34m' # Blue
-undpur='\e[4;35m' # Purple
-undcyn='\e[4;36m' # Cyan
-undwht='\e[4;37m' # White
-bakblk='\e[40m'   # Black - Background
-bakred='\e[41m'   # Red
-badgrn='\e[42m'   # Green
-bakylw='\e[43m'   # Yellow
-bakblu='\e[44m'   # Blue
-bakpur='\e[45m'   # Purple
-bakcyn='\e[46m'   # Cyan
-bakwht='\e[47m'   # White
-txtrst='\e[0m'    # Text Reset
+export COLOR_NC='\e[0m' # No Color
+export COLOR_WHITE='\e[1;37m'
+export COLOR_BLACK='\e[0;30m'
+export COLOR_BLUE='\e[0;34m'
+export COLOR_LIGHT_BLUE='\e[1;34m'
+export COLOR_GREEN='\e[0;32m'
+export COLOR_LIGHT_GREEN='\e[1;32m'
+export COLOR_CYAN='\e[0;36m'
+export COLOR_LIGHT_CYAN='\e[1;36m'
+export COLOR_RED='\e[0;31m'
+export COLOR_LIGHT_RED='\e[1;31m'
+export COLOR_PURPLE='\e[0;35m'
+export COLOR_LIGHT_PURPLE='\e[1;35m'
+export COLOR_BROWN='\e[0;33m'
+export COLOR_YELLOW='\e[1;33m'
+export COLOR_GRAY='\e[0;30m'
+export COLOR_LIGHT_GRAY='\e[0;37m'
+alias colorslist="set | egrep 'COLOR_\\w*'"  # lists all the colors
 
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -46,18 +28,18 @@ function parse_git_branch {
 }
 
 if [ -n "$SSH_CLIENT" ]; then
-  host_info="\n\[${bldylw}\]\u@\h"
+  host_info="\n\[${COLOR_YELLOW}\]\u@\h"
 fi
 
 if [ -d "$HOME/.rbenv/" ]; then
-  ruby_version="\n\[${txtred}\][\$(rbenv version-name)] "
+  ruby_version="\n\[${COLOR_RED}\][\$(rbenv version-name)] "
 else
-  ruby_version="\n\[${txtred}\][system] "
+  ruby_version="\n\[${COLOR_RED}\][system] "
 fi
 
-directory="\[${txtcyn}\]\w"
-git_branch="\[${txtgrn} \$(parse_git_branch) "
-prompt_char="\n\[${bldcyn}\]➜  \[${txtrst}\]"
+directory="\[${COLOR_BLUE}\]\w"
+git_branch="\[${COLOR_GREEN} \$(parse_git_branch) "
+prompt_char="\n\[${COLOR_LIGHT_BLUE}\]➜  \[${COLOR_NC}\]"
 export PS1=$host_info$ruby_version$directory$git_branch$prompt_char
 
 # Bash History
@@ -81,12 +63,10 @@ shopt -s cdspell
 # Display Most Used Commands (Consider Aliases for any that aren't aliased)
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
-# Comman Aliases
-alias systail='tail -f /var/log/system.log'
-
 # Common CD commands
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
+alias ....='cd .. ; cd .. ; cd ..'
 
 # Rails Commands
 # For the most part, I rely on rbenv-bundler to issue bundle exec
@@ -101,7 +81,6 @@ alias rbenc='rbenv'
 alias rbe='rbenv'
 
 # Git Aliases
-alias g='git'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
@@ -109,8 +88,9 @@ alias gb='git branch'
 alias gpush='git push'
 alias gpull='git pull'
 
-# tmux
+# other lazy aliases
 alias t='tmux -u'
+alias f='find . -iname'
 
 # Postgres Stuff
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
@@ -138,7 +118,7 @@ alias p4o='p4 opened'
 alias p4d='p4 describe'
 alias p4aa='find . -type f ! -name ".DS_Store" -print | p4 -x - add'
 
-# Rails\Bart Environment Settings
+# Spoofed Pubcookie User for Local Development
 export REMOTE_USER=dprior
 
 # Check OS
