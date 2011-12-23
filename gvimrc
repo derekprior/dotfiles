@@ -1,6 +1,6 @@
 syntax enable
 set background=dark
-colorscheme grb4
+colorscheme solarized
 
 if has("gui_macvim")
   " Fullscreen takes up entire screen
