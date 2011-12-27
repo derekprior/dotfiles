@@ -37,9 +37,9 @@ else
   ruby_version="\n\[${COLOR_RED}\][system] "
 fi
 
-directory="\[${COLOR_BLUE}\]\w"
+directory="\[${COLOR_CYAN}\]\w"
 git_branch="\[${COLOR_GREEN} \$(parse_git_branch) "
-prompt_char="\n\[${COLOR_LIGHT_BLUE}\]➜  \[${COLOR_NC}\]"
+prompt_char="\n\[${COLOR_LIGHT_CYAN}\]➜  \[${COLOR_NC}\]"
 export PS1=$host_info$ruby_version$directory$git_branch$prompt_char
 
 # Bash History
