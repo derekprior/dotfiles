@@ -1,0 +1,2 @@
+--ignore-dir=vendor/bundle
+--type-add ruby=.haml

@@ -20,6 +20,8 @@ Bundle 'tpope/vim-haml'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-markdown'
 Bundle 'derekprior/vim-colorpack'
+Bundle 'ervandew/snipmate.vim'
+Bundle 'scrooloose/snipmate-snippets'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
@@ -78,6 +80,13 @@ set smartcase         " overrides ignorecase when pattern contains caps
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 set wildignore+=.idea,tmp,vendor/bundle/**,*.png,*.jpg,*.gif
+
+" ctags setting
+let g:rails_ctags_arguments='--languages=-javascript --exclude=log --exclude=tmp --exclude=.git --exclude=.idea'
+set tags=./tmp/tags,./tags
+
+" use Ack instead of grep
+set grepprg=ack
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
