@@ -76,9 +76,7 @@ alias dbm='rake db:migrate'
 alias dbtp='rake db:test:prepare'
 
 #rbenv aliases - typos and old habbits!
-alias rvm='rbenv'
-alias rbenc='rbenv'
-alias rbe='rbenv'
+alias rb='rbenv'
 
 # Git Aliases
 alias gs='git status'
