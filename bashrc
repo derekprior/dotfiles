@@ -80,7 +80,7 @@ alias rb='rbenv'
 alias rehash='rbenv rehash'
 
 # Git Aliases
-alias gs='git status'
+alias gs='git status -sb'
 alias ga='git add'
 alias gc='git commit'
 alias gb='git branch'
