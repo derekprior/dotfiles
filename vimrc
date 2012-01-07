@@ -22,6 +22,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'derekprior/vim-colorpack'
 Bundle 'ervandew/snipmate.vim'
 Bundle 'scrooloose/snipmate-snippets'
+Bundle 'scratch.vim'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
