@@ -58,6 +58,9 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:->,trail:·
 
+" Add _ to word boundries
+set iskeyword-=_
+
 " Disabling Arrow Keys to force normal mode movement.
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
