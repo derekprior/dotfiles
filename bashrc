@@ -64,9 +64,12 @@ shopt -s cdspell
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
 # Common CD commands
+alias pd="pushd"
+alias po="popd"
+alias cd="pushd . > /dev/null; cd"
 alias ..='cd ..'
-alias ...='cd .. ; cd ..'
-alias ....='cd .. ; cd .. ; cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # Rails Commands
 # For the most part, I rely on rbenv-bundler to issue bundle exec
