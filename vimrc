@@ -18,11 +18,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-haml'
 Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-markdown'
 Bundle 'derekprior/vim-colorpack'
-Bundle 'ervandew/snipmate.vim'
-Bundle 'scrooloose/snipmate-snippets'
-Bundle 'scratch.vim'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
@@ -62,10 +58,6 @@ set list listchars=tab:->,trail:·
 set iskeyword-=_
 
 " Disabling Arrow Keys to force normal mode movement.
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
 noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
