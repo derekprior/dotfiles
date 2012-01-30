@@ -66,7 +66,6 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 # Common CD commands
 alias pd="pushd"
 alias po="popd"
-alias cd="pushd . > /dev/null; cd"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -89,6 +88,8 @@ alias gc='git commit'
 alias gb='git branch'
 alias gpush='git push'
 alias gpull='git pull'
+alias gpr='git p4 rebase'
+alias gps='git p4 submit'
 
 # other lazy aliases
 alias t='tmux -u'
