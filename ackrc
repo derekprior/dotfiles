@@ -1,2 +1,3 @@
 --ignore-dir=vendor/bundle
---type-add ruby=.haml
+--type-add=ruby=.haml
+--type-set=haml=.haml
