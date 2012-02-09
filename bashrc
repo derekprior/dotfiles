@@ -88,8 +88,8 @@ alias gc='git commit'
 alias gb='git branch'
 alias gpush='git push'
 alias gpull='git pull'
-alias gpr='git p4 rebase'
-alias gps='git p4 submit'
+alias gp4r='git p4 rebase'
+alias gp4s='git p4 submit'
 
 # other lazy aliases
 alias t='tmux -u'
