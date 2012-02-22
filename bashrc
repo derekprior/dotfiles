@@ -9,7 +9,7 @@ function parse_git_branch {
 }
 
 COLOR_NC='\e[0m' # No Color
-COLOR_YELLOW='\e[1;33m'
+COLOR_YELLOW='\e[0;33m'
 COLOR_GREEN='\e[0;32m'
 COLOR_CYAN='\e[0;36m'
 COLOR_RED='\e[0;31m'
