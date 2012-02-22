@@ -54,17 +54,11 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:->,trail:·
 
-" Add _ to word boundries
-set iskeyword-=_
-
 " Disabling Arrow Keys to force normal mode movement.
 noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
-
-" Always show at least 3 lines on either side of the cursor
-set scrolloff=3
 
 " Searching
 set hlsearch          " highlight searches (:noh to turn off)
@@ -121,10 +115,6 @@ map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 map <leader>gj :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
 
-" Coffee Script Compilation
-vmap <leader>c <esc>:'<,'>:CoffeeCompile<CR>
-map <leader>c :CoffeeCompile<CR>
-
 " Easy buffer navigation
 noremap <C-h>  <C-w>h
 noremap <C-j>  <C-w>j
@@ -175,13 +165,7 @@ if has('autocmd')
 endif
 
 " Color Scheme
-if &term =~ "xterm-256"
-  set t_Co=256
-  let g:solarized_termcolors=256
-else
-  set t_Co=16
-end
 syntax enable
 set background=dark
-colorscheme grb4
+colorscheme solarized
 
