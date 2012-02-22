@@ -7,18 +7,18 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-rails'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-haml'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'tsaleh/vim-align'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-haml'
 Bundle 'mileszs/ack.vim'
 Bundle 'derekprior/vim-colorpack'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
@@ -167,5 +167,5 @@ endif
 " Color Scheme
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme jellybeans
 

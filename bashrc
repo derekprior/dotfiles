@@ -3,29 +3,16 @@ export CLICOLOR=1
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CUCUMBER_FORMAT='pretty'
 
-export COLOR_NC='\e[0m' # No Color
-export COLOR_WHITE='\e[1;37m'
-export COLOR_BLACK='\e[0;30m'
-export COLOR_BLUE='\e[0;34m'
-export COLOR_LIGHT_BLUE='\e[1;34m'
-export COLOR_GREEN='\e[0;32m'
-export COLOR_LIGHT_GREEN='\e[1;32m'
-export COLOR_CYAN='\e[0;36m'
-export COLOR_LIGHT_CYAN='\e[1;36m'
-export COLOR_RED='\e[0;31m'
-export COLOR_LIGHT_RED='\e[1;31m'
-export COLOR_PURPLE='\e[0;35m'
-export COLOR_LIGHT_PURPLE='\e[1;35m'
-export COLOR_BROWN='\e[0;33m'
-export COLOR_YELLOW='\e[1;33m'
-export COLOR_GRAY='\e[0;30m'
-export COLOR_LIGHT_GRAY='\e[0;37m'
-alias colorslist="set | egrep 'COLOR_\\w*'"  # lists all the colors
-
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}")"
 }
+
+COLOR_NC='\e[0m' # No Color
+COLOR_YELLOW='\e[1;33m'
+COLOR_GREEN='\e[0;32m'
+COLOR_CYAN='\e[0;36m'
+COLOR_RED='\e[0;31m'
 
 if [ -n "$SSH_CLIENT" ]; then
   host_info="\n\[${COLOR_YELLOW}\]\u@\h"
@@ -39,7 +26,7 @@ fi
 
 directory="\[${COLOR_CYAN}\]\w"
 git_branch="\[${COLOR_GREEN} \$(parse_git_branch) "
-prompt_char="\n\[${COLOR_LIGHT_CYAN}\]➜  \[${COLOR_NC}\]"
+prompt_char="\n\[${COLOR_CYAN}\]➜  \[${COLOR_NC}\]"
 export PS1=$host_info$ruby_version$directory$git_branch$prompt_char
 
 # Bash History
