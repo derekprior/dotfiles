@@ -158,6 +158,12 @@ function mcd() {
   mkdir -p "$1" && cd "$1";
 }
 
+function colours() {
+  for i in {0..255} ; do
+    printf "\x1b[38;5;${i}mcolour${i}\n"
+  done
+}
+
 # Source Machine Local Settings for overrides or additions
 if [ -f ~/.bashrc.local ]; then
   source ~/.bashrc.local
