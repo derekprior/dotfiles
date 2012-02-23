@@ -148,6 +148,7 @@ if has('autocmd')
   au FileType text setlocal textwidth=78
   au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Guardfile,config.ru,*.jbuilder}    set ft=ruby
   au BufNewFile,BufRead *.json set ft=javascript
+  au BufNewFile,BufRead akamake set ft=make
 
   " If a file is read-only, try p4-edit
   let s:IgnoreChange=0
