@@ -138,6 +138,10 @@ map <leader>tm :tabmove
 map <silent> <leader><cr> :noh<cr>
 
 if has('autocmd')
+  " Change status bar in insert mode for terminal vim
+  au InsertEnter * hi StatusLine term=reverse ctermbg=red
+  au InsertLeave * hi StatusLine term=reverse ctermbg=white
+
   " Resize splits when the window is resized
   au VimResized * exe "normal! \<c-w>="
 
