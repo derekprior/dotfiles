@@ -68,6 +68,9 @@ alias dbtp='rake db:test:prepare'
 alias rb='rbenv'
 alias rehash='rbenv rehash'
 
+# java stuff
+export JRUBY_OPTS=--1.9
+
 # Git Aliases
 alias gs='git status -sb'
 alias ga='git add'
