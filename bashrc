@@ -70,6 +70,9 @@ alias rehash='rbenv rehash'
 
 # java stuff
 export JRUBY_OPTS=--1.9
+if [ -d /Library/Java/JavaVirtualMachines/1.7.0.jdk ]; then
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home
+fi
 
 # Git Aliases
 alias gs='git status -sb'
