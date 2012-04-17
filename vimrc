@@ -19,6 +19,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'derekprior/vim-colorpack'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'manalang/jshint.vim'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
