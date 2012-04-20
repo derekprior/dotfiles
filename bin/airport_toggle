@@ -46,8 +46,8 @@ air_status=`networksetup -getairportpower en1 | awk '{ print $4 }'`
 
 # If any change has occured. Run external script (if it exists)
 if [ "$prev_air_status" != "$air_status" ] || [ "$prev_eth_status" != "$eth_status" ]; then
-  if [ -f "./statusChanged.sh" ]; then
-    "./statusChanged.sh" "$eth_status" "$air_status" &amp;
+  if [ -f "~/.dotfiles/bin/airport_changed" ]; then
+    "~/.dotfiles/bin/airport_changed" "$eth_status" "$air_status" &amp;
   fi
 fi
 
