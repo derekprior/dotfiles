@@ -18,10 +18,6 @@ if [ -n "$SSH_CLIENT" ]; then
 fi
 
 export PROMPT='
-%{$fg[red]%}$(parse_ruby) %{$fg[cyan]%}%~ %{$fg[green]%}$(parse_git_branch) %{$reset_color%}
-%{$fg[cyan]%}➜  %{$reset_color%}'
-
-# export PROMPT='
-# %{$fg[red]%}$(parse_ruby) %{$fg[cyan]%}%~ %{$fg[green]%}$(parse_git_branch) %{$fg[cyan]%}
-# ➜  %{$reset_color%}'
+%{$fg[red]%}$(parse_ruby) %{$fg[blue]%}%~ %{$fg[green]%}$(parse_git_branch) %{$reset_color%}
+%{$fg[blue]%}➜  %{$reset_color%}'
 
