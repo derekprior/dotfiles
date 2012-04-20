@@ -1,0 +1,28 @@
+#!/bin/bash
+
+ID=`whoami`
+TODAY=`date "+%Y-%m-%d"`
+DEPLOYED=~/.ssh/$ID-deployed
+BACKUP_DEPLOYED=~/.ssh/backup/$TODAY/$ID-deployed
+EXTERNAL=~/.ssh/$ID-external
+BACKUP_EXTERNAL=~/.ssh/backup/$TODAY/$ID-external
+INTERNAL=~/.ssh/$ID-internal
+BACKUP_INTERNAL=~/.ssh/backup/$TODAY/$ID-internal
+
+echo "Verifying DEPLOYED Key..."
+ssh-keygen -l -f $DEPLOYED | pbcopy
+echo "New fingerprint is on your clipboard"
+ssh -i $BACKUP_DEPLOYED kvdeployed@ssh-keyrotation
+echo
+
+echo "Verifying EXTERNAL Key..."
+ssh-keygen -l -f $EXTERNAL | pbcopy
+echo "New fingerprint is on your clipboard"
+ssh -i $BACKUP_EXTERNAL kvexternal@ssh-keyrotation
+echo
+
+echo "Verifying INTERNAL Key..."
+ssh-keygen -l -f $INTERNAL | pbcopy
+echo "New fingerprint is on your clipboard"
+ssh -i $BACKUP_INTERNAL kvinternal@ssh-keyrotation
+echo

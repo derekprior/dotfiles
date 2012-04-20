@@ -1,0 +1,57 @@
+#!/bin/bash
+
+ID=`whoami`
+TODAY=`date "+%Y-%m-%d"`
+BACKUP=~/.ssh/backup/$TODAY/
+DEPLOYED=~/.ssh/$ID-deployed
+EXTERNAL=~/.ssh/$ID-external
+INTERNAL=~/.ssh/$ID-internal
+WILDCARD=~/.ssh/$ID-*
+
+echo "Clearing keychain of old keys"
+ssh-add -d -K $DEPLOYED $EXTERNAL $INTERNAL
+echo
+
+echo "Backing up existing keys..."
+mkdir -p $BACKUP
+mv $WILDCARD $BACKUP
+echo
+
+echo "Creating new SSH keys..."
+stty -echo
+read -p "Enter new passphrase:" PASSPHRASE; echo
+stty echo
+echo
+
+echo "Generating Depoyed Key..."
+ssh-keygen -t rsa -b 2048 -P "$PASSPHRASE" -C "$ID $TODAY deployed" -f $DEPLOYED > rotate_keys.log
+#Generate External Key
+echo "Generating External Key..."
+ssh-keygen -t rsa -b 2048 -P "$PASSPHRASE" -C "$ID $TODAY external" -f $EXTERNAL >> rotate_keys.log
+#Generate Internal Key
+echo "Generating Internal Key..."
+ssh-keygen -t rsa -b 2048 -P "$PASSPHRASE" -C "$ID $TODAY internal" -f $INTERNAL >> rotate_keys.log
+echo
+
+echo "Setting Permissions on New Keys"
+chmod 600 ~/.ssh/$ID-*
+echo
+
+echo "Adding new keys to keychain"
+ssh-add -K $DEPLOYED $EXTERNAL $INTERNAL
+echo
+
+echo "Opening your contact page..."
+open https://contacts/index.cgi?username=$ID
+echo "Manually upload your new public keys to contacts"
+echo "CMD+G in the file browser will allow you to enter ~/.ssh as the path"
+read -p "Press [Enter] when complete..."
+echo
+
+echo "Copying keys to dropbox..."
+cp $WILDCARD ~/Dropbox/Keys/
+echo
+
+echo "Key generation complete!"
+echo "Once keys are ready for verification, run key_verify script"
+
