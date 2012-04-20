@@ -173,5 +173,5 @@ endif
 " Color Scheme
 syntax enable
 set background=dark
-colorscheme jellybeans
+colorscheme solarized
 
