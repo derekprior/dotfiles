@@ -1,3 +1,4 @@
 *_private.zsh
 *_creds.zsh
-.netrwhist
+.rake_tasks~
+bin/rotate_keys.log
