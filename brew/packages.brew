@@ -1,0 +1,21 @@
+ack
+git
+grc
+hub
+gist
+macvim --override-system-vim
+node
+openssl
+perforce
+postgresql
+python
+rbenv
+reattach-to-user-namespace
+readline
+ruby-build
+sqlite
+ssh-copy-id
+tmux
+tree
+wget
+zsh

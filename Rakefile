@@ -51,11 +51,44 @@ task :uninstall do
   end
 end
 
-desc "bootstrap vim installation"
-task "vim:bootstrap" do
-  path = File.join(ENV['HOME'], ".vim/bundle/vundle/")
-  system "git clone http://github.com/gmarik/vundle.git #{path}" unless File.directory? path
-  system "mkdir -p ~/.vim/backup/"
+namespace :bootstrap do
+  desc "bootstrap vim configuration"
+  task "vim" do
+    puts "+++ Configuring vim"
+    path = File.join(ENV['HOME'], ".vim/bundle/vundle/")
+    system "git clone http://github.com/gmarik/vundle.git #{path}" unless File.directory? path
+    system "mkdir -p ~/.vim/backup/"
+  end
+
+  desc "bootstrap homebrew"
+  task "homebrew" do
+    return unless RbConfig::CONFIG['host_os'] =~ /darwin/
+
+    if not File.exists? '/usr/local/bin/brew'
+      puts "+++ Installing homebrew"
+      sh "/usr/bin/ruby -e \"$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)\""
+    end
+
+    puts "+++ Updating hombrew formulae"
+    `brew update`
+
+    packages = []
+    FileList["brew/*.brew"].each do |f|
+      file = File.new(f, "r")
+      while (line = file.gets)
+        packages << line.chomp if not line =~ /^#.*/ #ignore commented out packages
+      end
+    end
+
+    installables = packages - `brew list`.split(/\s/)
+
+    puts "+++ Installing homebrew packages"
+    installables.each do |p|
+      sh "brew install #{p}" do |ok, res|
+        #do nothing, don't die when brew throws an error if already installed
+      end
+    end
+  end
 end
 
 task :default => 'install'
