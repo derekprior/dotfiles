@@ -100,6 +100,17 @@ namespace :bootstrap do
       puts "zsh not installed in #{zsh_path}"
     end
   end
+
+  desc "download solarized color schemes"
+  task "solarized" do
+    puts "+++ Downloading solarized color schemes to ~/Dropbox/Application Support/Solarized"
+    output_directory = "\"$HOME/Dropbox/Application Support/Solarized/\""
+    `mkdir '#{output_directory}'`
+    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors`
+    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Light.itermcolors`
+    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/osx-terminal.app-colors-solarized/Solarized%20Dark%20ansi.terminal`
+    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/osx-terminal.app-colors-solarized/Solarized%20Light%20ansi.terminal`
+  end
 end
 
 task :default => 'install'
