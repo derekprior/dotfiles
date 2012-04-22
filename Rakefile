@@ -108,8 +108,8 @@ namespace :bootstrap do
     `mkdir '#{output_directory}'`
     `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors`
     `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Light.itermcolors`
-    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/osx-terminal.app-colors-solarized/Solarized%20Dark%20ansi.terminal`
-    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/osx-terminal.app-colors-solarized/Solarized%20Light%20ansi.terminal`
+    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/osx-terminal.app-colors-solarized/xterm-256color/Solarized%20Dark%20xterm-256color.terminal`
+    `wget -N -P #{output_directory} https://raw.github.com/altercation/solarized/master/osx-terminal.app-colors-solarized/xterm-256color/Solarized%20Light%20xterm-256color.terminal`
   end
 end
 
