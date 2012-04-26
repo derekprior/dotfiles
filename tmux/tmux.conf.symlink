@@ -1,6 +1,6 @@
 # Integrate with OS X pasteboard. Do:
 #   brew install reattach-to-user-namespace
-set-option -g default-command "reattach-to-user-namespace -l bash"
+set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 # use vi mode
 setw -g mode-keys vi
@@ -52,23 +52,6 @@ bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
 # 256 Color Terminal
 set -g default-terminal "screen-256color"
 
-# Customize Colors
-set -g status-fg white
-set -g status-bg black
-setw -g window-status-fg cyan
-setw -g window-status-bg default
-setw -g window-status-attr dim
-setw -g window-status-current-fg white
-setw -g window-status-current-bg red
-setw -g window-status-current-attr bright
-set -g pane-border-fg green
-set -g pane-border-bg black
-set -g pane-active-border-fg white
-set -g pane-active-border-bg yellow
-set -g message-fg white
-set -g message-bg black
-set -g message-attr bright
-
 # Status Bar
 set -g status-utf8 on
 set -g status-left-length 40
@@ -77,3 +60,32 @@ set -g status-right "#[fg=cyan]%d %b %R"
 setw -g monitor-activity on
 set -g visual-activity on
 
+# default statusbar colors
+set-option -g status-bg colour235 #base02
+set-option -g status-fg colour136 #yellow
+set-option -g status-attr default
+
+# default window title colors
+set-window-option -g window-status-fg colour244
+set-window-option -g window-status-bg default
+# set-window-option -g window-status-attr dim
+
+# active window title colors
+set-window-option -g window-status-current-fg colour166 #orange
+set-window-option -g window-status-current-bg default
+# set-window-option -g window-status-current-attr bright
+
+# pane border
+set-option -g pane-border-fg colour235 #base02
+set-option -g pane-active-border-fg colour240 #base01
+
+# message text
+set-option -g message-bg colour235 #base02
+set-option -g message-fg colour166 #orange
+
+# pane number display
+set-option -g display-panes-active-colour colour33 #blue
+set-option -g display-panes-colour colour166 #orange
+
+# clock
+set-window-option -g clock-mode-colour colour64 #green
