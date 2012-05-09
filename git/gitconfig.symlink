@@ -20,4 +20,5 @@
   templatedir = ~/.git_template
 [github]
   user = derekprior
-
+[git-p4]
+  skipSubmitEdit = true
