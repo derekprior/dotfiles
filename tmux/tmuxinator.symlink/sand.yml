@@ -1,0 +1,16 @@
+# ~/.tmuxinator/sand.yml
+# you can make as many tabs as you wish...
+
+project_name: sand
+project_root: ~/code/git/sand
+pre: pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+tabs:
+  - editor:
+      layout: c66b,318x75,0,0{208x75,0,0,109x75,209,0}
+      panes:
+        - vim
+        - bundle exec guard
+  - console: rails console
+  - server: rails server
+  - logs: tail -f logs/development.log
+  - shell:

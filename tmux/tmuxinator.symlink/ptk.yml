@@ -1,0 +1,12 @@
+# ~/.tmuxinator/ptk.yml
+# you can make as many tabs as you wish...
+
+project_name: ptk
+project_root: ~/code/git/ptk
+pre: sudo /etc/rc.d/mysqld start
+tabs:
+  - ptk: git p4 rebase
+  - demo:
+  - frontend: cd src/main/webapp/ui
+  - guard: cd src/main/webapp/ui && bundle exec guard
+  - scratch:
