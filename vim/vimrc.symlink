@@ -106,6 +106,9 @@ let mapleader=","
 " %% to current file path
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+" Toggle list characters
+nnoremap <leader>ti :setl list!<cr>
+
 " Command-T mappings
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
@@ -155,6 +158,10 @@ if has('autocmd')
   au BufNewFile,BufRead *.json set ft=javascript
   au BufNewFile,BufRead akamake set ft=make
   au BufNewFile,BufRead {*.jst,*.ejs} set ft=html
+
+  " Whitespace setting for PTK project that refuses to use soft tabs
+  au BufRead,BufNewFile ~/code/git/ptk/* setl noexpandtab nolist
+  au BufRead,BufNewFile ~/code/git/ptk/*.java setl tabstop=4
 
   " If a file is read-only, try p4-edit
   let s:IgnoreChange=0
