@@ -3,10 +3,14 @@
 
 project_name: ptk
 project_root: ~/code/git/ptk
-pre: sudo /etc/rc.d/mysqld start
+pre:
 tabs:
   - ptk: git p4 rebase
-  - demo:
   - frontend: cd src/main/webapp/ui
-  - guard: cd src/main/webapp/ui && bundle exec guard
+  - servers:
+      layout: even-horizontal
+      panes:
+        - cd src/main/webapp/ui && bundle exec guard
+        - sleep 10 && ant demo
   - scratch:
+
