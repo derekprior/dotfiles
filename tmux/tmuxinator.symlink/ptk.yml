@@ -2,7 +2,7 @@
 # you can make as many tabs as you wish...
 
 project_name: ptk
-project_root: ~/code/git/ptk/portal-platform-toolkit/
+project_root: ~/code/git/ptk/portal-platform-toolkit-1.2/
 pre:
 tabs:
   - ptk: git p4 rebase
