@@ -180,5 +180,5 @@ endif
 " Color Scheme
 syntax enable
 set background=dark
-colorscheme tomorrow-night
+colorscheme tomorrow-night-bright
 
