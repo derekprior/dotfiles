@@ -19,7 +19,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'derekprior/vim-colorpack'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'manalang/jshint.vim'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
@@ -90,8 +89,8 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
 " Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting=0
 
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
