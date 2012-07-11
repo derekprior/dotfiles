@@ -2,15 +2,17 @@
 # you can make as many tabs as you wish...
 
 project_name: ptk
-project_root: ~/code/git/ptk/portal-platform-toolkit-1.2/
+project_root: ~/code/git/ptk/portal-platform-toolkit-1.3/
 pre:
 tabs:
   - ptk: git p4 rebase
-  - frontend: cd src/main/webapp/ui
-  - servers:
-      layout: even-horizontal
+  - frontend:
+      layout: even-vertical
       panes:
         - cd src/main/webapp/ui && bundle exec guard
-        - sleep 10 && ant demo
+        - cd src/main/webapp/ui
+  - prod-defs: cd ../product-definitions/ && git p4 rebase
+  - jetty:
   - scratch:
+  - p4: cd ~/code/p4/ptk/
 
