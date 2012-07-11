@@ -33,3 +33,5 @@ setopt HIST_REDUCE_BLANKS
 #   like: git comm-[tab]
 setopt complete_aliases
 
+# Disable autocorrect
+unsetopt correct_all
