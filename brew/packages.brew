@@ -1,4 +1,6 @@
 ack
+coreutils
+ctags
 git
 grc
 hub
