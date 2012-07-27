@@ -141,7 +141,7 @@ else
 fi
 
 # Set PATH
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # Initialize rbenv
 eval "$(rbenv init -)"
