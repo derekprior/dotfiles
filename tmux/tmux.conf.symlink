@@ -1,6 +1,7 @@
 # Integrate with OS X pasteboard. Do:
 #   brew install reattach-to-user-namespace
 set-option -g default-command "reattach-to-user-namespace -l zsh"
+bind-key Y run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
 # use vi mode
 setw -g mode-keys vi
@@ -53,27 +54,11 @@ bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
 set -g default-terminal "screen-256color"
 
 # Status Bar
-set -g status-utf8 on
-set -g status-left-length 40
-set -g status-interval 60
-set -g status-right "#[fg=cyan]%d %b %R"
-setw -g monitor-activity on
-set -g visual-activity on
-
-# default statusbar colors
-set-option -g status-bg colour235 #base02
-set-option -g status-fg colour136 #yellow
-set-option -g status-attr default
-
-# default window title colors
-set-window-option -g window-status-fg colour244
-set-window-option -g window-status-bg default
-# set-window-option -g window-status-attr dim
-
-# active window title colors
-set-window-option -g window-status-current-fg colour166 #orange
-set-window-option -g window-status-current-bg default
-# set-window-option -g window-status-current-attr bright
+set -g status-bg    black
+set -g status-fg    white
+set -g status-left  '#[fg=blue]#h'
+set-window-option -g window-status-format '#[fg=yellow][#I]#[fg=white] #W'
+set-window-option -g window-status-current-format '#[fg=yellow][#I]#[fg=red] #W'
 
 # pane border
 set-option -g pane-border-fg colour235 #base02
@@ -87,5 +72,5 @@ set-option -g message-fg colour166 #orange
 set-option -g display-panes-active-colour colour33 #blue
 set-option -g display-panes-colour colour166 #orange
 
-# clock
-set-window-option -g clock-mode-colour colour64 #green
+# Tmux buffer to pasteboard
+bind-key Y run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
