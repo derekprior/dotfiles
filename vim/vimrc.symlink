@@ -20,6 +20,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'briancollins/vim-jst'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
  "
@@ -157,7 +158,6 @@ if has('autocmd')
   au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Guardfile,config.ru,*.jbuilder}    set ft=ruby
   au BufNewFile,BufRead *.json set ft=javascript
   au BufNewFile,BufRead akamake set ft=make
-  au BufNewFile,BufRead {*.jst,*.ejs} set ft=html
 
   " Whitespace setting for PTK project that refuses to use soft tabs
   au BufRead,BufNewFile ~/code/git/ptk/* setl noexpandtab nolist
