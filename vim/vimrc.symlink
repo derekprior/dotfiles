@@ -13,14 +13,15 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-fugitive'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'briancollins/vim-jst'
 Bundle 'tsaleh/vim-align'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'mileszs/ack.vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'bogado/file-line'
+Bundle 'sickill/vim-pasta'
 Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'briancollins/vim-jst'
+Bundle 'derekprior/vim-colorpack'
 Bundle 'twe4ked/vim-peepopen'
 Bundle 'git://github.com/wincent/Command-T.git'
 filetype plugin indent on     " required!
@@ -46,7 +47,8 @@ endfunction
 
 set number            " line numbers
 set ruler             " line and column numbers
-set showcmd
+set showcmd           " show incomplete commands
+set scrolloff=3       " always show 3 lines of context top and bottom
 set encoding=utf-8
 
 " Whitespace stuff
@@ -55,7 +57,11 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+set shiftround
 set list listchars=tab:->,trail:·
+
+" Line highlights
+set cursorline
 
 " Disabling Arrow Keys to force normal mode movement.
 noremap   <Up>     <NOP>
@@ -153,6 +159,12 @@ if has('autocmd')
 
   " Remove trailing spaces from all lines
   au BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+  autocmd BufWinEnter,WinEnter * setlocal cursorline
+  autocmd BufWinLeave,WinLeave * setlocal nocursorline
+
+  autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
+  autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
 
   " File Type Settings
   au FileType text setlocal textwidth=78
