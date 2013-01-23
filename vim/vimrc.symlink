@@ -48,6 +48,7 @@ endfunction
 set number            " line numbers
 set ruler             " line and column numbers
 set showcmd           " show incomplete commands
+set showmode          " show mode name below status bar
 set encoding=utf-8
 set clipboard=unnamed " use the system clipboard
 
@@ -150,10 +151,6 @@ map <leader>tm :tabmove
 map <silent> <leader><cr> :noh<cr>
 
 if has('autocmd')
-  " Change status bar in insert mode for terminal vim
-  au InsertEnter * hi StatusLine term=reverse ctermbg=red
-  au InsertLeave * hi StatusLine term=reverse ctermbg=white
-
   " Resize splits when the window is resized
   au VimResized * exe "normal! \<c-w>="
 
