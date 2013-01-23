@@ -49,6 +49,8 @@ set number            " line numbers
 set ruler             " line and column numbers
 set showcmd           " show incomplete commands
 set showmode          " show mode name below status bar
+set cursorline        " highlight current line
+set winwidth=82       " minimum width for active split
 set encoding=utf-8
 set clipboard=unnamed " use the system clipboard
 
@@ -62,7 +64,6 @@ set shiftround
 set list listchars=tab:->,trail:·
 
 " Line highlights
-set cursorline
 
 " Disabling Arrow Keys to force normal mode movement.
 noremap   <Up>     <NOP>
