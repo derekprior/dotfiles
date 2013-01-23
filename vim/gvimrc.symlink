@@ -2,7 +2,7 @@ syntax enable
 set background=dark
 colorscheme tomorrow-night
 
-set guifont=Source Code Pro:18
+set guifont=Source\ Code\ Pro:h18
 
 if has("gui_macvim")
   " Fullscreen takes up entire screen
