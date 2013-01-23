@@ -50,6 +50,7 @@ set ruler             " line and column numbers
 set showcmd           " show incomplete commands
 set scrolloff=3       " always show 3 lines of context top and bottom
 set encoding=utf-8
+set clipboard=unnamed " use the system clipboard
 
 " Whitespace stuff
 set nowrap
