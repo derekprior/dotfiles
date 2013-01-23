@@ -81,6 +81,3 @@ set-option -g pane-active-border-fg colour240 #base01
 
 setw -g utf8 on
 set -g status-utf8 on
-
-# Tmux buffer to pasteboard
-bind-key Y run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
