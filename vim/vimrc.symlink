@@ -196,3 +196,7 @@ syntax enable
 set background=dark
 colorscheme tomorrow-night-bright
 
+" Toggle between color schemes
+nnoremap <silent> <F9> :exec "color " .
+    \ ((g:colors_name == "github") ? "tomorrow-night-bright" : "github")<CR>
+
