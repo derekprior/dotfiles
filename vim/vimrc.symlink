@@ -193,10 +193,11 @@ endif
 
 " Color Scheme
 syntax enable
-set background=dark
-colorscheme tomorrow-night-bright
+set t_Co=256
+set background=light
+colorscheme github
 
 " Toggle between color schemes
 nnoremap <silent> <F9> :exec "color " .
-    \ ((g:colors_name == "github") ? "tomorrow-night-bright" : "github")<CR>
+    \ ((g:colors_name == "github") ? "tomorrow-night" : "github")<CR>
 
