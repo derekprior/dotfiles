@@ -1,4 +1,4 @@
-alias f='find . -iname'
+# alias f='find . -iname'
 
 if [[ `uname` == 'Darwin' ]]; then
   alias ls='ls -lGh'
