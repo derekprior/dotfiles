@@ -1,5 +1,4 @@
-alias rb='rbenv'
 alias rehash='rbenv rehash'
 
 # Initialize rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
