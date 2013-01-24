@@ -3,6 +3,9 @@
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 bind-key Y run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
+# use 256 colors
+set -g default-terminal "screen-256color"
+
 # use vi mode
 setw -g mode-keys vi
 
@@ -19,10 +22,6 @@ bind h select-pane -L
 
 # decrease command delay
 set -sg escape-time 1
-
-# Windows and Panes Index Starts at 1
-set -g base-index 1
-setw -g pane-base-index 1
 
 # Reload tmux confoiguration
 bind r source-file ~/.tmux.conf \; display "Configuration Reloaded!"
