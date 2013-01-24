@@ -1,6 +1,7 @@
 ack
 coreutils
 ctags
+fasd
 git
 grc
 hub
