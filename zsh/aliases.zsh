@@ -11,5 +11,7 @@ else
   alias la='ls -lGha --color'
 fi
 
-# Some aliases I use in my projects
-alias uidir="cd \`git rev-parse --git-dir\`/../src/main/webapp/ui/"
+alias tlf="tail -f"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
