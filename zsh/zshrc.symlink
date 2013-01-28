@@ -6,7 +6,7 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code/git
 
-# source every .zsh file in this rep
+# source every .zsh file in this repo
 for config_file ($ZSH/**/*.zsh) source $config_file
 
 # use .localrc for SUPER SECRET CRAP that you don't
@@ -22,3 +22,6 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
+
+# disable autocorrection
+unsetopt correct_all
