@@ -71,12 +71,10 @@ set -g base-index 1
 set -g status-left ' '
 set -g status-right '#(battery-life) (#(battery-time)) #[fg=yellow]%Y-%m-%d %H:%M#[default] '
 
-set-window-option -g window-status-current-bg yellow
-set-window-option -g window-status-current-fg black
-
-# pane border
-set-option -g pane-border-fg colour235 #base02
-set-option -g pane-active-border-fg colour240 #base01
+set -g status-bg '#666666'
+set -g status-fg '#aaaaaa'
+set-window-option -g window-status-current-bg black
+set-window-option -g window-status-current-fg white
 
 setw -g utf8 on
 set -g status-utf8 on
