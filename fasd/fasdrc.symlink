@@ -1,0 +1,7 @@
+_FASD_BACKENDS="native viminfo current"
+
+current() {
+  for path in *; do
+    printf "$PWD/%s|1\\n" "$path"
+  done
+}

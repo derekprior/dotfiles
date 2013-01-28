@@ -1,14 +1,33 @@
-# # Fasd comes with some useful aliases by default:
-#
-# # ```sh
-# # alias a='fasd -a'        # any
-# # alias s='fasd -si'       # show / search / select
-# # alias d='fasd -d'        # directory
-# # alias f='fasd -f'        # file
-# # alias sd='fasd -sid'     # interactive directory selection
-# # alias sf='fasd -sif'     # interactive file selection
-# # alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-# # alias zz='fasd_cd -d -i' # cd with interactive selection
-# # ```#
-eval "$(fasd --init auto)"
-alias v='f -e vim' # quick opening files with vim
+# load FASD. I dislike the default aliases. The gymnastics below
+# load it up without the default aliases and cache the code for future
+# shell initializations
+# Return if requirements are not found.
+if (( ! $+commands[fasd] )); then
+  return 1
+fi
+
+fasd_cache="$HOME/.fasd-init-cache"
+if [[ "${commands[fasd]}" -nt "$fasd_cache" || ! -s "$fasd_cache"  ]]; then
+  # Set the base init arguments.
+  init_args=(zsh-hook zsh-ccomp zsh-wcomp)
+
+  # Cache init code.
+  fasd --init "$init_args[@]" >! "$fasd_cache" 2> /dev/null
+fi
+source "$fasd_cache"
+unset fasd_cache init_args
+
+function fasd_cd() {
+  local fasd_ret="$(fasd -d "$@")"
+  if [[ -d "$fasd_ret" ]]; then
+    cd "$fasd_ret"
+  else
+    print "$fasd_ret"
+  fi
+}
+
+# the aliases I actually like:
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias j='fasd_cd -i'     # cd, same functionality as j in autojump
+alias v='fasd -e vim'    # quick opening files with vim
