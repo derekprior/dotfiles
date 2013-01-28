@@ -22,7 +22,3 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
-
-# disable autocorrection
-unsetopt correct_all
-unsetopt correct
