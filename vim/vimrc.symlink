@@ -11,13 +11,12 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'briancollins/vim-jst'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
-Bundle 'mileszs/ack.vim'
 Bundle 'bogado/file-line'
-Bundle 'sickill/vim-pasta'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'derekprior/vim-colorpack'
 Bundle 'twe4ked/vim-peepopen'
@@ -101,9 +100,6 @@ set directory=~/.vim/backup
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting=0
 
-" % to bounce from do to end etc.
-runtime! macros/matchit.vim
-
 " jj to switch back to normal mode
 :inoremap jj <Esc>
 
@@ -117,15 +113,14 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " Toggle list characters
 nnoremap <leader>ti :setl list!<cr>
 
+" Fuzzy finder: ignore stuff that can't be opened, and generated files
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+let g:CommandTMaxHeight=50
+let g:CommandTMatchWindowAtTop=1
+
 " Command-T mappings
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gj :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
+map <leader>f :CommandT<cr>
+map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
 
 " Easy buffer navigation
 noremap <C-h>  <C-w>h
@@ -149,6 +144,14 @@ map <leader>tm :tabmove
 " Hide highlighted terms
 map <silent> <leader><cr> :noh<cr>
 
+" Typos
+command! Q q
+command! W w
+
+" Saving with control-s
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
 if has('autocmd')
   " Resize splits when the window is resized
   au VimResized * exe "normal! \<c-w>="
@@ -166,25 +169,11 @@ if has('autocmd')
   au FileType text setlocal textwidth=78
   au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Guardfile,config.ru,*.jbuilder}    set ft=ruby
   au BufNewFile,BufRead *.json set ft=javascript
-  au BufNewFile,BufRead akamake set ft=make
 
   " Whitespace setting for PTK project that refuses to use soft tabs
   au BufRead,BufNewFile ~/code/git/ptk/* setl noexpandtab nolist
   au BufRead,BufNewFile ~/code/git/ptk/*.java setl tabstop=4
 
-  " If a file is read-only, try p4-edit
-  let s:IgnoreChange=0
-  autocmd! FileChangedRO * nested
-      \ let s:IgnoreChange=1 |
-      \ call system("p4 edit " . expand("%")) |
-      \ set noreadonly
-  autocmd! FileChangedShell *
-      \ if 1 == s:IgnoreChange |
-      \   let v:fcs_choice="" |
-      \   let s:IgnoreChange=0 |
-      \ else |
-      \   let v:fcs_choice="ask" |
-      \ endif
 endif
 
 " Color Scheme
