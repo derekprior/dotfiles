@@ -4,6 +4,13 @@ export CLICOLOR=true
 export GHI_PAGER=less
 export JRUBY_OPTS=--1.9
 
+# GC Settings that made my tests go faster
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=1000000000
+export RUBY_HEAP_FREE_MIN=500000
+
 fpath=($DOTFILES/zsh/functions $fpath)
 fpath=($DOTFILES/zsh/completions $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)
