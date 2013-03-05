@@ -1,13 +1,15 @@
 export EDITOR=vim
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
+export GHI_PAGER=less
+export JRUBY_OPTS=--1.9
 
-fpath=($ZSH/zsh/functions $fpath)
-fpath=($ZSH/zsh/completions $fpath)
+fpath=($DOTFILES/zsh/functions $fpath)
+fpath=($DOTFILES/zsh/completions $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-autoload -U $ZSH/zsh/functions/*(:t)
-autoload -U $ZSH/zsh/completions/*(:t)
+autoload -U $DOTFILES/zsh/functions/*(:t)
+autoload -U $DOTFILES/zsh/completions/*(:t)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -42,3 +44,9 @@ setopt complete_aliases
 # Disable autocorrect
 unsetopt correct_all
 unsetopt correct
+
+# matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending

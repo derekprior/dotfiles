@@ -1,10 +1,15 @@
 export PATH="$HOME/bin:$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/heroku/bin:$PATH"
 
-export ZSH=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 export PROJECTS=~/src
 
 # source every .zsh file in this repo
-for config_file ($ZSH/**/*.zsh) source $config_file
+source $DOTFILES/zsh/config.zsh
+source $DOTFILES/zsh/aliases.zsh
+source $DOTFILES/zsh/prompt.zsh
+source $DOTFILES/zsh/window.zsh
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
