@@ -4,7 +4,7 @@ export PATH="$HOME/bin:$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/l
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/code/git
+export PROJECTS=~/src
 
 # source every .zsh file in this repo
 for config_file ($ZSH/**/*.zsh) source $config_file
