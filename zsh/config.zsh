@@ -4,6 +4,7 @@ export CLICOLOR=true
 
 fpath=($ZSH/zsh/functions $fpath)
 fpath=($ZSH/zsh/completions $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 autoload -U $ZSH/zsh/functions/*(:t)
 autoload -U $ZSH/zsh/completions/*(:t)
