@@ -16,7 +16,4 @@ if has("gui_macvim")
 
   " Start without the toolbar
   set guioptions-=T
-
-  " Use PeepOpen
-  map <Leader>f <Plug>PeepOpen
 endif

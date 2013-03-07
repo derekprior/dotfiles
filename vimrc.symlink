@@ -1,53 +1,21 @@
+let mapleader=","
+
 set nocompatible
-filetype off          " required for vundle
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
-Bundle 'bogado/file-line'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'derekprior/vim-colorpack'
-Bundle 'twe4ked/vim-peepopen'
-Bundle 'git://github.com/wincent/Command-T.git'
-filetype plugin indent on     " required!
- "
- " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Bundle command are not allowed..
-
-
-syntax on
-
-function! <SID>StripTrailingWhitespaces()
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  call cursor(l, c)
-endfunction
-
-set number            " line numbers
-set ruler             " line and column numbers
-set showcmd           " show incomplete commands
-set showmode          " show mode name below status bar
-set cursorline        " highlight current line
-set winwidth=82       " minimum width for active split
+set nobackup
+set nowritebackup
+set noswapfile
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set showmode      " show mode name below status bar
+set incsearch     " do incremental searching
+set hlsearch      " highlight searches (:noh to turn off)
+set ignorecase    " case insensitive searching
+set smartcase     " overrides ignorecase when pattern contains caps
+set laststatus=2  " Always display the status line
+set number        " line numbers
+set cursorline    " highlight current line
+set winwidth=82   " minimum width for active split
 set encoding=utf-8
 set clipboard=unnamed " use the system clipboard
 
@@ -60,7 +28,93 @@ set expandtab
 set shiftround
 set list listchars=tab:->,trail:·
 
-" Line highlights
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'croaky/vim-colors-github'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/greplace.vim'
+Bundle 'xenoterracide/html.vim'
+
+filetype plugin indent on
+
+" jj to switch back to normal mode
+:inoremap jj <Esc>
+
+augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  au FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  au BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+augroup END
+
+" use the silver searcher or ack if available.
+if executable("ag")
+  set grepprg=ag\ --noheading\ --nogroup\ --nocolor
+elseif executable("ack")
+  set grepprg=ack
+endif
+
+" Color scheme
+colorscheme github
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
+
+" Toggle between color schemes
+nnoremap <silent> <F9> :exec "color " .
+    \ ((g:colors_name == "github") ? "tomorrow-night" : "github")<CR>
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+set complete=.,w,t
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
+let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!ctags -R .<CR>
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
 
 " Disabling Arrow Keys to force normal mode movement.
 noremap   <Up>     <NOP>
@@ -68,121 +122,105 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-" Searching
-set hlsearch          " highlight searches (:noh to turn off)
-set incsearch         " highlight while typing search
-set ignorecase        " case insensitive searching
-set smartcase         " overrides ignorecase when pattern contains caps
-
-" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
-set wildignore+=.idea,tmp,vendor/bundle/**,*.png,*.jpg,*.gif
-
-" ctags setting
-let g:rails_ctags_arguments='--languages=-javascript --exclude=log --exclude=tmp --exclude=.git --exclude=.idea'
-set tags=./tmp/tags,./tags
-
-" use Ack instead of grep
-set grepprg=ack
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-" Status bar
-set laststatus=2      " always show the status bar
-
-" Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
-
-" Enable syntastic syntax checking
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_highlighting=0
-
-" jj to switch back to normal mode
-:inoremap jj <Esc>
-
-" Set the leader key
-let mapleader=","
-
-" File Navigation
-" %% to current file path
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
-" Toggle list characters
-nnoremap <leader>ti :setl list!<cr>
-
-" Fuzzy finder: ignore stuff that can't be opened, and generated files
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-let g:CommandTMaxHeight=50
-let g:CommandTMatchWindowAtTop=1
-
-" Command-T mappings
-map <leader>f :CommandT<cr>
-map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
-
 " Easy buffer navigation
 noremap <C-h>  <C-w>h
 noremap <C-j>  <C-w>j
 noremap <C-k>  <C-w>k
 noremap <C-l>  <C-w>l
-noremap <leader>v <C-w>v
 
-" Switch between last two open files
-nnoremap <leader><leader> <c-^>
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
 
-" Substitute
-nnoremap <leader>s :%s//<left>
+" Markdown files end in .md
+au BufRead,BufNewFile *.md set filetype=markdown
 
-" Tab configuration
-map <leader>tn :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+" Enable spellchecking for Markdown
+au BufRead,BufNewFile *.md setlocal spell
 
-" Hide highlighted terms
-map <silent> <leader><cr> :noh<cr>
+" Automatically wrap at 80 characters for Markdown
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
+" Remove trailing space from all lines
+au BufWritePre * :call <SID>StripTrailingWhitespace()
+
+" hide cursorline and colorcolumn on inactive splits
+au BufWinEnter,WinEnter * setlocal cursorline
+au BufWinLeave,WinLeave * setlocal nocursorline
+au BufWinEnter,WinEnter * setlocal colorcolumn=80
+au BufWinLeave,WinLeave * setlocal colorcolumn=0
+
+" File Type Settings
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Guardfile,config.ru,*.jbuilder} set ft=ruby
+au BufNewFile,BufRead *.json set ft=javascript
+
+" Enable syntastic syntax checking
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting=0
 
 " Typos
 command! Q q
 command! W w
 
-" Saving with control-s
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
+" ctrl-p - fuzzy file finding
+map <leader>f :CtrlP<CR>
 
-if has('autocmd')
-  " Resize splits when the window is resized
-  au VimResized * exe "normal! \<c-w>="
+" simple vertical splits
+map <leader>v <C-w>v
 
-  " Remove trailing spaces from all lines
-  au BufWritePre * :call <SID>StripTrailingWhitespaces()
+" Replace
+map <leader>r :%s//<left>
 
-  autocmd BufWinEnter,WinEnter * setlocal cursorline
-  autocmd BufWinLeave,WinLeave * setlocal nocursorline
+" Hide highlighted terms
+map <silent> <leader><cr> :noh<cr>
 
-  autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
-  autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
+" rspec mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
 
-  " File Type Settings
-  au FileType text setlocal textwidth=78
-  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Guardfile,config.ru,*.jbuilder}    set ft=ruby
-  au BufNewFile,BufRead *.json set ft=javascript
+function! RunCurrentSpecFile()
+  if InSpecFile()
+    let l:command = "bundle exec rspec " . @% . " -f documentation"
+    call SetLastSpecCommand(l:command)
+    call RunSpecs(l:command)
+  endif
+endfunction
 
-  " Whitespace setting for PTK project that refuses to use soft tabs
-  au BufRead,BufNewFile ~/code/git/ptk/* setl noexpandtab nolist
-  au BufRead,BufNewFile ~/code/git/ptk/*.java setl tabstop=4
+function! RunNearestSpec()
+  if InSpecFile()
+    let l:command = "bundle exec rspec " . @% . " -l " . line(".") . " -f documentation"
+    call SetLastSpecCommand(l:command)
+    call RunSpecs(l:command)
+  endif
+endfunction
 
-endif
+function! RunLastSpec()
+  if exists("t:last_spec_command")
+    call RunSpecs(t:last_spec_command)
+  endif
+endfunction
 
-" Color Scheme
-syntax enable
-set t_Co=256
-set background=light
-colorscheme github
+function! InSpecFile()
+  return match(expand("%"), "_spec.rb$") != -1
+endfunction
 
-" Toggle between color schemes
-nnoremap <silent> <F9> :exec "color " .
-    \ ((g:colors_name == "github") ? "tomorrow-night" : "github")<CR>
+function! SetLastSpecCommand(command)
+  let t:last_spec_command = a:command
+endfunction
 
+function! RunSpecs(command)
+  execute ":w\|!clear && echo " . a:command . " && echo && " . a:command
+endfunction
+
+function! <SID>StripTrailingWhitespace()
+  let l:blacklist = ['markdown', 'make']
+  if index(blacklist, &ft) < 0
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+  endif
+endfunction
