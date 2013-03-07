@@ -9,10 +9,13 @@ alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
 
-alias r='rails'
-alias dbm='rake db:migrate'
 alias be='bundle exec'
-alias s='rspec'
+alias migrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
+alias m="migrate"
+alias r='rails'
+alias rk="rake"
+alias s="rspec"
+alias z="zeus"
 
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
