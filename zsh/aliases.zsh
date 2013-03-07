@@ -12,6 +12,7 @@ alias ...='../..'
 alias r='rails'
 alias dbm='rake db:migrate'
 alias be='bundle exec'
+alias s='rspec'
 
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
