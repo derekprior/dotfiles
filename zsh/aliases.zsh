@@ -31,3 +31,5 @@ alias gd='git diff'
 
 alias tmux="tmux -2"
 
+alias dotfiles="cd $DOTFILES"
+
