@@ -1,12 +1,13 @@
-.DS_Store
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Zeus
-custom_plan.rb
+*.DS_Store
+*.sw[nop]
+.bundle
+.sass-cache/
+db/*.sqlite3
+log/*.log
+rerun.txt
+tags
+tmp/**/*
+!tmp/cache/.keep
+vendor/bundler_gems
+vim/.netrwhist
 zeus.json
