@@ -1,30 +1,49 @@
-# Integrate with OS X pasteboard. Do:
-#   brew install reattach-to-user-namespace
-set-option -g default-command "reattach-to-user-namespace -l zsh"
+# Integrate with OS X pasteboard.
+set -g default-command "reattach-to-user-namespace -l zsh"
 bind-key Y run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
 # use 256 colors
 set -g default-terminal "screen-256color"
 
-# use vi mode
+# act like vim
 setw -g mode-keys vi
-
-# remap prefix to Control + a
-set -g prefix C-a
-unbind C-b
-bind C-a send-prefix
-
-# move around panes like in vim (only in tmux 1.6)
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 bind h select-pane -L
 
+# act like screen
+unbind C-b
+set -g prefix C-a
+
+# start window numbers at 1 to match keyboard order with tmux window order
+set -g base-index 1
+
+# renumber windows sequentially after closing any of them
+set -g renumber-windows on
+
+# soften status bar color from harsh green to light gray
+set -g status-bg '#666666'
+set -g status-fg '#aaaaaa'
+set-window-option -g window-status-current-bg black
+set-window-option -g window-status-current-fg white
+
+# remove administrative debris (session name, hostname) in status bar
+set -g status-left ''
+set -g status-right '#(battery-life) (#(battery-time)) #[fg=yellow]%H:%M#[default] '
+
+# Mouse Stuff
+set -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
+
+# Encoding
+setw -g utf8 on
+set -g status-utf8 on
+
 # decrease command delay
 set -sg escape-time 1
-
-# Reload tmux confoiguration
-bind r source-file ~/.tmux.conf \; display "Configuration Reloaded!"
 
 # Commands for new splits, fixed so they make sense
 bind | split-window -h
@@ -49,32 +68,3 @@ bind Down resize-pane -D 4
 # cycle through panes
 unbind ^A
 bind ^A select-pane -t :.+
-
-# Mouse Stuff
-set -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
-# setw -g mode-mouse off
-
-# 256 Color Terminal
-set -g default-terminal "screen-256color"
-
-# status bar
-set -g status-bg black
-set -g status-fg white
-set -g status-interval 1
-set -g status-right-length 60
-set -g renumber-windows on
-set -g base-index 1
-
-set -g status-left ' '
-set -g status-right '#(battery-life) (#(battery-time)) #[fg=yellow]%Y-%m-%d %H:%M#[default] '
-
-set -g status-bg '#666666'
-set -g status-fg '#aaaaaa'
-set-window-option -g window-status-current-bg black
-set-window-option -g window-status-current-fg white
-
-setw -g utf8 on
-set -g status-utf8 on
