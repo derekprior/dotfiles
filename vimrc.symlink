@@ -42,6 +42,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'croaky/vim-colors-github'
+Bundle 'derekprior/vim-trimmer'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
@@ -144,9 +145,6 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-" Remove trailing space from all lines
-au BufWritePre * :call <SID>StripTrailingWhitespace()
-
 " hide cursorline and colorcolumn on inactive splits
 au BufWinEnter,WinEnter * setlocal cursorline
 au BufWinLeave,WinLeave * setlocal nocursorline
@@ -160,6 +158,10 @@ au BufRead,BufNewFile *.json set ft=javascript
 " Enable syntastic syntax checking
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting=0
+
+" Enable automatic trailing whitespace trimming
+let g:trimmer_autocommand = 1
+let g:trimmer_blacklist = ['markdown']
 
 " Typos
 command! Q q
@@ -214,14 +216,4 @@ endfunction
 
 function! RunSpecs(command)
   execute ":w\|!clear && echo " . a:command . " && echo && " . a:command
-endfunction
-
-function! <SID>StripTrailingWhitespace()
-  let l:blacklist = ['markdown', 'make']
-  if index(blacklist, &ft) < 0
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-  endif
 endfunction
