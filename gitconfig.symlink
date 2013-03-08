@@ -7,9 +7,9 @@
   branch = auto
 [alias]
   aa = add --all
-  am = commit --amend
   ap = add --patch
   br = branch
+  ca = commit --amend
   ci = commit -v
   co = checkout
   st = status
