@@ -1,29 +1,26 @@
-[user]
-  name = Derek Prior
-  email = derekprior@gmail.com
+[push]
+  default = upstream
 [color]
   ui = auto
   diff = auto
   status = auto
   branch = auto
 [alias]
+  aa = add --all
+  am = commit --amend
+  ap = add --patch
+  br = branch
+  ci = commit -v
   co = checkout
+  st = status
   last = log -1 HEAD
+  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
+  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
+  merge-branch = !git checkout master && git merge @{-1} --ff-only
+  rebase-origin = !git fetch origin && git rebase origin/master
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore
   autocrlf = input
-[push]
-  default = simple
-[apply]
-  whitespace = nowarn
-[format]
-  pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
-[init]
-  templatedir = ~/.git_template
-[github]
-  user = derekprior
-[git-p4]
-  skipSubmitEdit = true
 [merge]
   keepBackup = false
   tool = custom
@@ -32,3 +29,8 @@
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
+[user]
+  name = Derek Prior
+  email = derekprior@gmail.com
+[github]
+  user = derekprior
