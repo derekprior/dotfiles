@@ -18,6 +18,8 @@ set cursorline    " highlight current line
 set winwidth=82   " minimum width for active split
 set encoding=utf-8
 set clipboard=unnamed " use the system clipboard
+set splitbelow
+set splitright
 
 " Whitespace stuff
 set nowrap
@@ -130,7 +132,7 @@ noremap <C-j>  <C-w>j
 noremap <C-k>  <C-w>k
 noremap <C-l>  <C-w>l
 
-" Treat <li> and <p> tags like the block tags they are
+" Treat  <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
 " Markdown files end in .md
@@ -141,6 +143,12 @@ au BufRead,BufNewFile *.md setlocal spell
 
 " Automatically wrap at 80 characters for Markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Help System Speedups
+au filetype help nnoremap <buffer><cr> <c-]>
+au filetype help nnoremap <buffer><bs> <c-T>
+au filetype help nnoremap <buffer>q :q<CR>
+au filetype help set nonumber
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
@@ -167,22 +175,29 @@ let g:trimmer_blacklist = ['markdown']
 command! Q q
 command! W w
 
+" List all my mapped leaders
+command! Leaders :call ListLeaders()
+
 " ctrl-p - fuzzy file finding
 map <leader>f :CtrlP<CR>
 
 " simple vertical splits
 map <leader>v <C-w>v
 
-" Replace
-map <leader>r :%s//<left>
+" Mappings for quick search & replace.
+" Do a / search first, then leave pattern empty in :s// to use last
+" In order, they are `all`, `visual`, `confirm`
+map <Leader>sra :%s///<Left>
+map <Leader>srv :s///<Left>
+map <Leader>src :%s///c<Left><Left>
 
 " Hide highlighted terms
 map <silent> <leader><cr> :noh<cr>
 
 " rspec mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
+map <Leader>tf :call RunCurrentSpecFile()<CR>
+map <Leader>ts :call RunNearestSpec()<CR>
+map <Leader>tl :call RunLastSpec()<CR>
 
 function! RunCurrentSpecFile()
   if InSpecFile()
@@ -216,4 +231,25 @@ endfunction
 
 function! RunSpecs(command)
   execute ":w\|!clear && echo " . a:command . " && echo && " . a:command
+endfunction
+
+function! ListLeaders()
+  silent! redir @a
+  silent! nmap <LEADER>
+  silent! redir END
+  silent! new
+  silent! put! a
+  silent! g/^s*$/d
+  "improved substitute below to only remove up to
+  "the first comma
+  silent! %s/^[^,]*,//
+  silent! normal! ggVg
+  silent! sort
+  "last step is to get out of
+  "visual line mode
+  silent! normal! V
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+  setlocal noswapfile
+  setlocal buflisted
 endfunction
