@@ -17,7 +17,6 @@ set number        " line numbers
 set cursorline    " highlight current line
 set winwidth=82   " minimum width for active split
 set encoding=utf-8
-set clipboard=unnamed " use the system clipboard
 set splitbelow
 set splitright
 
@@ -44,6 +43,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'croaky/vim-colors-github'
+Bundle 'danro/rename.vim'
 Bundle 'derekprior/vim-trimmer'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
