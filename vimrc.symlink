@@ -16,6 +16,7 @@ set laststatus=2  " Always display the status line
 set number        " line numbers
 set cursorline    " highlight current line
 set winwidth=82   " minimum width for active split
+set clipboard=unnamed " use OS clipboard
 set encoding=utf-8
 set splitbelow
 set splitright
@@ -131,6 +132,10 @@ noremap <C-h>  <C-w>h
 noremap <C-j>  <C-w>j
 noremap <C-k>  <C-w>k
 noremap <C-l>  <C-w>l
+
+" Handle pasting from OS clipboard
+map <leader>p :set paste<CR>put  *<CR>:set nopaste<CR>
+map <leader>P :set paste<CR>put! *<CR>:set nopaste<CR>
 
 " Treat  <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
