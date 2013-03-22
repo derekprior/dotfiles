@@ -165,7 +165,7 @@ au BufWinEnter,WinEnter * setlocal colorcolumn=80
 au BufWinLeave,WinLeave * setlocal colorcolumn=0
 
 " File Type Settings
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Guardfile,config.ru,*.jbuilder} set ft=ruby
+au BufRead,BufNewFile {Guardfile,Appraisals} set ft=ruby
 au BufRead,BufNewFile *.json set ft=javascript
 
 " Enable syntastic syntax checking
