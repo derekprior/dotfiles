@@ -55,6 +55,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-ruby'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/greplace.vim'
@@ -165,7 +166,6 @@ au BufWinEnter,WinEnter * setlocal colorcolumn=80
 au BufWinLeave,WinLeave * setlocal colorcolumn=0
 
 " File Type Settings
-au BufRead,BufNewFile {Guardfile,Appraisals} set ft=ruby
 au BufRead,BufNewFile *.json set ft=javascript
 
 " Enable syntastic syntax checking
