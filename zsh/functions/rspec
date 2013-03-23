@@ -1,7 +1,0 @@
-rspec() {
-  if [ -S .zeus.sock ]; then
-    zeus rspec "$@"
-  else
-    bundle exec rspec "$@"
-  fi
-}
