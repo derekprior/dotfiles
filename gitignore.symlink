@@ -12,3 +12,4 @@ vendor/bundler_gems
 vim/.netrwhist
 zeus.json
 .rake_tasks~
+.rbenv-gemsets
