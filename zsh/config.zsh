@@ -2,7 +2,6 @@ export EDITOR=vim
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 export GHI_PAGER=less
-export JRUBY_OPTS=--1.9
 
 # GC Settings that made my tests go faster
 export RUBY_HEAP_MIN_SLOTS=1000000

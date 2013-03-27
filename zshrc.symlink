@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/heroku/bin:$PATH"
 
 export DOTFILES=$HOME/.dotfiles
 export PROJECTS=~/src

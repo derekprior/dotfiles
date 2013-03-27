@@ -20,4 +20,3 @@ fi
 export PROMPT='
 %{$fg[red]%}$(parse_ruby) %{$fg[blue]%}%~ %{$fg[green]%}$(parse_git_branch) %{$reset_color%}
 %{$fg[blue]%}➜  %{$reset_color%}'
-
