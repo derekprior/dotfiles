@@ -9,7 +9,10 @@ source $DOTFILES/zsh/aliases.zsh
 source $DOTFILES/zsh/prompt.zsh
 source $DOTFILES/zsh/window.zsh
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# rbenv configuration
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
