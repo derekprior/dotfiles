@@ -6,10 +6,14 @@ function parse_git_branch {
 }
 
 function parse_ruby {
-  if [ -d "$HOME/.rbenv/" ]; then
-    echo "["$(rbenv version-name)"]"
+  if which chruby > /dev/null; then
+    if [ -n "${RUBY_VERSION}" ]; then
+      echo "["$RUBY_VERSION"]"
+    else
+      echo "[system]"
+    fi
   else
-    echo "[system]"
+    echo "[unsure]"
   fi
 }
 

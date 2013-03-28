@@ -3,16 +3,17 @@ export PATH="$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/herok
 export DOTFILES=$HOME/.dotfiles
 export PROJECTS=~/src
 
+if [ -d /usr/local/opt/chruby ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+  chruby 2.0.0
+fi
+
 # source every .zsh file in this repo
 source $DOTFILES/zsh/config.zsh
 source $DOTFILES/zsh/aliases.zsh
 source $DOTFILES/zsh/prompt.zsh
 source $DOTFILES/zsh/window.zsh
-
-# rbenv configuration
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
-fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
