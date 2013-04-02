@@ -50,6 +50,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
@@ -199,43 +200,17 @@ map <Leader>src :%s///c<Left><Left>
 " Hide highlighted terms
 map <silent> <leader><cr> :noh<cr>
 
-" rspec mappings
-map <Leader>tf :call RunCurrentSpecFile()<CR>
-map <Leader>ts :call RunNearestSpec()<CR>
-map <Leader>tl :call RunLastSpec()<CR>
+map <leader>dd :Dispatch rspec<CR>
+map <leader>dr :Dispatch rake<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>l :call RunCurrentSpecLine()<CR>
 
 function! RunCurrentSpecFile()
-  if InSpecFile()
-    let l:command = "rspec " . @% . " -f documentation"
-    call SetLastSpecCommand(l:command)
-    call RunSpecs(l:command)
-  endif
+  exec "Dispatch rspec " . @%
 endfunction
 
-function! RunNearestSpec()
-  if InSpecFile()
-    let l:command = "rspec " . @% . " -l " . line(".") . " -f documentation"
-    call SetLastSpecCommand(l:command)
-    call RunSpecs(l:command)
-  endif
-endfunction
-
-function! RunLastSpec()
-  if exists("t:last_spec_command")
-    call RunSpecs(t:last_spec_command)
-  endif
-endfunction
-
-function! InSpecFile()
-  return match(expand("%"), "_spec.rb$") != -1
-endfunction
-
-function! SetLastSpecCommand(command)
-  let t:last_spec_command = a:command
-endfunction
-
-function! RunSpecs(command)
-  execute ":w\|!clear && echo " . a:command . " && echo && " . a:command
+function! RunCurrentSpecLine()
+  exec "Dispatch rspec " . @% . ':' . line(".")
 endfunction
 
 function! ListLeaders()
