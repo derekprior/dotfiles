@@ -68,3 +68,6 @@ bind Down resize-pane -D 4
 # cycle through panes
 unbind ^A
 bind ^A select-pane -t :.+
+
+# ^Aa to go to start of line
+bind a send-prefix
