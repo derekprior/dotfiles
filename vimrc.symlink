@@ -193,7 +193,6 @@ map <leader>v <C-w>v
 " Do a / search first, then leave pattern empty in :s// to use last
 " In order, they are `all`, `visual`, `confirm`
 map <Leader>sra :%s///<Left>
-map <Leader>srv :s///<Left>
 map <Leader>src :%s///c<Left><Left>
 
 " Hide highlighted terms
