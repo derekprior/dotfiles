@@ -23,7 +23,7 @@
   excludesfile = ~/.gitignore
   autocrlf = input
 [init]
-  templatedir = ~/.dotfiles/git/git_template
+  templatedir = ~/.dotfiles/git_template
 [merge]
   keepBackup = false
   tool = custom
