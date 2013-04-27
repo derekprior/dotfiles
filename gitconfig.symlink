@@ -14,6 +14,7 @@
   co = checkout
   st = status
   last = log -1 HEAD
+  ctags = !.git/hooks/ctags
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
   merge-branch = !git checkout master && git merge @{-1} --ff-only
@@ -21,6 +22,8 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+[init]
+  templatedir = ~/.dotfiles/git/git_template
 [merge]
   keepBackup = false
   tool = custom

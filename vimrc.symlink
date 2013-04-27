@@ -114,6 +114,7 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
 " Index ctags from any project, including those outside Rails
+set tags=./tags;/,./.git/tags
 map <Leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
