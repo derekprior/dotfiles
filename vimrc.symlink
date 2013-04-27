@@ -50,6 +50,7 @@ Bundle 'epmatsw/ag.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-endwise'
@@ -196,18 +197,10 @@ map <Leader>src :%s///c<Left><Left>
 " Hide highlighted terms
 map <silent> <leader><cr> :noh<cr>
 
-map <leader>dd :Dispatch rspec<CR>
-map <leader>dr :Dispatch rake<CR>
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>l :call RunCurrentSpecLine()<CR>
-
-function! RunCurrentSpecFile()
-  exec "Dispatch rspec " . @%
-endfunction
-
-function! RunCurrentSpecLine()
-  exec "Dispatch rspec " . @% . ':' . line(".")
-endfunction
+" vim-rspec mappings
+map <Leader>tt :call RunCurrentSpecFile()<CR>
+map <Leader>ts :call RunNearestSpec()<CR>
+map <Leader>ta :call RunAllSpecs()<CR>
 
 function! ListLeaders()
   silent! redir @a
