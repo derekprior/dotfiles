@@ -46,6 +46,7 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'croaky/vim-colors-github'
 Bundle 'danro/rename.vim'
 Bundle 'derekprior/vim-trimmer'
+Bundle 'epmatsw/ag.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
@@ -81,13 +82,6 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 augroup END
-
-" use the silver searcher or ack if available.
-if executable("ag")
-  set grepprg=ag\ --noheading\ --nogroup\ --nocolor
-elseif executable("ack")
-  set grepprg=ack
-endif
 
 " Color scheme
 set t_Co=256
