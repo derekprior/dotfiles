@@ -89,17 +89,6 @@ namespace :bootstrap do
       end
     end
   end
-
-  desc "bootstrap zsh install"
-  task "zsh" do
-    zsh_path = '/usr/local/bin/zsh'
-    if File.exists? zsh_path
-      puts "+++ Changing shell"
-      `chsh -s zsh_path`
-    else
-      puts "zsh not installed in #{zsh_path}"
-    end
-  end
 end
 
 task :default => 'install'
