@@ -144,6 +144,9 @@ au BufRead,BufNewFile *.md setlocal spell
 " Automatically wrap at 80 characters for Markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
+" Enable Speel Checking and wrapping for git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 " Help System Speedups
 au filetype help nnoremap <buffer><cr> <c-]>
 au filetype help nnoremap <buffer><bs> <c-T>
