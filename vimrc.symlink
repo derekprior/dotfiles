@@ -203,6 +203,11 @@ map <silent> <leader><cr> :noh<cr>
 map <Leader>tt :call RunCurrentSpecFile()<CR>
 map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
+if executable('spring')
+  let g:rspec_command = "Dispatch spring rspec {spec}"
+else
+  let g:rspec_command = "Dispatch rspec {spec}"
+endif
 
 function! ListLeaders()
   silent! redir @a
