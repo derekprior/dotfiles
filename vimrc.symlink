@@ -60,7 +60,6 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/ctags.vim'
-Bundle 'vim-scripts/greplace.vim'
 Bundle 'xenoterracide/html.vim'
 
 filetype plugin indent on
