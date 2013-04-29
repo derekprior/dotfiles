@@ -112,10 +112,6 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
-" Index ctags from any project, including those outside Rails
-set tags=./tags;/,./.git/tags
-map <Leader>ct :!ctags -R .<CR>
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
@@ -130,6 +126,12 @@ noremap <C-h>  <C-w>h
 noremap <C-j>  <C-w>j
 noremap <C-k>  <C-w>k
 noremap <C-l>  <C-w>l
+
+" fugitive shortcuts
+noremap <leader>gb :Gblame<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gd :Gdiff<CR>
+noremap <leader>gp :Git push<CR>
 
 " Handle pasting from OS clipboard
 map <leader>p :set paste<CR>put  *<CR>:set nopaste<CR>
