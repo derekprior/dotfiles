@@ -36,6 +36,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
+filetype off " required before vundles: http://git.io/ZozZnQ
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
