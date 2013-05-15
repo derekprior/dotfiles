@@ -18,6 +18,7 @@ set cursorline    " highlight current line
 set winwidth=82   " minimum width for active split
 set clipboard=unnamed " use OS clipboard
 set encoding=utf-8
+set backspace=indent,eol,start
 set splitright
 
 " Whitespace stuff
