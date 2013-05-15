@@ -7,7 +7,7 @@ set noswapfile
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
-set showmode      " show mode name below status bar
+set noshowmode    " powerline shows the mode
 set incsearch     " do incremental searching
 set hlsearch      " highlight searches (:noh to turn off)
 set ignorecase    " case insensitive searching
@@ -49,6 +49,7 @@ Bundle 'derekprior/vim-trimmer'
 Bundle 'epmatsw/ag.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'rking/vim-detailed'
 Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
