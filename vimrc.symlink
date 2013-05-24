@@ -119,12 +119,6 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
-" Disabling Arrow Keys to force normal mode movement.
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-
 " Easy buffer navigation
 noremap <C-h>  <C-w>h
 noremap <C-j>  <C-w>j
