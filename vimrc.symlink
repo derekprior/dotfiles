@@ -47,6 +47,7 @@ Bundle 'gmarik/vundle'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'croaky/vim-colors-github'
 Bundle 'danro/rename.vim'
+Bundle 'derekprior/vim-leaders'
 Bundle 'derekprior/vim-trimmer'
 Bundle 'epmatsw/ag.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -75,10 +76,7 @@ inoremap jj <Esc>
 
 augroup vimrcEx
   autocmd!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
+  "
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
@@ -86,17 +84,31 @@ augroup vimrcEx
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+
+  " File Type Settings
+  autocmd FileType text setlocal textwidth=78
+  autocmd FileType markdown setlocal spell textwidth=80
+  autocmd Filetype gitcommit setlocal spell textwidth=72
+
+  " Help System Speedups
+  autocmd filetype help nnoremap <buffer><cr> <c-]>
+  autocmd filetype help nnoremap <buffer><bs> <c-T>
+  autocmd filetype help nnoremap <buffer>q :q<CR>
+  autocmd filetype help set nonumber
+
+  " Resize splits when the window is resized
+  autocmd VimResized * exe "normal! \<c-w>="
+
+  " hide cursorline and colorcolumn on inactive splits
+  autocmd BufWinEnter,WinEnter * setlocal cursorline
+  autocmd BufWinLeave,WinLeave * setlocal nocursorline
+  autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
+  autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
 augroup END
 
 " Color scheme
 set t_Co=256
 colorscheme github
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
-" Toggle between color schemes
-nnoremap <silent> <F9> :exec "color " .
-    \ ((g:colors_name == "github") ? "tomorrow-night" : "github")<CR>
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -119,12 +131,6 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
-" Disabling Arrow Keys to force normal mode movement.
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-
 " Easy buffer navigation
 noremap <C-h>  <C-w>h
 noremap <C-j>  <C-w>j
@@ -137,42 +143,8 @@ noremap <leader>gs :Gstatus<CR>
 noremap <leader>gd :Gdiff<CR>
 noremap <leader>gp :Git push<CR>
 
-" Handle pasting from OS clipboard
-map <leader>p :set paste<CR>put  *<CR>:set nopaste<CR>
-map <leader>P :set paste<CR>put! *<CR>:set nopaste<CR>
-
 " Treat  <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-
-" Markdown files end in .md
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-
-" Enable spellchecking for Markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
-
-" Automatically wrap at 80 characters for Markdown
-autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-
-" Enable Speel Checking and wrapping for git commit messages
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
-" Help System Speedups
-autocmd filetype help nnoremap <buffer><cr> <c-]>
-autocmd filetype help nnoremap <buffer><bs> <c-T>
-autocmd filetype help nnoremap <buffer>q :q<CR>
-autocmd filetype help set nonumber
-
-" Resize splits when the window is resized
-autocmd VimResized * exe "normal! \<c-w>="
-
-" hide cursorline and colorcolumn on inactive splits
-autocmd BufWinEnter,WinEnter * setlocal cursorline
-autocmd BufWinLeave,WinLeave * setlocal nocursorline
-autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
-autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
-
-" File Type Settings
-autocmd BufRead,BufNewFile *.json set ft=javascript
 
 " Enable syntastic syntax checking
 let g:syntastic_check_on_open=1
@@ -184,9 +156,6 @@ let g:trimmer_blacklist = ['markdown']
 " Typos
 command! Q q
 command! W w
-
-" List all my mapped leaders
-command! Leaders :call ListLeaders()
 
 " ctrl-p - fuzzy file finding
 map <leader>f :CtrlP<CR>
@@ -206,28 +175,8 @@ map <silent> <leader><cr> :noh<cr>
 " vim-rspec mappings
 map <Leader>tt :call RunCurrentSpecFile()<CR>
 map <Leader>ts :call RunNearestSpec()<CR>
+if executable('spring')
   let g:rspec_command = "Dispatch spring rspec {spec}"
 else
   let g:rspec_command = "Dispatch rspec {spec}"
 endif
-
-function! ListLeaders()
-  silent! redir @a
-  silent! nmap <LEADER>
-  silent! redir END
-  silent! new
-  silent! put! a
-  silent! g/^s*$/d
-  "improved substitute below to only remove up to
-  "the first comma
-  silent! %s/^[^,]*,//
-  silent! normal! ggVg
-  silent! sort
-  "last step is to get out of
-  "visual line mode
-  silent! normal! V
-  setlocal buftype=nofile
-  setlocal bufhidden=hide
-  setlocal noswapfile
-  setlocal buflisted
-endfunction
