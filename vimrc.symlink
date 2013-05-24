@@ -74,15 +74,15 @@ filetype plugin indent on
 inoremap jj <Esc>
 
 augroup vimrcEx
-  au!
+  autocmd!
 
   " For all text files set 'textwidth' to 78 characters.
-  au FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
-  au BufReadPost *
+  autocmd BufReadPost *
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
@@ -119,6 +119,12 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" Disabling Arrow Keys to force normal mode movement.
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
 " Easy buffer navigation
 noremap <C-h>  <C-w>h
 noremap <C-j>  <C-w>j
@@ -143,41 +149,40 @@ vnoremap / /\v
 let g:html_indent_tags = 'li\|p'
 
 " Markdown files end in .md
-au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " Enable spellchecking for Markdown
-au BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Automatically wrap at 80 characters for Markdown
-au BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Enable Speel Checking and wrapping for git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " Help System Speedups
-au filetype help nnoremap <buffer><cr> <c-]>
-au filetype help nnoremap <buffer><bs> <c-T>
-au filetype help nnoremap <buffer>q :q<CR>
-au filetype help set nonumber
+autocmd filetype help nnoremap <buffer><cr> <c-]>
+autocmd filetype help nnoremap <buffer><bs> <c-T>
+autocmd filetype help nnoremap <buffer>q :q<CR>
+autocmd filetype help set nonumber
 
 " Resize splits when the window is resized
-au VimResized * exe "normal! \<c-w>="
+autocmd VimResized * exe "normal! \<c-w>="
 
 " hide cursorline and colorcolumn on inactive splits
-au BufWinEnter,WinEnter * setlocal cursorline
-au BufWinLeave,WinLeave * setlocal nocursorline
-au BufWinEnter,WinEnter * setlocal colorcolumn=80
-au BufWinLeave,WinLeave * setlocal colorcolumn=0
+autocmd BufWinEnter,WinEnter * setlocal cursorline
+autocmd BufWinLeave,WinLeave * setlocal nocursorline
+autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
+autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
 
 " File Type Settings
-au BufRead,BufNewFile *.json set ft=javascript
+autocmd BufRead,BufNewFile *.json set ft=javascript
 
 " Enable syntastic syntax checking
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting=0
 
-" Enable automatic trailing whitespace trimming
-let g:trimmer_autocommand = 1
+" Don't trim trailing whitespace on these filetypes
 let g:trimmer_blacklist = ['markdown']
 
 " Typos
