@@ -141,6 +141,10 @@ noremap <leader>gp :Git push<CR>
 map <leader>p :set paste<CR>put  *<CR>:set nopaste<CR>
 map <leader>P :set paste<CR>put! *<CR>:set nopaste<CR>
 
+" Remap / so that we always use the /v option when searching
+nnoremap / /\v
+vnoremap / /\v
+
 " Treat  <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
