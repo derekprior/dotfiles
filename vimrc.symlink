@@ -141,10 +141,6 @@ noremap <leader>gp :Git push<CR>
 map <leader>p :set paste<CR>put  *<CR>:set nopaste<CR>
 map <leader>P :set paste<CR>put! *<CR>:set nopaste<CR>
 
-" Remap / so that we always use the /v option when searching
-nnoremap / /\v
-vnoremap / /\v
-
 " Treat  <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -210,8 +206,6 @@ map <silent> <leader><cr> :noh<cr>
 " vim-rspec mappings
 map <Leader>tt :call RunCurrentSpecFile()<CR>
 map <Leader>ts :call RunNearestSpec()<CR>
-map <Leader>ta :call RunAllSpecs()<CR>
-if executable('spring')
   let g:rspec_command = "Dispatch spring rspec {spec}"
 else
   let g:rspec_command = "Dispatch rspec {spec}"
