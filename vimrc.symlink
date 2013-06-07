@@ -20,6 +20,7 @@ set clipboard=unnamed " use OS clipboard
 set encoding=utf-8
 set backspace=indent,eol,start
 set splitright
+set nofoldenable
 
 " Whitespace stuff
 set nowrap
