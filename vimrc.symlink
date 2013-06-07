@@ -86,9 +86,10 @@ augroup vimrcEx
     \ endif
 
   " File Type Settings
-  autocmd FileType text setlocal textwidth=78
-  autocmd FileType markdown setlocal spell textwidth=80
-  autocmd Filetype gitcommit setlocal spell textwidth=72
+  autocmd filetype text setlocal textwidth=78
+  autocmd filetype markdown setlocal spell textwidth=80
+  autocmd filetype gitcommit setlocal spell textwidth=72
+  autocmd filetype qf setlocal wrap
 
   " Help System Speedups
   autocmd filetype help nnoremap <buffer><cr> <c-]>
@@ -104,6 +105,7 @@ augroup vimrcEx
   autocmd BufWinLeave,WinLeave * setlocal nocursorline
   autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
   autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
+
 augroup END
 
 " Color scheme
