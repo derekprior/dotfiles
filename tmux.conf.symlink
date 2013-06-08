@@ -47,7 +47,9 @@ set -sg escape-time 1
 
 # Commands for new splits, fixed so they make sense
 bind | split-window -h
+bind \ split-window -h
 bind - split-window -v
+bind _ split-window -v
 
 # Resizing Splits
 bind -r H resize-pane -L 5
