@@ -6,6 +6,7 @@
   status = auto
   branch = auto
 [alias]
+  amend = commit --amend -C HEAD
   aa = add --all
   ap = add --patch
   br = branch
