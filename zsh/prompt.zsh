@@ -6,12 +6,8 @@ function parse_git_branch {
 }
 
 function parse_ruby {
-  if which chruby > /dev/null; then
-    if [ -n "${RUBY_VERSION}" ]; then
-      echo "["$RUBY_VERSION"]"
-    else
-      echo "[system]"
-    fi
+  if which rbenv > /dev/null; then
+    echo "[`rbenv version | sed -e 's/ .*//'`]"
   else
     echo "[unsure]"
   fi
