@@ -1,2 +1,2 @@
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby 2.0.0-p0
+export PATH="/usr/local/opt/rbenv/bin:$PATH"
+eval "$(rbenv init -)"
