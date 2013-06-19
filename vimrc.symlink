@@ -156,6 +156,9 @@ command! W w
 
 " ctrl-p - fuzzy file finding
 map <leader>f :CtrlP<CR>
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " simple vertical splits
 map <leader>v <C-w>v
