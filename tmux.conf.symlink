@@ -1,6 +1,5 @@
 # Integrate with OS X pasteboard.
 set -g default-command "reattach-to-user-namespace -l zsh"
-bind-key Y run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
 # use 256 colors
 set -g default-terminal "screen-256color"
@@ -11,6 +10,12 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 bind h select-pane -L
+
+# copy and pste integration, vi style
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key Y run-shell "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
 # act like screen
 unbind C-b
