@@ -33,3 +33,4 @@ alias tmux="tmux -2"
 
 alias dotfiles="cd $DOTFILES"
 
+if type hub > /dev/null 2>&1; then alias git="hub"; fi

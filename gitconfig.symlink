@@ -13,6 +13,7 @@
   ca = commit --amend
   ci = commit -v
   co = checkout
+  pr = pull-request
   st = status
   last = log -1 HEAD
   ctags = !.git/hooks/ctags
