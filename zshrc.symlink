@@ -1,9 +1,9 @@
 export PATH="$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/heroku/bin:$PATH"
+command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init - --no-rehash)"
+export PATH=".git/safe/../../bin:$PATH"
 
 export DOTFILES=$HOME/.dotfiles
 export PROJECTS=~/src
-
-if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 
 # source every .zsh file in this repo
 source $DOTFILES/zsh/config.zsh
