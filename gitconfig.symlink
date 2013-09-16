@@ -35,6 +35,8 @@
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
+[push]
+  default = current
 [user]
   name = Derek Prior
   email = derekprior@gmail.com
