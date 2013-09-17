@@ -15,13 +15,8 @@
   co = checkout
   pr = pull-request
   st = status
-  last = log -1 HEAD
   up = !git fetch origin && git rebase origin/master
   ctags = !.git/hooks/ctags
-  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
-  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
-  merge-branch = !git checkout master && git merge @{-1} --ff-only
-  rebase-origin = !git fetch origin && git rebase origin/master
   trust = !mkdir .git/safe
 [core]
   excludesfile = ~/.gitignore
