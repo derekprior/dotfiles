@@ -177,8 +177,4 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-if executable('spring')
-  let g:rspec_command = "Dispatch spring rspec {spec}"
-else
-  let g:rspec_command = "Dispatch rspec {spec}"
-endif
+let g:rspec_command = "Dispatch rspec {spec}"
