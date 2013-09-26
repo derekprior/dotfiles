@@ -1,4 +1,4 @@
-export PATH="$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init - --no-rehash)"
 export PATH=".git/safe/../../bin:$PATH"
 
