@@ -13,16 +13,19 @@
   ca = commit --amend
   ci = commit -v
   co = checkout
+  ctags = !.git/hooks/ctags
+  dc = diff --cached
   pr = pull-request
   st = status
-  up = !git fetch origin && git rebase origin/master
-  ctags = !.git/hooks/ctags
   trust = !mkdir .git/safe
+  up = !git fetch origin && git rebase origin/master
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
 [init]
   templatedir = ~/.dotfiles/git_template
+[help]
+  autocorrect = 1
 [merge]
   keepBackup = false
   tool = custom
