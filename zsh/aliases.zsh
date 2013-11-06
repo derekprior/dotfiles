@@ -13,9 +13,10 @@ alias be='bundle exec'
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias m="migrate"
 alias r='rails'
+alias rc='rails console'
+alias rs='rails server'
+alias rd='rails dbconsole'
 alias rk="rake"
-alias s="rspec"
-alias z="zeus"
 
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
