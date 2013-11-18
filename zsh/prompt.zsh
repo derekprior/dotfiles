@@ -13,10 +13,16 @@ function parse_ruby {
   fi
 }
 
+function parse_client {
+  if [[ -n "$SSH_CLIENT" ]]; then
+    echo "$(hostname -s) "
+  fi
+}
+
 if [ -n "$SSH_CLIENT" ]; then
   host_info="%m%n"
 fi
 
 export PROMPT='
 %{$fg[red]%}$(parse_ruby) %{$fg[blue]%}%~ %{$fg[green]%}$(parse_git_branch) %{$reset_color%}
-%{$fg[blue]%}➜  %{$reset_color%}'
+%{$fg[green]%}$(parse_client)%{$fg[blue]%}➜  %{$reset_color%}'
