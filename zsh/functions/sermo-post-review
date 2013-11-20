@@ -1,0 +1,6 @@
+sermo-post-review() {
+  git fetch
+  git rebase origin/master
+  branch=$(git symbolic-ref HEAD | sed 's/.*\///')
+  /usr/local/share/python/post-review --open --guess-fields --branch=$branch --tracking-branch=origin/master
+}

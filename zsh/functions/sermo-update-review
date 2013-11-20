@@ -1,0 +1,5 @@
+sermo-update-review() {
+  git fetch
+  git rebase origin/master
+  /usr/local/share/python/post-review --open --tracking-branch=origin/master -r $1
+}
