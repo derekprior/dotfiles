@@ -1,17 +1,17 @@
 alias f='find . -iname'
 alias ls='ls -lGh'
 alias la='ls -lGha'
-alias finder='open .'
 alias fixterm='sudo rm -rf /private/var/log/asl/*.asl'
 alias flushdns='dscacheutil -flushcache'
 alias tlf="tail -f"
+alias less='less -R'
 alias ln='ln -v'
 alias mkdir='mkdir -p'
+alias sed='sed -E'
 alias ...='../..'
 
 alias be='bundle exec'
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-alias m="migrate"
 alias r='rails'
 alias rc='rails console'
 alias rs='rails server'
