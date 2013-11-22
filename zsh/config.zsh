@@ -51,6 +51,9 @@ setopt complete_aliases
 unsetopt correct_all
 unsetopt correct
 
+# Allow [ or ] whereever you want
+unsetopt nomatch
+
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # pasting with tabs doesn't perform completion
