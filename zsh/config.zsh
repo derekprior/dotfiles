@@ -10,6 +10,8 @@ export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
 
+export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+
 fpath=($DOTFILES/zsh/functions $fpath)
 fpath=($DOTFILES/zsh/completions $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)

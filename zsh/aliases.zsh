@@ -37,4 +37,8 @@ alias herok='heroku'
 
 alias tmux="tmux -2"
 
+alias vssh="vagrant ssh"
+alias vsh="vagrant ssh"
+alias vup="vagrant up"
+
 alias dotfiles="cd $DOTFILES"
