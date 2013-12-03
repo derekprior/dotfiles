@@ -141,6 +141,12 @@ noremap <leader>gs :Gstatus<CR>
 noremap <leader>gd :Gdiff<CR>
 noremap <leader>gp :Git push<CR>
 
+" grep for word under the cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Invoke Ag allowing for additional arguments
+nnoremap \ :Ag<SPACE>
+
 " Treat  <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -160,6 +166,7 @@ map <leader>f :CtrlP<CR>
 let g:ctrlp_root_markers = ['app']
 
 if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
