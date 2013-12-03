@@ -37,41 +37,10 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-filetype off " required before vundles: http://git.io/ZozZnQ
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'croaky/vim-colors-github'
-Bundle 'danro/rename.vim'
-Bundle 'derekprior/vim-leaders'
-Bundle 'derekprior/vim-tmux-navigator'
-Bundle 'derekprior/vim-trimmer'
-Bundle 'epmatsw/ag.vim'
-Bundle 'henrik/vim-yaml-flattener'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'scrooloose/syntastic'
-Bundle 'stefanoverna/vim-i18n'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/ctags.vim'
-Bundle 'xenoterracide/html.vim'
-
-filetype plugin indent on
+" Load bundles
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 " jj to switch back to normal mode
 inoremap jj <Esc>
