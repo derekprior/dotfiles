@@ -1,5 +1,5 @@
 sermo-add-gem() {
-  ssh gems.sermo.cloud "cd /var/www/gems/gems && \
+  ssh dprior@gems.sermo.cloud "cd /var/www/gems/gems && \
     sudo gem fetch $1 --version $2 --source https://rubygems.org && \
     sudo -i gem generate_index -d /var/www/gems/"
 }
