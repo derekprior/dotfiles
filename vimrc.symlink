@@ -76,7 +76,6 @@ augroup vimrcEx
   autocmd BufWinLeave,WinLeave * setlocal nocursorline
   autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
   autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
-
 augroup END
 
 " Color scheme
@@ -112,9 +111,6 @@ noremap <leader>gp :Git push<CR>
 
 " grep for word under the cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" Invoke Ag allowing for additional arguments
-nnoremap \ :Ag<SPACE>
 
 " Treat  <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
