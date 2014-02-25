@@ -128,7 +128,6 @@ command! W w
 
 " ctrl-p - fuzzy file finding
 map <leader>f :CtrlP<CR>
-let g:ctrlp_root_markers = ['app']
 
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
