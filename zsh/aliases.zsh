@@ -22,7 +22,11 @@ alias tu='ruby -Itest'
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
-if type hub > /dev/null 2>&1; then alias git='hub'; fi
+if type gh > /dev/null 2>&1; then
+  alias git='gh'
+  alias gitsh='gitsh --git $(which gh)'
+fi
+
 alias g='git'
 alias gs='git status -sb'
 alias ga='git add'
