@@ -8,8 +8,6 @@ function parse_git_branch {
 function parse_ruby {
   if which rbenv > /dev/null; then
     echo "[`rbenv version | sed -e 's/ .*//'`]"
-  elif which rvm > /dev/null; then
-    echo "[`rvm current | sed -e 's/^ruby\-//'`]"
   else
     echo "[unsure]"
   fi
