@@ -37,12 +37,6 @@ set-window-option -g window-status-current-fg white
 set -g status-left ''
 set -g status-right '#[fg=yellow]%H:%M#[default] '
 
-# Mouse Stuff
-set -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
-
 # Encoding
 setw -g utf8 on
 set -g status-utf8 on
