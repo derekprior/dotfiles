@@ -41,3 +41,7 @@
   email = derekprior@gmail.com
 [github]
   user = derekprior
+[gitsh]
+  defaultcommand = status -sb
+  nogreeting = true
+  prompt = "\n%D %c(%b%#)%w ➜"
