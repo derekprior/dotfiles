@@ -11,7 +11,13 @@ bind k select-pane -U
 bind l select-pane -R
 bind h select-pane -L
 
-# copy and pste integration, vi style
+# easily enter copy mode
+# I want this to be C-u but that clobbers
+# halfpage-up once in copy mode. Can't figure out
+# how to override.
+bind-key -n C-s copy-mode
+
+# copy and paste integration, vi style
 bind-key -t vi-copy v begin-selection
 bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
