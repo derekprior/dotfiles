@@ -66,10 +66,6 @@ bind Left resize-pane -L 8
 bind Up resize-pane -U 4
 bind Down resize-pane -D 4
 
-# cycle through panes
-unbind ^A
-bind ^A select-pane -t :.+
-
 # ^Aa to go to start of line
 bind a send-prefix
 
