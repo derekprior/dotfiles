@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+staging maintenance:on
+git push staging master
+staging run rake db:migrate
+staging restart
+staging maintenance:off
