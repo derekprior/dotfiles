@@ -9,10 +9,11 @@ Bundle 'gmarik/vundle'
 
 " Load bunldes
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'christoomey/vim-rfactory'
+Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'croaky/vim-colors-github'
 Bundle 'danro/rename.vim'
 Bundle 'derekprior/vim-leaders'
-Bundle 'derekprior/vim-tmux-navigator'
 Bundle 'derekprior/vim-trimmer'
 Bundle 'epmatsw/ag.vim'
 Bundle 'henrik/vim-yaml-flattener'
