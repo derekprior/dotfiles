@@ -1,6 +1,8 @@
 # Integrate with OS X pasteboard.
 set -g default-command "reattach-to-user-namespace -l zsh"
 
+set -g history-limit 20000
+
 # use 256 colors
 set -g default-terminal "screen-256color"
 
