@@ -9,6 +9,7 @@
   ctags = !.git/hooks/ctags
   dc = diff --cached
   pr = pull-request
+  sla = log --oneline --decorate --graph --all
   st = status
   standup = shortlog --since=yesterday
   today = shortlog --since=midnight
