@@ -1,4 +1,4 @@
-let mapleader=","
+let mapleader=" "
 
 set nocompatible
 set nobackup
