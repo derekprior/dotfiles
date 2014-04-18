@@ -1,9 +1,5 @@
 export DOTFILES=$HOME/.dotfiles
-export LSCOLORS="exfxcxdxbxegedabagacad"
 export PROJECTS=~/src
-
-# source every .zsh file in this repo
-source $DOTFILES/zsh/prompt.zsh
 
 autoload -U compinit
 compinit
