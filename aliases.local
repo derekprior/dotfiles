@@ -35,3 +35,6 @@ alias v='vagrant'
 alias vssh='vagrant ssh'
 alias vsh='vagrant ssh'
 alias vup='vagrant up'
+
+alias my-dotfiles='cd ~/dotfiles-local'
+alias tb-dotfiles='cd ~/dotfiles'
