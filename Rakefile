@@ -72,22 +72,8 @@ namespace :bootstrap do
     puts "+++ Updating hombrew formulae"
     `brew update`
 
-    packages = []
-    FileList["brew/*.brew"].each do |f|
-      file = File.new(f, "r")
-      while (line = file.gets)
-        packages << line.chomp if not line =~ /^#.*/ #ignore commented out packages
-      end
-    end
-
-    installables = packages - `brew list`.split(/\s/)
-
-    puts "+++ Installing homebrew packages"
-    installables.each do |p|
-      sh "brew install #{p}" do |ok, res|
-        #do nothing, don't die when brew throws an error if already installed
-      end
-    end
+    puts "+++ Running Brewfile"
+    `brew bundle`
   end
 end
 
