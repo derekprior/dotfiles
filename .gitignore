@@ -1,5 +1,0 @@
-*_private.zsh
-*_creds.zsh
-.rake_tasks~
-bin/rotate_keys.log
-.rake_t_cache

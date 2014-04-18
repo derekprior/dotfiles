@@ -1,25 +1,39 @@
-export PATH="$HOME/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-
-if (( $+commands[rbenv] )) ; then
-  eval "$(rbenv init - --no-rehash)"
-  export PATH=".git/safe/../../bin:$PATH"
-elif [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
-  . "$HOME/.rvm/scripts/rvm"
-fi
-
-export DOTFILES=$HOME/.dotfiles
+export LSCOLORS="exfxcxdxbxegedabagacad"
 export PROJECTS=~/src
 
-# source every .zsh file in this repo
-source $DOTFILES/zsh/config.zsh
-source $DOTFILES/zsh/aliases.zsh
-source $DOTFILES/zsh/prompt.zsh
-source $DOTFILES/zsh/window.zsh
-source $DOTFILES/zsh/bindings.zsh
-
-# initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 
-# source local configuration
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+setopt no_list_beep
+setopt hist_reduce_blanks
+setopt complete_aliases
+unsetopt hist_verify
+
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "("${ref#refs/heads/}")"
+}
+
+function parse_ruby {
+  if which rbenv > /dev/null; then
+    echo "[`rbenv version | sed -e 's/ .*//'`]"
+  else
+    echo "[unsure]"
+  fi
+}
+
+function parse_client {
+  if [[ -n "$SSH_CLIENT" ]]; then
+    echo "$(hostname -s) "
+  fi
+}
+
+if [ -n "$SSH_CLIENT" ]; then
+  host_info="%m%n"
+fi
+
+export PS1='
+%{$fg[red]%}$(parse_ruby) %{$fg[blue]%}%~ %{$fg[green]%}$(parse_git_branch) %{$reset_color%}
+%{$fg[green]%}$(parse_client)%{$fg[blue]%}➜  %{$reset_color%}'

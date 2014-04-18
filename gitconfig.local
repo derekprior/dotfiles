@@ -1,0 +1,23 @@
+[alias]
+  amend = commit --amend -C HEAD
+  ctags = !.git/hooks/ctags
+  pr = pull-request
+  sla = log --oneline --decorate --graph --all
+  standup = shortlog --since=yesterday
+  today = shortlog --since=midnight
+  trust = !mkdir .git/safe
+[branch]
+  autosetuprebase = always
+[github]
+  user = derekprior
+[gitsh]
+  defaultcommand = status -sb
+  nogreeting = true
+  prompt = "\n%D %c(%b%#)%w ➜"
+[init]
+  templatedir = ~/.dotfiles/git_template
+[merge]
+  keepBackup = false
+[user]
+  name = Derek Prior
+  email = derekprior@gmail.com

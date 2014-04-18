@@ -1,0 +1,69 @@
+set noshowmode        " powerline shows the mode
+set hlsearch          " highlight searches (:noh to turn off)
+set ignorecase        " case insensitive searching
+set smartcase         " overrides ignorecase when pattern contains caps
+set laststatus=2      " Always display the status line
+set winwidth=80       " minimum width for active split
+set clipboard=unnamed " use OS clipboard
+set nofoldenable
+
+" Whitespace stuff
+set nowrap
+set shiftround
+set list listchars=tab:->,trail:·
+
+" jj to switch back to normal mode
+inoremap jj <Esc>
+
+augroup localEx
+  autocmd!
+
+  " File Type Settings
+  autocmd filetype gitcommit setlocal spell textwidth=72
+  autocmd filetype qf setlocal wrap
+
+  " Help System Speedups
+  autocmd filetype help nnoremap <buffer><cr> <c-]>
+  autocmd filetype help nnoremap <buffer><bs> <c-T>
+  autocmd filetype help nnoremap <buffer>q :q<CR>
+  autocmd filetype help set nonumber
+
+  " Resize splits when the window is resized
+  autocmd VimResized * exe "normal! \<c-w>="
+
+  " hide colorcolumn on inactive splits
+  autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
+  autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
+augroup END
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" fugitive shortcuts
+noremap <leader>gb :Gblame<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gd :Gdiff<CR>
+noremap <leader>gp :Git push<CR>
+
+" grep for word under the cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Typos
+command! Q q
+command! W w
+
+" simple vertical splits
+map <leader>v <C-w>v
+
+" Mappings for quick search & replace.
+" Do a / search first, then leave pattern empty in :s// to use last
+" In order, they are `all`, `visual`, `confirm`
+map <Leader>sra :%s///g<Left>
+map <Leader>src :%s///gc<Left><Left>
+
+" Hide highlighted terms
+map <silent> <leader><cr> :noh<cr>
+
+" vim-rspec mappings
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "Dispatch rspec {spec}"

@@ -1,4 +1,19 @@
-autoload -U colors && colors
+export DOTFILES=$HOME/.dotfiles
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export PROJECTS=~/src
+
+# source every .zsh file in this repo
+source $DOTFILES/zsh/prompt.zsh
+
+autoload -U compinit
+compinit
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+setopt no_list_beep
+setopt hist_reduce_blanks
+setopt complete_aliases
+unsetopt hist_verify
 
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -23,6 +38,6 @@ if [ -n "$SSH_CLIENT" ]; then
   host_info="%m%n"
 fi
 
-export PROMPT='
+export PS1='
 %{$fg[red]%}$(parse_ruby) %{$fg[blue]%}%~ %{$fg[green]%}$(parse_git_branch) %{$reset_color%}
 %{$fg[green]%}$(parse_client)%{$fg[blue]%}➜  %{$reset_color%}'
