@@ -17,7 +17,6 @@ if type gh > /dev/null 2>&1; then
   alias gitsh='gitsh --git $(which gh)'
 fi
 
-alias g='git'
 alias gs='git status -sb'
 alias ga='git add'
 alias gc='git commit'
