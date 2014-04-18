@@ -1,9 +1,10 @@
 export DOTFILES=$HOME/.dotfiles
-export PROJECTS=~/src
+cdpath=($HOME/src)
 
 autoload -U compinit
 compinit
 
+fpath=(~/dotfiles-local/zsh/functions $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 setopt no_list_beep
