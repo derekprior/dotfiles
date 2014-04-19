@@ -8,7 +8,6 @@ fpath=(~/dotfiles-local/zsh/functions $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 setopt no_list_beep
-setopt hist_reduce_blanks
 setopt complete_aliases
 unsetopt hist_verify
 
