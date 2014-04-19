@@ -1,0 +1,5 @@
+#!/bin/sh
+
+brew bundle $HOME/.dotfiles
+ln -s $HOME/.dotfiles/rcrc $HOME/.rcrc
+rcup

@@ -1,0 +1,2 @@
+EXCLUDES="README.md LICENSE Brewfile install"
+DOTFILES_DIRS="$HOME/.dotfiles $HOME/.dotfiles-thoughtbot"
