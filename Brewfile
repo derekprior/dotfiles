@@ -17,6 +17,7 @@ install phantomjs
 install qt
 install rbenv
 install rbenv-gem-rehash
+install rcm
 install reattach-to-user-namespace
 install --HEAD ruby-build
 install the_silver_searcher
