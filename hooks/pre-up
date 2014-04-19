@@ -1,7 +1,0 @@
-#!/bin/sh
-
-TB_DOTFILES=$HOME/.dotfiles-thoughtbot
-
-if [ ! -e $TB_DOTFILES ]; then
-  git clone https://github.com/thoughtbot/dotfiles.git $TB_DOTFILES
-fi
