@@ -35,5 +35,6 @@ alias vssh='vagrant ssh'
 alias vsh='vagrant ssh'
 alias vup='vagrant up'
 
+alias dp-dotfiles='cd ~/.dotfiles'
 alias my-dotfiles='cd ~/.dotfiles'
 alias tb-dotfiles='cd ~/.dotfiles-thoughtbot'
