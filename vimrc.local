@@ -9,7 +9,6 @@ set nofoldenable
 
 " Whitespace stuff
 set nowrap
-set shiftround
 set list listchars=tab:->,trail:·
 
 " jj to switch back to normal mode
@@ -35,9 +34,6 @@ augroup localEx
   autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
   autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
 augroup END
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
 
 " fugitive shortcuts
 noremap <leader>gb :Gblame<CR>
