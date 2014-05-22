@@ -63,3 +63,10 @@ map <silent> <leader><cr> :noh<cr>
 " vim-rspec mappings
 map <Leader>a :call RunAllSpecs()<CR>
 let g:rspec_command = "Dispatch rspec {spec}"
+
+" Disable " hiding on JSON attributes
+let g:vim_json_syntax_conceal = 0
+
+" Configure Syntastic
+let g:syntastic_json_checkers = ['jsonlint']
+let g:syntastic_html_checkers = []
