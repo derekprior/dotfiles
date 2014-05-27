@@ -66,6 +66,7 @@ let g:rspec_command = "Dispatch rspec {spec}"
 
 " Disable " hiding on JSON attributes
 let g:vim_json_syntax_conceal = 0
+let g:vim_json_warnings = 1
 
 " Configure Syntastic
 let g:syntastic_json_checkers = ['jsonlint']
