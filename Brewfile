@@ -2,6 +2,7 @@ tap homebrew/binary
 tap homebrew/completions
 tap jingweno/gh
 tap thoughtbot/formulae
+tap caskroom/cask
 
 install apple-gcc42
 install ctags
@@ -27,3 +28,6 @@ install vim
 install wget
 install zsh
 install zsh-completions
+install brew-cask
+
+cask install licecap
