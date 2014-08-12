@@ -11,6 +11,10 @@ setopt no_list_beep
 setopt complete_aliases
 unsetopt hist_verify
 
+# edit current command line
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
+
+# use emacs keybindings on the command line
+bindkey -e
