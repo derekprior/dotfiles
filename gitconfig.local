@@ -8,6 +8,8 @@
   trust = !mkdir .git/safe
 [branch]
   autosetuprebase = always
+[commit]
+  gpgsign = true
 [github]
   user = derekprior
 [gitsh]
@@ -21,3 +23,4 @@
 [user]
   name = Derek Prior
   email = derekprior@gmail.com
+  signingkey = Derek Prior <derekprior@gmail.com>
