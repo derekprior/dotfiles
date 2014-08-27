@@ -50,8 +50,8 @@ map <leader>v <C-w>v
 " Mappings for quick search & replace.
 " Do a / search first, then leave pattern empty in :s// to use last
 " In order, they are `all`, `visual`, `confirm`
-map <Leader>sra :%s///g<Left>
-map <Leader>src :%s///gc<Left><Left>
+map <Leader>sra :%s///g<Left><Left>
+map <Leader>src :%s///gc<Left><Left><Left>
 
 " Hide highlighted terms
 map <silent> <leader><cr> :noh<cr>
