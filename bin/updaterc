@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -ex
+
+pushd ~/.dotfiles
+git pull
+pushd ~/.dotfiles-thoughtbot
+git pull
+popd
+popd
+
+rcup
