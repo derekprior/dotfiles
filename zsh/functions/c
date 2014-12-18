@@ -1,1 +1,3 @@
-cd $PROJECTS/$1;
+function c() {
+  cd $PROJECTS/$1;
+}
