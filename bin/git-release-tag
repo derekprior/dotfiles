@@ -1,0 +1,11 @@
+#!/bin/bash
+git fetch
+git fetch --tags
+
+git branch -r | ag origin/release | while read branch; do
+  tag=`echo $branch | sed 's/origin\/release\//v/'`
+  echo "BRANCH: $branch, TAG: $tag"
+  git checkout $branch
+  git tag $tag
+  git checkout master
+done
