@@ -14,9 +14,9 @@ alias implode='for i in `gem list --no-versions`; do gem uninstall -aIx $i; done
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
-if type gh > /dev/null 2>&1; then
-  alias git='gh'
-  alias gitsh='gitsh --git $(which gh)'
+if type hub > /dev/null 2>&1; then
+  alias git='hub'
+  alias gitsh='gitsh --git $(which hub)'
 fi
 
 alias gs='git status -sb'
