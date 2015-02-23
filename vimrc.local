@@ -59,7 +59,7 @@ map <silent> <leader><cr> :noh<cr>
 
 " vim-rspec mappings
 map <Leader>a :call RunAllSpecs()<CR>
-let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
+let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
 
 " Disable " hiding on JSON attributes
 let g:vim_json_syntax_conceal = 0
