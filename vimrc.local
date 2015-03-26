@@ -72,3 +72,4 @@ let g:vim_json_warnings = 1
 " Configure Syntastic
 let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_html_checkers = []
+let g:syntastic_scss_checkers = []
