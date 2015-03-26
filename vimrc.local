@@ -11,6 +11,11 @@ set nofoldenable
 set nowrap
 set list listchars=tab:->,trail:·
 
+" Color scheme
+colorscheme github
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
+
 " jj to switch back to normal mode
 inoremap jj <Esc>
 

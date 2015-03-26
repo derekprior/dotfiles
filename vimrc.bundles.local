@@ -1,5 +1,6 @@
 Plugin 'christoomey/vim-rfactory'
 Plugin 'christoomey/vim-tmux-navigator'
+plugin 'croaky/vim-colors-github'
 Plugin 'derekprior/vim-trimmer'
 Plugin 'elzr/vim-json'
 Plugin 'epmatsw/ag.vim'
