@@ -1,6 +1,7 @@
 [alias]
   amend = commit --amend -C HEAD
   pr = pull-request
+  ppr = !git push -u && git pr
   sla = log --oneline --decorate --graph --all
   standup = shortlog --since=yesterday
   today = shortlog --since=midnight
