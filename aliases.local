@@ -10,6 +10,9 @@ alias rc='rails console'
 alias rs='rails server'
 alias rdb='rails dbconsole'
 
+alias dc='docker-compose'
+alias dcr='docker-compose run'
+
 alias implode='for i in `gem list --no-versions`; do gem uninstall -aIx $i; done'
 
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
