@@ -12,7 +12,7 @@ unsetopt hist_verify
 # use emacs keybindings on the command line
 bindkey -e
 
-# load boot2docker if it's available
-if which boot2docker &>/dev/null ; then
-  $(boot2docker shellinit 2>/dev/null)
+# load docker-machine if it's available
+if which docker-machine &>/dev/null ; then
+  eval "$(docker-machine env docker-vm)"
 fi
