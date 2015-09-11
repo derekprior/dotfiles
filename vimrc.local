@@ -39,6 +39,11 @@ augroup END
 " git shortcuts
 noremap <leader>gb :Gblame<CR>
 noremap <leader>gd :Gdiff<CR>
+noremap <leader>gg :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'gitsh'")<CR>
+
+" rails shortcuts
+noremap <leader>rc :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'rails console'")<CR>
+noremap <leader>rd :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'rails dbconsole'")<CR>
 
 " grep for word under the cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
