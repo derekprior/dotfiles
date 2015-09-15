@@ -11,8 +11,3 @@ unsetopt hist_verify
 
 # use emacs keybindings on the command line
 bindkey -e
-
-# load docker-machine if it's available
-if which docker-machine &>/dev/null ; then
-  eval "$(docker-machine env docker-vm)"
-fi
