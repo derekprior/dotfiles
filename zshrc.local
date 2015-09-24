@@ -2,7 +2,7 @@ export PROJECTS=~/src
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-setopt no_list_beep
+setopt auto_list
 unsetopt hist_verify
 
 # use emacs keybindings on the command line
