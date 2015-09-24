@@ -6,7 +6,6 @@ compinit
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 setopt no_list_beep
-setopt complete_aliases
 unsetopt hist_verify
 
 # use emacs keybindings on the command line
