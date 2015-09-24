@@ -1,2 +1,0 @@
-export PATH="/usr/local/opt/rbenv/bin:$PATH"
-eval "$(rbenv init -)"
