@@ -1,8 +1,13 @@
+# Used as base directory for my `c` command
 export PROJECTS=~/src
 
+# Load completions installed with the zsh-completions package
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+# On ambiguous completion, show a list
 setopt auto_list
+
+# Immediately execute the command referenced from history expansion (e.g. !!)
 unsetopt hist_verify
 
 # use emacs keybindings on the command line
