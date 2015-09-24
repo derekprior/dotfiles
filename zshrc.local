@@ -1,8 +1,5 @@
 export PROJECTS=~/src
 
-autoload -U compinit
-compinit
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 setopt no_list_beep
