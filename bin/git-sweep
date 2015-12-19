@@ -12,7 +12,9 @@ if [[ -z "$REMOVABLE" ]]; then
 fi
 
 echo "The following remote branches are fully merged and will be removed:"
-echo $REMOVABLE
+for branch in $REMOVABLE; do
+  echo $branch
+done
 
 read -p "Continue (y/n)? " -n 1 -r
 echo
