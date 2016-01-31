@@ -1,3 +1,4 @@
+brew 'neovim/neovim/neovim'
 brew 'gitsh'
 brew 'fzf'
 brew 'zsh-completions'
