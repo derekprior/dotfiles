@@ -27,6 +27,8 @@ augroup localEx
   autocmd filetype help nnoremap <buffer><bs> <c-T>
   autocmd filetype help nnoremap <buffer>q :q<CR>
   autocmd filetype help set nonumber
+
+  autocmd! BufReadPost,BufWritePost * Neomake
 augroup END
 
 " git shortcuts
@@ -49,7 +51,8 @@ map <silent> <leader><cr> :noh<cr>
 map <Leader>a :call RunAllSpecs()<CR>
 let g:rspec_command = "Dispatch rspec {spec}"
 
-" Configure Syntastic
-let g:syntastic_json_checkers = ['jsonlint']
-let g:syntastic_html_checkers = []
-let g:syntastic_scss_checkers = []
+" Disable inherited syntastic
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": [],
+  \ "passive_filetypes": [] }

@@ -1,3 +1,4 @@
+Plug 'benekastah/neomake'
 Plug 'christoomey/vim-rfactory'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'croaky/vim-colors-github'
