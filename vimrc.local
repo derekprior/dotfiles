@@ -47,9 +47,13 @@ map <Leader>src :%s///gc<Left><Left><Left>
 " Hide highlighted terms
 map <silent> <leader><cr> :noh<cr>
 
-" vim-rspec mappings
-map <Leader>a :call RunAllSpecs()<CR>
-let g:rspec_command = "Dispatch rspec {spec}"
+" vim-test mappings
+let g:test#strategy = 'dispatch'
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " Disable inherited syntastic
 let g:syntastic_mode_map = {
