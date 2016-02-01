@@ -60,3 +60,13 @@ let g:syntastic_mode_map = {
   \ "mode": "passive",
   \ "active_filetypes": [],
   \ "passive_filetypes": [] }
+
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
+let g:neomake_elixir_enabled_makers = ['mix']
+let g:neomake_elixir_mix_maker = {
+  \ 'args': ['compile'],
+  \ 'errorformat':
+  \ '** %s %f:%l: %m,' .
+  \ '%f:%l: warning: %m'
+  \ }
