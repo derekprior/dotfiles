@@ -70,3 +70,5 @@ let g:neomake_elixir_mix_maker = {
   \ '** %s %f:%l: %m,' .
   \ '%f:%l: warning: %m'
   \ }
+
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
