@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -e Gemfile ]; then
+  rails console
+elif [ -e mix.exs ]; then
+  iex -S mix
+else
+  zsh
+fi

@@ -23,7 +23,7 @@ augroup localEx
   autocmd filetype qf setlocal wrap
 
   " Help System Speedups
-  autocmd filetype help nnoremap <buffer><cr> <c-]>
+  autocmd filetype help nnoremap <buffer><CR> <c-]>
   autocmd filetype help nnoremap <buffer><bs> <c-T>
   autocmd filetype help nnoremap <buffer>q :q<CR>
   autocmd filetype help set nonumber
@@ -34,7 +34,11 @@ augroup END
 " git shortcuts
 noremap <leader>gb :Gblame<CR>
 noremap <leader>gd :Gdiff<CR>
+
+" open various consoles
 noremap <leader>gg :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'gitsh'")<CR>
+noremap <leader>gc :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'dev-console'")<CR>
+noremap <leader>gp :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'dev-db-console'")<CR>
 
 " simple vertical splits
 map <leader>v <C-w>v
@@ -45,7 +49,7 @@ map <Leader>sra :%s///g<Left><Left>
 map <Leader>src :%s///gc<Left><Left><Left>
 
 " Hide highlighted terms
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><CR> :noh<CR>
 
 " vim-test mappings
 let g:test#strategy = 'dispatch'
@@ -71,4 +75,18 @@ let g:neomake_elixir_mix_maker = {
   \ '%f:%l: warning: %m'
   \ }
 
-nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
+
+if has('nvim')
+  " Escape to exit terminal mode
+  tnoremap <silent> <Esc> <C-\><C-n>
+
+  " Navigate out of terminal mode splits
+  tnoremap <silent> <C-h> <C-\><C-n>:TmuxNavigateLeft<CR>
+  tnoremap <silent> <C-j> <C-\><C-n>:TmuxNavigateDown<CR>
+  tnoremap <silent> <C-k> <C-\><C-n>:TmuxNavigateUp<CR>
+  tnoremap <silent> <C-l> <C-\><C-n>:TmuxNavigateRight<CR>
+
+  " Enter terminal insert mode as soon as I enter a terminal split
+  autocmd BufEnter term://* startinsert
+end
