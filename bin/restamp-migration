@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+if [ -d "db/migrate" ]; then
+  # Update the timestamp for a Rails migration file.
+  existing_file=$(find db/migrate/*.rb | sort --reverse | pick)
+  existing_timestamp=$(basename "$existing_file" | cut -f1 -d_)
+  new_timestamp=$(date -u "+%Y%m%d%H%M%S")
+  new_file=$(echo "$existing_file" | sed -E "s/$existing_timestamp/$new_timestamp/")
+
+  set -x
+
+  rake db:migrate:down VERSION="$existing_timestamp"
+  mv "$existing_file" "$new_file"
+  rake db:migrate
+else
+  echo "db/migrate directory not found"
+  exit 1
+fi
