@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 set noshowmode        " powerline shows the mode
 set hlsearch          " highlight searches (:noh to turn off)
 set ignorecase        " case insensitive searching
@@ -28,7 +30,12 @@ augroup localEx
   autocmd filetype help nnoremap <buffer>q :q<CR>
   autocmd filetype help set nonumber
 
-  autocmd! BufReadPost,BufWritePost * Neomake
+  set updatetime=1000
+  autocmd BufReadPost,BufWritePost * call ale#Lint()
+  autocmd CursorHold * call ale#Lint()
+  autocmd CursorHoldI * call ale#Lint()
+  autocmd InsertEnter * call ale#Lint()
+  autocmd InsertLeave * call ale#Lint()
 augroup END
 
 " git shortcuts
@@ -61,32 +68,14 @@ nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " Disable inherited syntastic
 let g:syntastic_mode_map = {
-  \ "mode": "passive",
-  \ "active_filetypes": [],
-  \ "passive_filetypes": [] }
+  \ 'mode': 'passive',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': [] }
 
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
-let g:neomake_elixir_enabled_makers = ['mix']
-let g:neomake_elixir_mix_maker = {
-  \ 'args': ['compile'],
-  \ 'errorformat':
-  \ '** %s %f:%l: %m,' .
-  \ '%f:%l: warning: %m'
-  \ }
+let g:ale_lint_on_text_changed = 0
+let g:ale_linters = {
+  \   'javascript': ['eslint'],
+  \   'scss': ['scss-lint'] }
 
-nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
-
-if has('nvim')
-  " Escape to exit terminal mode
-  tnoremap <silent> <Esc> <C-\><C-n>
-
-  " Navigate out of terminal mode splits
-  tnoremap <silent> <C-h> <C-\><C-n>:TmuxNavigateLeft<CR>
-  tnoremap <silent> <C-j> <C-\><C-n>:TmuxNavigateDown<CR>
-  tnoremap <silent> <C-k> <C-\><C-n>:TmuxNavigateUp<CR>
-  tnoremap <silent> <C-l> <C-\><C-n>:TmuxNavigateRight<CR>
-
-  " Enter terminal insert mode as soon as I enter a terminal split
-  autocmd BufEnter term://* startinsert
-end
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
