@@ -11,4 +11,5 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'w0rp/ale'
+Plug 'derekprior/ale', { 'branch': 'dp-fix-rubocop' }
+" Plug 'w0rp/ale'
