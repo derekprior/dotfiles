@@ -5,7 +5,14 @@ git fetch
 git remote prune origin
 git branch --merged master | grep -v 'master$' | xargs git branch -d
 
-REMOVABLE=`git branch -r --merged master | sed 's/ *origin\///' | grep -v 'master$' | grep -v 'production$'`
+REMOVABLE=$(git branch -r --merged master \
+  | sed 's/ *origin\///' \
+  | grep -v 'master$' \
+  | grep -v 'production$' \
+  | grep -v 'staging$' \
+  | grep -v '^release' \
+  | grep -v 'next$'
+)
 
 if [[ -z "$REMOVABLE" ]]; then
   exit 0
@@ -13,11 +20,11 @@ fi
 
 echo "The following remote branches are fully merged and will be removed:"
 for branch in $REMOVABLE; do
-  echo $branch
+  echo "$branch"
 done
 
 read -p "Continue (y/n)? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo $REMOVABLE | xargs git push origin --delete
+  echo "$REMOVABLE" | xargs git push origin --delete
 fi
