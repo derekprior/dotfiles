@@ -58,8 +58,14 @@ map <Leader>src :%s///gc<Left><Left><Left>
 " Hide highlighted terms
 map <silent> <leader><CR> :noh<CR>
 
+" vim-tmux-runner mappings
+nnoremap <silent> <Leader>ro :VtrOpenRunner<CR>
+nnoremap <silent> <leader>ra :VtrAttachToPane<CR>
+nnoremap <silent> <leader>rs :VtrSendLinesToRunner<CR>
+nnoremap <silent> <leader>rf :VtrFocusRunner<CR>
+
 " vim-test mappings
-let g:test#strategy = 'dispatch'
+let g:test#strategy = 'vtr'
 nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <silent> <Leader>s :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
