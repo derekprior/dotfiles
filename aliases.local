@@ -9,6 +9,8 @@ alias rc='rails console'
 alias rs='rails server'
 alias rdb='rails dbconsole'
 
+alias pspec='rake parallel:spec'
+
 alias dc='docker-compose'
 alias dcr='docker-compose run'
 
