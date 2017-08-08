@@ -29,13 +29,6 @@ augroup localEx
   autocmd filetype help nnoremap <buffer><bs> <c-T>
   autocmd filetype help nnoremap <buffer>q :q<CR>
   autocmd filetype help set nonumber
-
-  set updatetime=1000
-  autocmd BufReadPost,BufWritePost * call ale#Lint()
-  autocmd CursorHold * call ale#Lint()
-  autocmd CursorHoldI * call ale#Lint()
-  autocmd InsertEnter * call ale#Lint()
-  autocmd InsertLeave * call ale#Lint()
 augroup END
 
 " git shortcuts
@@ -77,11 +70,3 @@ let g:syntastic_mode_map = {
   \ 'mode': 'passive',
   \ 'active_filetypes': [],
   \ 'passive_filetypes': [] }
-
-let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {
-  \   'javascript': ['eslint'],
-  \   'scss': ['scss-lint'] }
-
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
