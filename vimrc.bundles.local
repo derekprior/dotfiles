@@ -1,7 +1,7 @@
+Plug 'acarapetis/vim-colors-github'
 Plug 'christoomey/vim-rfactory'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
-Plug 'croaky/vim-colors-github'
 Plug 'derekprior/vim-leaders'
 Plug 'derekprior/vim-trimmer'
 Plug 'elixir-lang/vim-elixir'
