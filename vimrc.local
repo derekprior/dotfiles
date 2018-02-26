@@ -59,10 +59,10 @@ nnoremap <silent> <leader>rf :VtrFocusRunner<CR>
 
 " vim-test mappings
 let g:test#strategy = 'vtr'
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>a :TestFile<CR>
+nnoremap <silent> <Leader>t :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <Leader>A :TestSuite<CR>
 nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " SplitJoin
