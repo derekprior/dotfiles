@@ -1,8 +1,0 @@
-# Search your bundle for the provided pattern
-#
-# Arguments:
-#  1. pattern - What to search for
-#  2. gem - What gems to search (defaults to all gems)
-function bundle-search() {
- ag $1 `bundle show --paths $2`
-}

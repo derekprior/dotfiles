@@ -1,24 +1,40 @@
+[init]
+  templatedir = ~/.git_template
+[color]
+  ui = auto
 [alias]
   amend = commit --amend -C HEAD
+  ca = commit --amend
+  co = checkout
+  pf = push --force-with-lease
   pr = pull-request
   ppr = !git push -u && git pr
   sla = log --oneline --decorate --graph --all
+  st = status
   standup = shortlog --since=yesterday
   today = shortlog --since=midnight
   trust = !mkdir .git/safe
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+[fetch]
+  prune = true
 [branch]
   autosetuprebase = always
 [commit]
   gpgsign = true
-[github]
-  user = derekprior
-[gitsh]
-  defaultcommand = status -sb
-  gitcommand = hub
-  nogreeting = true
-  prompt = "\n%D %c(%b%#)%w ➜"
+  template = ~/.gitmessage
+[diff]
+  colorMoved = zebra
+[push]
+  default = current
+[rebase]
+  autosquash = true
 [merge]
   keepBackup = false
+  ff = only
+[github]
+  user = derekprior
 [user]
   name = Derek Prior
   email = derekprior@gmail.com
