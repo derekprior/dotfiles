@@ -60,6 +60,11 @@ PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_c
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
+# load custom executable functions
+for function in ~/.zsh/functions/*; do
+  source $function
+done
+
 # completion
 autoload -U compinit
 compinit
