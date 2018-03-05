@@ -28,3 +28,5 @@ alias tmux='tmux -2'
 alias dotfiles='cd ~/.dotfiles'
 alias mkdir="mkdir -p"
 alias path='echo $PATH | tr -s ":" "\n"'
+
+alias ag=rg

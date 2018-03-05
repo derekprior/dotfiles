@@ -2,6 +2,7 @@ brew 'asciinema'
 brew 'gitsh'
 brew 'httpie'
 brew 'pick'
+brew 'ripgrep'
 brew 'wget'
 brew 'zsh-completions'
 

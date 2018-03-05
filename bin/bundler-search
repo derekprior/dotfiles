@@ -12,4 +12,4 @@
 #  2. Which gem names to search (defaults to all gems)
 
 pattern="$1"; shift
-ag "$pattern" $(bundle show --paths "$@")
+rg "$pattern" $(bundle show --paths "$@")
