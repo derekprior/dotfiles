@@ -101,6 +101,7 @@ augroup vimrcEx
 
     nnoremap ]r :ALENextWrap<CR>
     nnoremap [r :ALEPreviousWrap<CR>
+    nnoremap ]d :ALEDetail<CR>
   endif
 
   " File Type Settings
