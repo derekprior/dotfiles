@@ -1,0 +1,3 @@
+#!/bin/sh
+
+code --list-extensions > ~/.dotfiles/code_extensions

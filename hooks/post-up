@@ -1,0 +1,3 @@
+#!/bin/sh
+
+~/.dotfiles/bin/install_code_extensions

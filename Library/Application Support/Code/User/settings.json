@@ -13,6 +13,7 @@
         "**/.DS_Store": true,
         "tmp/*": true
     },
+    "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "ruby.lint": {
