@@ -1,0 +1,11 @@
+[
+  {
+    "key": "shift+cmd+\\",
+    "command": "workbench.action.splitEditor"
+  },
+  {
+    "key": "shift+cmd+\\",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  }
+]

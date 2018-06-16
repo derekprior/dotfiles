@@ -1,0 +1,36 @@
+{
+    "editor.folding": false,
+    "editor.fontSize": 16,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [80],
+    "editor.scrollBeyondLastLine": false,
+    "editor.tabSize": 2,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "tmp/*": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "ruby.lint": {
+        "rubocop": true,
+        "ruby": true
+    },
+    "ruby.specCommand": "rspec",
+    "ruby.specFocusTerminal": true,
+    "ruby.specSaveFile": true,
+    "search.useRipgrep": true,
+    "searchrg.enable": true,
+    "terminal.integrated.fontSize": 16,
+    "workbench.colorTheme": "Solarized Light",
+    "vim.cmdLineInitialColon": true,
+    "vim.leader": " ",
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "[elm]": {
+        "editor.formatOnSave": true
+    },
+}
