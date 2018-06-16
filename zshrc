@@ -70,7 +70,7 @@ autoload -U compinit
 compinit
 
 # ensure dotfiles bin directory is loaded first
-PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+PATH="$HOME/bin:/usr/local/sbin:$PATH"
 
 # load ASDF for version management
 [ -d "$HOME/.asdf" ] && . $HOME/.asdf/asdf.sh

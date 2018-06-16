@@ -1,3 +1,3 @@
 EXCLUDES="README.md LICENSE Brewfile install"
 DOTFILES_DIRS="$HOME/.dotfiles"
-UNDOTTED="Library"
+UNDOTTED="bin Library"
