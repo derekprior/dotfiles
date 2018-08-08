@@ -10,3 +10,5 @@ fi
 if [ -x "$(command -v code)" ]; then
   ~/.dotfiles/bin/install_code_extensions
 fi
+
+mkdir -p "$HOME"/src
