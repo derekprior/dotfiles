@@ -39,3 +39,5 @@
   name = Derek Prior
   email = derekprior@gmail.com
   signingkey = Derek Prior <derekprior@gmail.com>
+[credential]
+  helper = osxkeychain
