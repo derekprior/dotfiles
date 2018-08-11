@@ -1,5 +1,4 @@
 #!/bin/sh
 
 DOTFILES=$HOME/.dotfiles
-brew bundle
 rcup -f -d "$DOTFILES" -x README.md -x Brewfile -x install -x LICENSE
