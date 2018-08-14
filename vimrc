@@ -164,10 +164,19 @@ let g:splitjoin_trailing_comma = 1
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
 
+" FZF
+nnoremap <C-p> :Files<cr>
+
+let g:fzf_files_options =
+  \ '--reverse ' .
+  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
 if executable('rg')
   set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
+  let $FZF_DEFAULT_COMMAND='rg --files -g "" --hidden'
+elseif executable('ag')
+  set grepprg=ag\ --nocolor
+  let $FZF_DEFAULT_COMMAND='ag -g "" --hidden'
 endif
 
 " Tab completion

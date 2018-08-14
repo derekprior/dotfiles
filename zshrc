@@ -81,3 +81,4 @@ export -U PATH
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
