@@ -37,8 +37,13 @@
 [github]
   user = derekprior
 [user]
-  name = Derek Prior
-  email = derekprior@gmail.com
+	name = Derek Prior
+	email = derekprior@gmail.com
   signingkey = Derek Prior <derekprior@gmail.com>
 [credential]
   helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
