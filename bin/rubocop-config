@@ -1,3 +1,0 @@
-#! /bin/sh
-
-curl --remote-name https://raw.githubusercontent.com/thoughtbot/guides/master/style/ruby/.rubocop.yml

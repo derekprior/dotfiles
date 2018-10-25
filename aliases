@@ -7,15 +7,10 @@ alias be='bundle exec'
 alias rc='rails console'
 alias rs='rails server'
 alias rdb='rails dbconsole'
-alias pspec='rake parallel:spec'
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-
-alias pgstart='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
-alias pgstop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
 
 if type hub > /dev/null 2>&1; then
   alias git='hub'
-  alias gitsh='gitsh --git $(which hub)'
 fi
 
 alias g='git'
