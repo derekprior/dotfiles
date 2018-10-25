@@ -7,8 +7,8 @@ else
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-if [ -x "$(command -v code)" ]; then
-  ~/.dotfiles/bin/install_code_extensions
+if [ -x "$(command -v atom)" ]; then
+  apm-up
 fi
 
 mkdir -p "$HOME"/src

@@ -1,0 +1,13 @@
+"*":
+  core:
+    audioBeep: false
+    closeDeletedFileTabs: true
+    projectHome: "/Users/derek/src"
+    telemetryConsent: "limited"
+    titleBar: "custom-inset"
+  editor:
+    fontSize: 18
+  "exception-reporting":
+    userId: "8c51b9c5-bc9a-4d1d-be04-8a097aa00235"
+  welcome:
+    showOnStartup: false
