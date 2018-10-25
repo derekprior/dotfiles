@@ -26,7 +26,7 @@
     "search.useRipgrep": true,
     "searchrg.enable": true,
     "terminal.integrated.fontSize": 16,
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Default Light+",
     "vim.cmdLineInitialColon": true,
     "vim.leader": " ",
     "vim.useSystemClipboard": true,
@@ -34,4 +34,5 @@
     "[elm]": {
         "editor.formatOnSave": true
     },
+    "git.autofetch": true,
 }
