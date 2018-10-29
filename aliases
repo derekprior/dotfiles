@@ -25,6 +25,3 @@ alias mkdir="mkdir -p"
 alias path='echo $PATH | tr -s ":" "\n"'
 
 alias ag=rg
-
-alias apm-save='apm list --installed --bare > $DOTFILES/atom/packages.list'
-alias apm-up='apm install --packages-file $DOTFILES/atom/packages.list'
