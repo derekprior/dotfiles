@@ -23,6 +23,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Never.
 export DISABLE_SPRING=1
 
+# Don't open new issues when project setup fails
+export BOOTSTRAP_DISABLE_ISSUES=1
+
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
