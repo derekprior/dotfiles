@@ -11,4 +11,12 @@ if [ -x "$(command -v atom)" ]; then
   apm-up
 fi
 
+if [ ! -d "$HOME/.asdf" ]; then
+  git clone https://github.com/asdf-vm/asdf.git "$HOME"/.asdf --branch v0.6.2
+  . "$HOME"/.asdf/asdf.sh
+  asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+  asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+fi
+
 mkdir -p "$HOME"/src
