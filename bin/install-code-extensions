@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat ~/.dotfiles/code/extensions | xargs -L 1 code --install-extension

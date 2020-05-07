@@ -1,0 +1,10 @@
+{
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "GitHub Light",
+    "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.fontSize": 16,
+    "editor.fontSize": 16,
+    "editor.minimap.enabled": false,
+    "window.openFoldersInNewWindow": "on",
+}
