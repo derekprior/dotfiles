@@ -7,5 +7,5 @@
     "editor.fontSize": 16,
     "editor.minimap.enabled": false,
     "window.openFoldersInNewWindow": "on",
-    "files.insertFinalNewline": true,
+    "files.insertFinalNewline": true
 }
