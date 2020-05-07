@@ -7,10 +7,6 @@ else
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-if [ -x "$(command -v atom)" ]; then
-  apm-up
-fi
-
 if [ ! -d "$HOME/.asdf" ]; then
   git clone https://github.com/asdf-vm/asdf.git "$HOME"/.asdf --branch v0.6.2
   . "$HOME"/.asdf/asdf.sh
