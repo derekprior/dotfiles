@@ -1,5 +1,6 @@
 [init]
   templatedir = ~/.git_template
+  defaultBranch = main
 [color]
   ui = auto
 [alias]
