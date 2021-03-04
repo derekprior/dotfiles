@@ -167,6 +167,7 @@ let g:splitjoin_ruby_hanging_args = 0
 " FZF
 nnoremap <C-p> :Files<cr>
 
+let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_files_options =
   \ '--reverse ' .
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
