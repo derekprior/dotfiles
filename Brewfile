@@ -1,5 +1,7 @@
 brew "fzf"
+brew "gh"
 brew "git"
+brew "hub"
 brew "rbenv"
 brew "rcm"
 brew "ripgrep"
