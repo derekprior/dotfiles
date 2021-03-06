@@ -5,7 +5,7 @@ command_does_not_exist(){
 }
 
 if [ -n "$CODESPACES" ]; then
-  sudo apt-get install -y fzf rbenv rcm ripgrep ruby-build
+  sudo apt-get install -y fzf rbenv rcm ripgrep ruby-build tmux
 else
   if command_does_not_exist xcodebuild; then
     echo "Installing XCode command line tools..."
@@ -22,4 +22,4 @@ fi
 
 DOTFILES="$HOME"/dotfiles
 rcup -K -f -d "$DOTFILES" rcrc
-rcup
+rcup -f
