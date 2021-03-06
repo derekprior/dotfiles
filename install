@@ -1,4 +1,20 @@
 #!/bin/sh
 
-DOTFILES=$HOME/.dotfiles
-rcup -f -d "$DOTFILES" -x README.md -x Brewfile -x install -x LICENSE
+command_does_not_exist(){
+  ! command -v "$1" > /dev/null
+}
+
+if command_does_not_exist xcodebuild; then
+  echo "Installing XCode command line tools..."
+  xcode-select --install
+fi
+
+if command_does_not_exist brew; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+brew bundle
+DOTFILES="$HOME"/dotfiles
+rcup -K -f -d "$DOTFILES" rcrc
+rcup
