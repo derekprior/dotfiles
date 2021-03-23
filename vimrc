@@ -114,8 +114,8 @@ augroup vimrcEx
 augroup END
 
 " git shortcuts
-noremap <leader>gb :Gblame<CR>
-noremap <leader>gd :Gdiff<CR>
+noremap <leader>gb :Git blame<CR>
+noremap <leader>gd :Git diff<CR>
 
 " open various consoles
 noremap <leader>gc :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'dev-console'")<CR>
