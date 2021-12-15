@@ -5,7 +5,7 @@ command_does_not_exist(){
 }
 
 if [ -n "$CODESPACES" ]; then
-  sudo apt-get install -y fzf rbenv rcm ripgrep ruby-build tmux
+  sudo apt-get install -y fzf rcm ripgrep tmux
 else
   if command_does_not_exist xcodebuild; then
     echo "Installing XCode command line tools..."
