@@ -1,17 +1,13 @@
 #!/bin/bash
 
-git checkout master
+git checkout main
 git fetch
 git remote prune origin
-git branch --merged master | grep -v 'master$' | xargs git branch -d
+git branch --merged main | grep -v 'main$' | xargs git branch -d
 
-REMOVABLE=$(git branch -r --merged master \
+REMOVABLE=$(git branch -r --merged main \
   | sed 's/ *origin\///' \
-  | grep -v 'master$' \
-  | grep -v 'production$' \
-  | grep -v 'staging$' \
-  | grep -v '^release' \
-  | grep -v 'next$'
+  | grep -v 'main$' \
 )
 
 if [[ -z "$REMOVABLE" ]]; then
