@@ -9,4 +9,3 @@ fi
 
 vim -u "$HOME"/.vimrc.bundles +PlugUpdate +PlugClean! +qa
 reset -Q
-mkdir -p "$HOME"/src

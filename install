@@ -1,25 +1,3 @@
-#!/bin/sh
-
-command_does_not_exist(){
-  ! command -v "$1" > /dev/null
-}
-
-if [ -n "$CODESPACES" ]; then
-  sudo apt-get install -y fzf rcm ripgrep tmux
-else
-  if command_does_not_exist xcodebuild; then
-    echo "Installing XCode command line tools..."
-    xcode-select --install
-  fi
-
-  if command_does_not_exist brew; then
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  fi
-
-  brew bundle
-fi
-
-DOTFILES="$HOME"/dotfiles
-rcup -K -f -d "$DOTFILES" rcrc
-rcup -f
+#! /bin/sh
+brew bundle --no-lock
+RCRC=./rcrc rcup

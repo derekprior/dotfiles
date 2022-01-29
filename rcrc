@@ -1,3 +1,2 @@
-EXCLUDES="README.md LICENSE install Brewfile Brewfile.lock.json"
+EXCLUDES="README.md LICENSE install Brewfile"
 DOTFILES_DIRS="$HOME/dotfiles"
-UNDOTTED="bin"

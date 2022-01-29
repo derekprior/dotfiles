@@ -1,5 +1,4 @@
 [init]
-  templatedir = ~/.git_template
   defaultBranch = main
 [color]
   ui = auto
@@ -7,13 +6,6 @@
   amend = commit --amend -C HEAD
   ca = commit --amend
   co = checkout
-  pf = push --force-with-lease
-  pr = pull-request
-  ppr = !git push -u && git pr
-  sla = log --oneline --decorate --graph --all
-  st = status
-  standup = shortlog --since=yesterday
-  today = shortlog --since=midnight
   trust = !mkdir .git/safe
 [core]
   excludesfile = ~/.gitignore
@@ -24,7 +16,6 @@
   autosetuprebase = always
 [commit]
   gpgsign = true
-  template = ~/.gitmessage
 [diff]
   colorMoved = zebra
   colorMovedWS = allow-indentation-change
@@ -43,8 +34,3 @@
   signingkey = Derek Prior <derekprior@gmail.com>
 [credential]
   helper = osxkeychain
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true

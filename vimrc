@@ -15,10 +15,10 @@ set showcmd           " display incomplete commands
 set incsearch         " do incremental searching
 set laststatus=2      " Always display the status line
 set autowrite         " Automatically :write before running commands
-set nofoldenable
-set nobackup
-set nowritebackup
-set noswapfile
+set nofoldenable      " I really don't like folding in vim
+set nobackup          " don't create backup files
+set nowritebackup     " really don't create backup files?
+set noswapfile        " for real, don't create backup files
 set history=50
 
 " Whitespace stuff
@@ -69,10 +69,23 @@ endif
 filetype plugin indent on
 
 " Color scheme
-colorscheme github
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
+set termguicolors
+let ayucolor="light"
+" let ayucolor="mirage"
+" let ayucolor="dark"
 
+colorscheme dracula
+" colorshceme ayu
+" colorscheme monokai_pro
+" colorscheme github
+
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce (not to mention that libvte based terminals
+" incorrectly contain bce in their terminfo files). This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+let &t_ut=''
 
 augroup vimrcEx
   autocmd!
@@ -117,10 +130,6 @@ augroup END
 noremap <leader>gb :Git blame<CR>
 noremap <leader>gd :Git diff<CR>
 
-" open various consoles
-noremap <leader>gc :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'dev-console'")<CR>
-noremap <leader>gp :call system("tmux split-window -v -c '#{pane_current_path}' -p 30 'dev-db-console'")<CR>
-
 " simple vertical splits
 map <leader>v <C-w>v
 
@@ -135,20 +144,7 @@ map <silent> <leader><CR> :noh<CR>
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" vim-tmux-runner mappings
-nnoremap <silent> <Leader>ro :VtrOpenRunner<CR>
-nnoremap <silent> <leader>ra :VtrAttachToPane<CR>
-nnoremap <silent> <leader>rs :VtrSendLinesToRunner<CR>
-nnoremap <silent> <leader>rf :VtrFocusRunner<CR>
-
 " vim-test mappings
-let g:test#strategy = 'vtr'
 nnoremap <silent> <Leader>a :TestFile<CR>
 nnoremap <silent> <Leader>t :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
@@ -169,14 +165,11 @@ nnoremap <C-p> :Files<cr>
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_files_options =
   \ '--reverse ' .
-  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+  \ '--preview "head -'.&lines.' {}"'
 
 if executable('rg')
   set grepprg=rg\ --color=never
-  let $FZF_DEFAULT_COMMAND='rg --files -g "" --hidden'
-elseif executable('ag')
-  set grepprg=ag\ --nocolor
-  let $FZF_DEFAULT_COMMAND='ag -g "" --hidden'
+  let $FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git" --sort path'
 endif
 
 " Tab completion

@@ -1,0 +1,2 @@
+# vi: ft=zsh
+PATH="/opt/homebrew/bin:$PATH"

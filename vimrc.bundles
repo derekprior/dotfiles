@@ -6,10 +6,7 @@ let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'acarapetis/vim-colors-github'
 Plug 'andrewradev/splitjoin.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'christoomey/vim-tmux-runner'
 Plug 'derekprior/vim-leaders'
 Plug 'derekprior/vim-trimmer'
 Plug 'itchyny/lightline.vim'
@@ -17,12 +14,12 @@ Plug 'janko-m/vim-test'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'pangloss/vim-javascript'
+Plug 'knubie/vim-kitty-navigator', { 'do': 'cp ./*.py ~/.config/kitty/' }
 Plug 'pbrisbin/vim-mkdir'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
@@ -31,8 +28,13 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
+
+" Color Schemes
+Plug 'ayu-theme/ayu-vim'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'dracula/vim'
+Plug 'phanviet/vim-monokai-pro'
 
 if g:has_async
   Plug 'w0rp/ale'
