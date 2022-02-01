@@ -4,6 +4,7 @@ brew "frum"
 brew "fzf"
 brew "gh"
 brew "git"
+brew "mas"
 brew "rcm"
 brew "ripgrep"
 brew "tree"
@@ -24,3 +25,10 @@ cask "raycast"
 cask "slack"
 cask "todoist"
 cask "visual-studio-code"
+
+mas "Bear", id: 1091189122
+mas "Focus (for YouTube)", id: 1514703160
+mas "Hush Nag Blocker", id: 1544743900
+mas "Magnet", id: 441258766
+mas "PiPifier", id: 1160374471
+mas "Tweetbot", id: 1384080005
