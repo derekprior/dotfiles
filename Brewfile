@@ -8,6 +8,12 @@ brew "rcm"
 brew "ripgrep"
 brew "tree"
 
+brew "eslint"
+brew "jsonlint"
+brew "proselint"
+brew "shellcheck"
+brew "yamllint"
+
 cask "1password"
 cask "dash"
 cask "gpg-suite-no-mail"
