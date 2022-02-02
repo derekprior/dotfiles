@@ -165,7 +165,7 @@ nnoremap <C-p> :Files<cr>
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_files_options =
   \ '--reverse ' .
-  \ '--preview "head -'.&lines.' {}"'
+  \ '--preview "bat {} 2> /dev/null | head -'.&lines.'"'
 
 if executable('rg')
   set grepprg=rg\ --color=never

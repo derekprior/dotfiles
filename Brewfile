@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 
+brew "bat"
 brew "frum"
 brew "fzf"
 brew "gh"
