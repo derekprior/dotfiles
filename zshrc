@@ -25,6 +25,7 @@ alias rs='rails server'
 
 ### Path
 PATH="/opt/homebrew/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
 PATH=".git/safe/../../bin:$PATH"
 
 ### Version Management
