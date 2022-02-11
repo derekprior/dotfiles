@@ -40,4 +40,8 @@ if g:has_async
   Plug 'w0rp/ale'
 endif
 
+if has('nvim')
+  Plug 'github/copilot.vim'
+end
+
 call plug#end()
