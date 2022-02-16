@@ -1,7 +1,8 @@
 # My Dotfiles
 
 My dotfiles are managed with [rcm][1].
-[1]:https://github.com/thoughtbot/rcm
+
+[1]: https://github.com/thoughtbot/rcm
 
 ## Under Construction
 
