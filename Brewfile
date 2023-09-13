@@ -10,6 +10,7 @@ brew "nvim"
 brew "rcm"
 brew "ripgrep"
 brew "tree"
+brew "wget"
 
 brew "eslint"
 brew "jsonlint"
