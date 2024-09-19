@@ -1,4 +1,5 @@
-#! bin/bash
+#! /bin/bash
+
 exec > >(tee -i "$HOME/codespaces_dotfiles_install.log")
 exec 2>&1
 set -x
@@ -17,6 +18,7 @@ packages_needed=(
   eslint
   jsonlint
   yamllint
+  vim
   zsh
 )
 if ! dpkg -s "${packages_needed[@]}" > /dev/null 2>&1; then
@@ -35,12 +37,14 @@ curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
 sudo chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 
-# install Remote Development Manager https://github.com/BlakeWilliams/remote-development-manager
+# install Remote Development Manager
 wget https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64
 sudo mv rdm-linux-amd64 /usr/local/bin/rdm
 sudo chmod +x /usr/local/bin/rdm
 
 # install dotfiles
+cd $HOME
+mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
 RCRC=./rcrc rcup
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
