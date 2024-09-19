@@ -102,20 +102,6 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
 
-  " ALE linting events
-  if g:has_async
-    set updatetime=1000
-    let g:ale_lint_on_text_changed = 0
-    autocmd CursorHold * call ale#Queue(0)
-    autocmd CursorHoldI * call ale#Queue(0)
-    autocmd InsertEnter * call ale#Queue(0)
-    autocmd InsertLeave * call ale#Queue(0)
-
-    nnoremap ]r :ALENextWrap<CR>
-    nnoremap [r :ALEPreviousWrap<CR>
-    nnoremap ]d :ALEDetail<CR>
-  endif
-
   " File Type Settings
   autocmd filetype qf setlocal wrap
 
