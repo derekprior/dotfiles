@@ -1,0 +1,100 @@
+#! /bin/sh
+
+output() {
+  printf "$1"
+}
+
+all_done() {
+  if [[ "$1" ]]; then
+    printf "$1"
+  else
+    printf "✅\n"
+  fi
+}
+
+install_homebrew() {
+  output "Conditionally installing Homebrew..."
+
+  if ! type brew > /dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  all_done
+}
+
+install_xcode_select() {
+  output "Conditionally installing xcode-select..."
+
+  (type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
+    test -d "${xpath}" && test -x "${xpath}") || xcode-select --install
+
+  all_done
+}
+
+brew_bundle() {
+  output "Brew bundling...\n"
+  brew bundle --no-lock
+  all_done
+}
+
+install_dotfiles(){
+  output "Installing dotfiles...\n"
+  RCRC=./rcrc rcup
+  all_done
+}
+
+install_rdm() {
+  output "Conditionally installing rdm..."
+
+  if ! type rdm > /dev/null; then
+    wget https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-darwin-arm64
+    mv rdm-darwin-arm64 /opt/homebrew/bin/rdm
+    chmod +x /opt/homebrew/bin/rdm
+  fi
+
+  all_done
+}
+
+install_gh_extensions() {
+  output "Conditionally installing gh extensions..."
+
+  IFS=$'\n' installed_gh_extensions=($(gh extension list))
+  wanted_gh_extensions=(
+    mislav/gh-branch
+  )
+  for extension_to_install in "${wanted_gh_extensions[@]}"; do
+    found=false
+
+    for installed_extension in "${installed_gh_extensions[@]}"; do
+      if [[ "$installed_extension" = *"$extension_to_install"* ]]; then
+        found=true
+      fi
+    done
+
+    if [[ $found == true ]]; then
+      found=false
+    else
+      gh extensions install $extension_to_install
+    fi
+  done
+
+  all_done
+}
+
+teardown() {
+  output "Cleaning up..."
+
+  IFS=$' \t\n'
+
+  all_done
+}
+
+install_homebrew
+install_xcode_select
+brew_bundle
+
+install_dotfiles
+install_rdm
+install_gh_extensions
+
+teardown

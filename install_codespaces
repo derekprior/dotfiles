@@ -1,0 +1,46 @@
+#! bin/bash
+exec > >(tee -i "$HOME/codespaces_dotfiles_install.log")
+exec 2>&1
+set -x
+
+# remove existing init scripts
+rm -f "$HOME/.zshrc"
+rm -f "$HOME/.gitconfig"
+
+packages_needed=(
+  bat
+  fzf
+  rcm
+  ripgrep
+  tree
+  wget
+  eslint
+  jsonlint
+  yamllint
+  zsh
+)
+if ! dpkg -s "${packages_needed[@]}" > /dev/null 2>&1; then
+  sudo apt-get update --fix-missing
+  sudo apt-get -y -q install "${packages_needed[@]}" --fix-missing
+fi
+
+# install rcm
+sudo wget -q https://apt.tabfugni.cc/thoughtbot.gpg.key -O /etc/apt/trusted.gpg.d/thoughtbot.gpg
+echo "deb https://apt.tabfugni.cc/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
+sudo apt-get update
+sudo apt-get install rcm
+
+# install latest neovim
+curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
+sudo chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+
+# install Remote Development Manager https://github.com/BlakeWilliams/remote-development-manager
+wget https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64
+sudo mv rdm-linux-amd64 /usr/local/bin/rdm
+sudo chmod +x /usr/local/bin/rdm
+
+# install dotfiles
+RCRC=./rcrc rcup
+
+sudo chsh -s "$(which zsh)" "$(whoami)"

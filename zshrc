@@ -38,4 +38,15 @@ if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
 
+### FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+### Codespaces
+if [[ -n "$CODESPACES" ]] ; then
+  gh config set browser "rdm open"
+  git config --global gpg.program "/.codespaces/bin/gh-gpgsign"
+
+  alias pbcopy="rdm copy"
+  alias open="rdm open"
+  alias xdg-open="rdm open"
+fi
