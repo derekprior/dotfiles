@@ -15,17 +15,19 @@ packages_needed=(
   ripgrep
   tree
   wget
-  eslint
-  jsonlint
-  yamllint
-  vim
   zsh
   kitty-terminfo
+  software-properties-common
 )
 if ! dpkg -s "${packages_needed[@]}" > /dev/null 2>&1; then
   sudo apt-get update --fix-missing
   sudo apt-get -y -q install "${packages_needed[@]}" --fix-missing
 fi
+
+# update vim
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get update  --fix-missing
+sudo apt-get -y -q install vim --fix-missing
 
 # install rcm
 sudo wget -q https://apt.tabfugni.cc/thoughtbot.gpg.key -O /etc/apt/trusted.gpg.d/thoughtbot.gpg
