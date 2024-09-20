@@ -27,7 +27,6 @@ set shiftwidth=2
 set shiftround
 set expandtab
 set nowrap
-set list listchars=tab:->,trail:·
 set nojoinspaces
 
 " Make it obvious where 80 characters is
