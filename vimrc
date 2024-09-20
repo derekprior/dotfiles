@@ -171,3 +171,6 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
 inoremap <S-Tab> <C-n>
+
+" Resource
+:command! Resource :source $MYVIMRC

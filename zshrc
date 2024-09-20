@@ -22,6 +22,8 @@ alias gc='git commit'
 alias be='bundle exec'
 alias rc='rails console'
 alias rs='rails server'
+alias ivm='vim $(fzf -m --preview "bat {} --color=always")'
+alias resource='source ~/.zshrc'
 
 ### Path
 PATH="/opt/homebrew/bin:$PATH"
@@ -46,4 +48,8 @@ if [[ -n "$CODESPACES" ]] ; then
   alias pbcopy="rdm copy"
   alias open="rdm open"
   alias xdg-open="rdm open"
+else
+  if command -v fzf &> /dev/null; then
+    source <(fzf --zsh)
+  fi
 fi
