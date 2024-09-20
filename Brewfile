@@ -8,6 +8,7 @@ brew "rcm"
 brew "ripgrep"
 brew "tree"
 brew "wget"
+brew "yazi"
 
 brew "eslint"
 brew "jsonlint"
