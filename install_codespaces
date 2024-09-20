@@ -48,6 +48,6 @@ curl -fsSL https://starship.rs/install.sh | sh -s -- -y
 # install dotfiles
 cd $HOME
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
-RCRC=./rcrc rcup
+RCRC=$HOME/dotfiles/rcrc rcup
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
