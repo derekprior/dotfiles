@@ -38,9 +38,6 @@ if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
 
-### FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 ### Codespaces
 if [[ -n "$CODESPACES" ]] ; then
   gh config set browser "rdm open"
