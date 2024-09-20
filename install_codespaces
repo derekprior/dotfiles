@@ -42,6 +42,9 @@ wget https://github.com/BlakeWilliams/remote-development-manager/releases/latest
 sudo mv rdm-linux-amd64 /usr/local/bin/rdm
 sudo chmod +x /usr/local/bin/rdm
 
+# install starship
+curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+
 # install dotfiles
 cd $HOME
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
