@@ -69,7 +69,7 @@ fi
 if command -v eza &> /dev/null; then
   export EZA_ICON_SPACING=2
   export EZA_ICONS_AUTO=1
-  alias ls='eza --long --all --no-permissions --no-filesize --no-time --no-user'
+  alias ls='eza --oneline --all'
 fi
 
 ### thefuck
