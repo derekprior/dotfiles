@@ -67,7 +67,9 @@ fi
 
 ### eza
 if command -v eza &> /dev/null; then
-  alias ls='eza --color=always --icons=always --long --all --git --no-permissions --no-filesize --no-time --no-user'
+  export EZA_ICON_SPACING=2
+  export EZA_ICONS_AUTO=1
+  alias ls='eza --long --all --no-permissions --no-filesize --no-time --no-user'
 fi
 
 ### thefuck
