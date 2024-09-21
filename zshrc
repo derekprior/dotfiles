@@ -52,6 +52,11 @@ if command -v yazi &> /dev/null; then
   }
 fi
 
+### eza
+if command -v eza &> /dev/null; then
+  alias ls='eza --color=always --icons=always --long --all --git --no-permissions --no-filesize --no-time --no-user'
+fi
+
 ### Codespaces
 if [[ -n "$CODESPACES" ]] ; then
   gh config set browser "rdm open"

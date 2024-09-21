@@ -9,6 +9,7 @@ brew "ripgrep"
 brew "tree"
 brew "wget"
 brew "yazi"
+brew "eza"
 
 brew "eslint"
 brew "jsonlint"
