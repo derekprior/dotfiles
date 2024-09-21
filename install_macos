@@ -39,7 +39,7 @@ brew_bundle() {
 
 install_dotfiles(){
   output "Installing dotfiles...\n"
-  RCRC=./rcrc rcup
+  RCRC=./rcrc rcup -t macos
   all_done
 }
 

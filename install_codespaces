@@ -64,6 +64,6 @@ pip3 install thefuck --user
 # install dotfiles
 cd $HOME
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
-RCRC=$HOME/dotfiles/rcrc rcup
+RCRC=$HOME/dotfiles/rcrc rcup -t codespaces
 
 sudo chsh -s "$(which zsh)" "$(whoami)"

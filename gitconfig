@@ -1,36 +1,37 @@
-[init]
-  defaultBranch = main
-[color]
-  ui = auto
 [alias]
   amend = commit --amend -C HEAD
   ca = commit --amend
   co = checkout
   trust = !mkdir .git/safe
+[branch]
+  autosetuprebase = always
+[color]
+  ui = auto
+[commit]
+  gpgsign = true
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-[fetch]
-  prune = true
-[branch]
-  autosetuprebase = always
-[commit]
-  gpgsign = true
 [diff]
   colorMoved = zebra
   colorMovedWS = allow-indentation-change
+[fetch]
+  prune = true
+[github]
+  user = derekprior
+[init]
+  defaultBranch = main
+[merge]
+  keepBackup = false
+  ff = only
 [push]
   default = current
 [rebase]
   autosquash = true
-[merge]
-  keepBackup = false
-  ff = only
-[github]
-  user = derekprior
 [user]
   name = Derek Prior
   email = derekprior@gmail.com
   signingkey = Derek Prior <derekprior@gmail.com>
-[credential]
-  helper = osxkeychain
+
+[include]
+  path = ~/.gitconfig.os
