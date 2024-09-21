@@ -157,6 +157,10 @@ if executable('rg')
   let $FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git" --sort path'
 endif
 
+if executable('fd')
+  let $FZF_DEFAULT_COMMAND='fd --type=file --hidden'
+endif
+
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning

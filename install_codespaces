@@ -18,6 +18,7 @@ packages_needed=(
   zsh
   kitty-terminfo
   software-properties-common
+  fd-find
 )
 if ! dpkg -s "${packages_needed[@]}" > /dev/null 2>&1; then
   sudo apt-get update --fix-missing

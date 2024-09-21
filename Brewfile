@@ -12,6 +12,7 @@ brew "yazi"
 brew "eza"
 brew "tlrc"
 brew "thefuck"
+brew "fd"
 
 brew "eslint"
 brew "jsonlint"
