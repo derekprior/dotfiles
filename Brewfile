@@ -10,6 +10,7 @@ brew "tree"
 brew "wget"
 brew "yazi"
 brew "eza"
+brew "tlrc"
 
 brew "eslint"
 brew "jsonlint"
