@@ -57,6 +57,11 @@ if command -v eza &> /dev/null; then
   alias ls='eza --color=always --icons=always --long --all --git --no-permissions --no-filesize --no-time --no-user'
 fi
 
+### thefuck
+if command -v thefuck &> /dev/null; then
+  eval $(thefuck --alias)
+fi
+
 ### Codespaces
 if [[ -n "$CODESPACES" ]] ; then
   gh config set browser "rdm open"

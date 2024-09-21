@@ -11,6 +11,7 @@ brew "wget"
 brew "yazi"
 brew "eza"
 brew "tlrc"
+brew "thefuck"
 
 brew "eslint"
 brew "jsonlint"
