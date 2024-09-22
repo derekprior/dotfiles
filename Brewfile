@@ -13,6 +13,7 @@ brew "eza"
 brew "tlrc"
 brew "thefuck"
 brew "fd"
+brew "tmux"
 
 brew "eslint"
 brew "jsonlint"

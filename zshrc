@@ -90,3 +90,5 @@ else
     source <(fzf --zsh)
   fi
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

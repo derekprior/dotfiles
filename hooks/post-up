@@ -7,5 +7,10 @@ else
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+# If tmux package manager does not exist, install it.
+if [ ! -d "$HOME"/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm "$HOME"/.tmux/plugins/tpm
+fi
+
 vim -u "$HOME"/.vimrc.bundles +PlugUpdate +PlugClean! +qa
 reset -Q

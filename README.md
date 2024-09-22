@@ -19,6 +19,8 @@ cool and would become my next favorite thing.
 - `vim` - As the kids would say, I'm mid at Vim. Everyone else seems to be using
   Code, especially at GitHub. I've tried to assimilate but I can't make it
   stick.
+- `tmux` - In some universe, I use arch with i3, but in this Universe I'm on a
+  mac and I approximate this in my development with tmux and vim-tmux-navigator.
 - `fzf` - Interactive fuzzy finding that I primarily use via Vim but am trying
   to use more in other contexts as well.
 - `ripgrep` - Fast searching. Still the fastest? I don't know. I haven't kept up

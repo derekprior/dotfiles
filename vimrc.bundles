@@ -7,6 +7,7 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 
 Plug 'andrewradev/splitjoin.vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekprior/vim-leaders'
 Plug 'derekprior/vim-trimmer'
 Plug 'itchyny/lightline.vim'
