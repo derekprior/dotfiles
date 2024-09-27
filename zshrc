@@ -16,6 +16,7 @@ done
 
 ### Aliases
 alias dotfiles='cd "$HOME"/dotfiles'
+alias g='git'
 alias gs='git status -sb'
 alias ga='git add'
 alias gc='git commit'
