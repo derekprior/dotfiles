@@ -56,6 +56,18 @@ config.keys = {
   { key = "J", mods = "LEADER", action = enter_resize_mode("Down")},
   { key = "K", mods = "LEADER", action = enter_resize_mode("Up")},
   { key = "L", mods = "LEADER", action = enter_resize_mode("Right")},
+
+  -- rename tab
+  { key = ",", mods = "LEADER", action = act.PromptInputLine {
+    description = "Tab name: ",
+    action = wezterm.action_callback(
+      function(window, pane, line)
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end
+    ),
+  }},
 }
 
 -- Tab switching by number
