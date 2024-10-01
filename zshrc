@@ -87,6 +87,11 @@ if command -v thefuck &> /dev/null; then
   eval $(thefuck --alias)
 fi
 
+### cat -> bat
+if command -v bat &> /dev/null; then
+  alias cat=bat
+fi
+
 ### Codespaces
 if [[ -n "$CODESPACES" ]] ; then
   gh config set browser "rdm open"
