@@ -23,10 +23,10 @@ end
 -- Key table for resize mode (allows repeating keypresses to resize the pane)
 config.key_tables = {
   resize_mode = {
-    { key = "h", action = act.AdjustPaneSize { "Left", 1 } },
-    { key = "j", action = act.AdjustPaneSize { "Down", 1 } },
-    { key = "k", action = act.AdjustPaneSize { "Up", 1 } },
-    { key = "l", action = act.AdjustPaneSize { "Right", 1 } },
+    { key = "H", action = act.AdjustPaneSize { "Left", 1 } },
+    { key = "J", action = act.AdjustPaneSize { "Down", 1 } },
+    { key = "K", action = act.AdjustPaneSize { "Up", 1 } },
+    { key = "L", action = act.AdjustPaneSize { "Right", 1 } },
   },
 }
 
@@ -45,11 +45,17 @@ config.keys = {
   -- activate copy mode or vim mode
   { key = 'Enter', mods = 'LEADER', action = act.ActivateCopyMode },
 
+  -- move panes
+  { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection("Left") },
+  { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection("Down") },
+  { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection("Up") },
+  { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection("Right") },
+
   -- resize panes (allows repeating keypresses)
-  { key = "h", mods = "LEADER", action = enter_resize_mode("Left")},
-  { key = "j", mods = "LEADER", action = enter_resize_mode("Down")},
-  { key = "k", mods = "LEADER", action = enter_resize_mode("Up")},
-  { key = "l", mods = "LEADER", action = enter_resize_mode("Right")},
+  { key = "H", mods = "LEADER", action = enter_resize_mode("Left")},
+  { key = "J", mods = "LEADER", action = enter_resize_mode("Down")},
+  { key = "K", mods = "LEADER", action = enter_resize_mode("Up")},
+  { key = "L", mods = "LEADER", action = enter_resize_mode("Right")},
 }
 
 -- Tab switching by number
