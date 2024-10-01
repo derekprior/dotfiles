@@ -7,9 +7,10 @@ config.leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 500 }
 
 -- Helper function to enter resize mode
 -- performs ther first size adjustment then enters the resize mode key table
+local resize_increment = 5
 enter_resize_mode = function(direction)
   return act.Multiple {
-    act.AdjustPaneSize { direction, 1 },
+    act.AdjustPaneSize { direction, resize_increment },
     act.ActivateKeyTable {
       name = "resize_mode",
       one_shot = false,
@@ -23,10 +24,10 @@ end
 -- Key table for resize mode (allows repeating keypresses to resize the pane)
 config.key_tables = {
   resize_mode = {
-    { key = "H", action = act.AdjustPaneSize { "Left", 1 } },
-    { key = "J", action = act.AdjustPaneSize { "Down", 1 } },
-    { key = "K", action = act.AdjustPaneSize { "Up", 1 } },
-    { key = "L", action = act.AdjustPaneSize { "Right", 1 } },
+    { key = "H", action = act.AdjustPaneSize { "Left", resize_increment } },
+    { key = "J", action = act.AdjustPaneSize { "Down",resize_increment } },
+    { key = "K", action = act.AdjustPaneSize { "Up", resize_increment } },
+    { key = "L", action = act.AdjustPaneSize { "Right", resize_increment } },
   },
 }
 
