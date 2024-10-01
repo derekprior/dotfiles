@@ -43,7 +43,7 @@ config.keys = {
   { mods = "LEADER", key = "{", action = act.RotatePanes "CounterClockwise" },
 
   -- activate copy mode or vim mode
-  { key = 'Enter', mods = 'LEADER', action = act.ActivateCopyMode },
+  { key = '[', mods = 'LEADER', action = act.ActivateCopyMode },
 
   -- move panes
   { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection("Left") },
