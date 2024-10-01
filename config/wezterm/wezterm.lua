@@ -100,4 +100,7 @@ config.font_size = 16
 -- Disable audible bell
 config.audible_bell = "Disabled"
 
+-- When closing a tab, switch to the last active tab
+config.switch_to_last_active_tab_when_closing_tab = true
+
 return config
