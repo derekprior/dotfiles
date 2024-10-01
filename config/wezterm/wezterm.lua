@@ -1,22 +1,16 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
-local wez_action = wezterm.action
+local act = wezterm.action
 
--- Leader is CTRL + s, like tmux
+-- Leader is CTRL + s, like I set in my tmux config
 config.leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 500 }
 
-resize_opts = {
-  name = "resize_mode",
-  one_shot = false,
-  timeout_milliseconds = 1000,
-  until_unknown = true,
-  replace_current = true,
-}
-
+-- Helper function to enter resize mode
+-- performs ther first size adjustment then enters the resize mode key table
 enter_resize_mode = function(direction)
-  return wez_action.Multiple {
-    wez_action.AdjustPaneSize { direction, 1 },
-    wez_action.ActivateKeyTable {
+  return act.Multiple {
+    act.AdjustPaneSize { direction, 1 },
+    act.ActivateKeyTable {
       name = "resize_mode",
       one_shot = false,
       timeout_milliseconds = 500,
@@ -26,51 +20,32 @@ enter_resize_mode = function(direction)
   }
 end
 
+-- Key table for resize mode (allows repeating keypresses to resize the pane)
 config.key_tables = {
   resize_mode = {
-    { key = "h", action = wez_action.AdjustPaneSize { "Left", 1 } },
-    { key = "j", action = wez_action.AdjustPaneSize { "Down", 1 } },
-    { key = "k", action = wez_action.AdjustPaneSize { "Up", 1 } },
-    { key = "l", action = wez_action.AdjustPaneSize { "Right", 1 } },
+    { key = "h", action = act.AdjustPaneSize { "Left", 1 } },
+    { key = "j", action = act.AdjustPaneSize { "Down", 1 } },
+    { key = "k", action = act.AdjustPaneSize { "Up", 1 } },
+    { key = "l", action = act.AdjustPaneSize { "Right", 1 } },
   },
 }
 
 config.keys = {
   -- Splitting panes
-  {
-    mods   = "LEADER",
-    key    = "-",
-    action = wez_action.SplitVertical { domain = 'CurrentPaneDomain' },
-  },
-  {
-    mods   = "LEADER",
-    key    = "\\",
-    action = wez_action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-  },
+  { mods = "LEADER", key = "-", action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { mods = "LEADER", key = "\\", action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+
   -- Zoom pane
-  {
-    mods   = "LEADER",
-    key    = "z",
-    action = wez_action.TogglePaneZoomState,
-  },
+  { mods = "LEADER", key = "z", action = act.TogglePaneZoomState },
+
   -- rotate panes
-  {
-    mods = "LEADER",
-    key = "}",
-    action = wez_action.RotatePanes "Clockwise",
-  },
-  {
-    mods = "LEADER",
-    key = "{",
-    action = wez_action.RotatePanes "CounterClockwise",
-  },
+  { mods = "LEADER", key = "}", action = act.RotatePanes "Clockwise" },
+  { mods = "LEADER", key = "{", action = act.RotatePanes "CounterClockwise" },
+
   -- activate copy mode or vim mode
-  {
-    key = 'Enter',
-    mods = 'LEADER',
-    action = wez_action.ActivateCopyMode
-  },
-  -- resize panes
+  { key = 'Enter', mods = 'LEADER', action = act.ActivateCopyMode },
+
+  -- resize panes (allows repeating keypresses)
   { key = "h", mods = "LEADER", action = enter_resize_mode("Left")},
   { key = "j", mods = "LEADER", action = enter_resize_mode("Down")},
   { key = "k", mods = "LEADER", action = enter_resize_mode("Up")},
@@ -82,7 +57,7 @@ for i = 1, 9 do
   table.insert(config.keys, {
     key = tostring(i),
     mods = 'LEADER',
-    action = wez_action.ActivateTab(i-1),
+    action = act.ActivateTab(i-1),
   })
 end
 
