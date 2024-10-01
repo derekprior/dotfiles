@@ -68,6 +68,14 @@ config.keys = {
       end
     ),
   }},
+
+  -- navigate tabs
+  { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
+  { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+  { key = "s", mods = "LEADER|CTRL", action = act.ActivateLastTab },
+
+  -- create tab
+  { key = "c", mods = "LEADER", action = act.SpawnTab "CurrentPaneDomain" },
 }
 
 -- Tab switching by number
