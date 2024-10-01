@@ -26,8 +26,8 @@ cursor_border = '#f8f8f2'
 cursor_fg = '#282a36'
 foreground = '#f8f8f2'
 scrollbar_thumb = '#44475a'
-selection_bg = 'rgba(26.666668% 27.843138% 35.294117% 50%)'
-selection_fg = 'rgba(0% 0% 0% 0%)'
+selection_bg = '#f1fa8c'
+selection_fg = '#000000'
 split = '#6272a4'
 
 [colors.indexed]

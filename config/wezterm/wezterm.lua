@@ -91,6 +91,7 @@ end
 config.color_scheme = "Dracula (Official)"
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
+config.tab_max_width = 20
 
 -- Font
 config.font = wezterm.font("MesloLGS NF")
