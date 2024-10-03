@@ -38,6 +38,17 @@ PATH="/opt/homebrew/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH=".git/safe/../../bin:$PATH"
 
+### Editor
+if command -v nvim &> /dev/null; then
+  export EDITOR=nvim
+  alias vim=nvim
+fi
+
+### Rust
+export CARGO_HOME="$HOME/.cargo"
+export RUSTUP_HOME="$CARGO_HOME"
+export PATH="$CARGO_HOME/bin:$PATH"
+
 ### Version Management
 if command -v frum &> /dev/null; then
   eval "$(frum init)"
