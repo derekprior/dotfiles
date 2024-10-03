@@ -8,7 +8,7 @@ config.leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 500 }
 -- Helper function to enter resize mode
 -- performs ther first size adjustment then enters the resize mode key table
 local resize_increment = 5
-enter_resize_mode = function(direction)
+local function enterResizeMode(direction)
   return act.Multiple {
     act.AdjustPaneSize { direction, resize_increment },
     act.ActivateKeyTable {
@@ -20,6 +20,37 @@ enter_resize_mode = function(direction)
     },
   }
 end
+
+local function isViProcess(pane)
+  return pane:get_foreground_process_name():find('n?vim') ~= nil or pane:get_title():find("n?vim") ~= nil
+end
+
+local function conditionalActivatePane(window, pane, pane_direction, vim_direction)
+  if isViProcess(pane) then
+    window:perform_action(
+      act.SendKey({ key = vim_direction, mods = 'CTRL' }),
+      pane
+    )
+  else
+    window:perform_action(act.ActivatePaneDirection(pane_direction), pane)
+  end
+end
+
+wezterm.on('ActivatePaneDirection-right', function(window, pane)
+  conditionalActivatePane(window, pane, 'Right', 'l')
+end)
+
+wezterm.on('ActivatePaneDirection-left', function(window, pane)
+  conditionalActivatePane(window, pane, 'Left', 'h')
+end)
+
+wezterm.on('ActivatePaneDirection-up', function(window, pane)
+  conditionalActivatePane(window, pane, 'Up', 'k')
+end)
+
+wezterm.on('ActivatePaneDirection-down', function(window, pane)
+  conditionalActivatePane(window, pane, 'Down', 'j')
+end)
 
 -- Key table for resize mode (allows repeating keypresses to resize the pane)
 config.key_tables = {
@@ -51,12 +82,16 @@ config.keys = {
   { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection("Down") },
   { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection("Up") },
   { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection("Right") },
+  { key = 'h', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-left') },
+  { key = 'j', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-down') },
+  { key = 'k', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-up') },
+  { key = 'l', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-right') },
 
   -- resize panes (allows repeating keypresses)
-  { key = "H", mods = "LEADER", action = enter_resize_mode("Left")},
-  { key = "J", mods = "LEADER", action = enter_resize_mode("Down")},
-  { key = "K", mods = "LEADER", action = enter_resize_mode("Up")},
-  { key = "L", mods = "LEADER", action = enter_resize_mode("Right")},
+  { key = "H", mods = "LEADER", action = enterResizeMode("Left")},
+  { key = "J", mods = "LEADER", action = enterResizeMode("Down")},
+  { key = "K", mods = "LEADER", action = enterResizeMode("Up")},
+  { key = "L", mods = "LEADER", action = enterResizeMode("Right")},
 
   -- rename tab
   { key = ",", mods = "LEADER", action = act.PromptInputLine {
