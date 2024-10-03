@@ -40,3 +40,6 @@ vim.cmd("set numberwidth=4")
 
 -- use OS clipboard
 vim.cmd("set clipboard=unnamed")
+
+-- switch between last two files
+vim.keymap.set("n", "<leader><leader>", "<C-^>")
