@@ -37,6 +37,7 @@ alias resource='source ~/.zshrc'
 PATH="/opt/homebrew/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH=".git/safe/../../bin:$PATH"
+PATH="$HOME/.bin:$PATH"
 
 ### Editor
 if command -v nvim &> /dev/null; then

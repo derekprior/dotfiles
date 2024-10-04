@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Fetch avatars for github handles
 #   Examples:
@@ -6,10 +6,29 @@
 #     fetch-avatars blakewilliams deniseyu
 #
 # Arguments:
-#  - GitHub handles
+#  - GitHub handles (space separated).
+#
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Fetch GitHub avatars
+# @raycast.mode compact
+
+# Optional parameters:
+# @raycast.icon 🤖
+# @raycast.argument1 { "type": "text", "placeholder": "GitHub handle" }
+# @raycast.packageName Productivity
+
+# Documentation:
+# @raycast.description Fetch 100px GitHub avatars for presentations
 
 SIZE=100
+DIRECTORY=$HOME/Downloads/avatars
+mkdir -p $DIRECTORY
+
+pushd $DIRECTORY > /dev/null
 
 for USER in "$@"; do
   wget https://github.com/$USER.png?size=$SIZE -O $USER-$SIZE.png -q
 done
+
+popd > /dev/null
