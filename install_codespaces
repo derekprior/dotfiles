@@ -37,9 +37,9 @@ sudo apt-get update
 sudo apt-get install rcm
 
 # install latest neovim
-curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
-sudo chmod u+x nvim.appimage
-sudo mv nvim.appimage /usr/local/bin/nvim
+curl -LO https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.linux64.tar.gz
+tar xzvf nvim-linux64.tar.gz
+sudo mv -f ./nvim-linux64/bin/nvim /usr/local/bin/nvim
 
 # install Remote Development Manager
 wget https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64
@@ -60,6 +60,12 @@ sudo apt install -y eza
 # install thefuck
 sudo apt install -y python3-dev python3-pip python3-setuptools
 pip3 install thefuck --user
+
+# install lazygit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
 
 # install dotfiles
 cd $HOME

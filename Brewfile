@@ -14,6 +14,8 @@ brew "tlrc"
 brew "thefuck"
 brew "fd"
 brew "tmux"
+brew "lazygit"
+brew "powerlevel10k"
 
 brew "eslint"
 brew "jsonlint"
