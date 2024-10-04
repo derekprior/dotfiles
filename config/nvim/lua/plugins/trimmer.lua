@@ -1,0 +1,3 @@
+return {
+  "derekprior/vim-trimmer",
+}
