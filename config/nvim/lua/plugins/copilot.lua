@@ -4,12 +4,10 @@ return {
 		event = "InsertEnter",
 		cmd = { "Copilot" },
 		build = ":Copilot auth",
-		config = function()
-			require("copilot").setup({
-				suggestion = { auto_trigger = "true" },
-				filetypes = { markdown = true, gitcommit = true },
-			})
-		end,
+    opts = {
+      suggestion = { auto_trigger = "true" },
+      filetypes = { markdown = true, gitcommit = true },
+    },
 	},
 	{
 		"AndreM222/copilot-lualine",
