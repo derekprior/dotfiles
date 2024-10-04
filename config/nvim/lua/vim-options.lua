@@ -26,6 +26,13 @@ vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 vim.keymap.set(
   "n",
+  "<leader>o",
+  ":only<CR>",
+  { desc = "Close all other splits", silent = true }
+)
+
+vim.keymap.set(
+  "n",
   "<leader>v",
   "<C-w>v",
   { desc = "Split vertically" }
