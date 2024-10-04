@@ -57,3 +57,15 @@ vim.keymap.set(
   "<C-^>",
   { desc = "Switch between last two files" }
 )
+
+-- beef up those window separators
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#191a21", bold = true })
+vim.opt.fillchars = {
+  horiz     = '━',
+  horizup   = '┻',
+  horizdown = '┳',
+  vert      = '┃',
+  vertleft  = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
