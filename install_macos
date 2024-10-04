@@ -61,6 +61,7 @@ install_gh_extensions() {
   IFS=$'\n' installed_gh_extensions=($(gh extension list))
   wanted_gh_extensions=(
     mislav/gh-branch
+    github/gh-copilot
   )
   for extension_to_install in "${wanted_gh_extensions[@]}"; do
     found=false
