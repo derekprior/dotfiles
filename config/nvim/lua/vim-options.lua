@@ -15,9 +15,9 @@ vim.cmd("set smartcase")
 vim.cmd("set incsearch")
 vim.keymap.set(
   "n",
-  "<silent> <leader><CR>",
+  "<leader><CR>",
   ":noh<CR>",
-  { desc = "Clear search highlights" }
+  { desc = "Clear search highlights", silent = true }
 )
 
 -- splits
