@@ -13,14 +13,23 @@ vim.cmd("set hlsearch")
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 vim.cmd("set incsearch")
-vim.keymap.set("n", "<silent> <leader><CR>", ":noh<CR>")
+vim.keymap.set(
+  "n",
+  "<silent> <leader><CR>",
+  ":noh<CR>",
+  { desc = "Clear search highlights" }
+)
 
 -- splits
 vim.cmd("set winwidth=80")
 vim.cmd("set splitbelow")
 vim.cmd("set splitright")
-vim.keymap.set("n", "<leader>v", "<C-w>v")
-vim.keymap.set("n", "<leader>s", "<C-w>s")
+vim.keymap.set(
+  "n",
+  "<leader>v",
+  "<C-w>v",
+  { desc = "Split vertically" }
+)
 
 -- no folds
 vim.cmd("set nofoldenable")
@@ -42,4 +51,9 @@ vim.cmd("set numberwidth=4")
 vim.cmd("set clipboard=unnamed")
 
 -- switch between last two files
-vim.keymap.set("n", "<leader><leader>", "<C-^>")
+vim.keymap.set(
+  "n",
+  "<leader><leader>",
+  "<C-^>",
+  { desc = "Switch between last two files" }
+)
