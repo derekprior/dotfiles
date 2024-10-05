@@ -1,3 +1,4 @@
 return {
-  { "tpope/vim-surround" },
+  "echasnovski/mini.surround",
+  opts = {}
 }
