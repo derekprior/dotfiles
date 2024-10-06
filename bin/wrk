@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Wraps `gh issue create` to create a title-only issue in my dotfiles repo
+# If no arguments are provided, it opens my work project board
+
+# @raycast.schemaVersion 1
+# @raycast.title Create work issue
+# @raycast.mode compact
+# @raycast.icon 🤖
+# @raycast.argument1 { "type": "text", "placeholder": "Title", "optional": true }
+# @raycast.packageName Productivity
+# @raycast.description Create a title-only issue in my work repo
+
+TITLE=$*
+REPO=derekprior/work
+PROJECT=https://github.com/users/derekprior/projects/4
+
+if [[ -n $TITLE ]]; then
+  gh issue create --repo=$REPO --title="$TITLE" --body=""
+else
+  open $PROJECT
+fi

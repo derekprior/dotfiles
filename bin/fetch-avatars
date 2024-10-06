@@ -8,23 +8,19 @@
 # Arguments:
 #  - GitHub handles (space separated).
 #
-# Required parameters:
 # @raycast.schemaVersion 1
 # @raycast.title Fetch GitHub avatars
 # @raycast.mode compact
-
 # Optional parameters:
 # @raycast.icon 🤖
 # @raycast.argument1 { "type": "text", "placeholder": "GitHub handle" }
 # @raycast.packageName Productivity
-
-# Documentation:
 # @raycast.description Fetch 100px GitHub avatars for presentations
 
 SIZE=100
 DIRECTORY=$HOME/Downloads/avatars
-mkdir -p $DIRECTORY
 
+mkdir -p $DIRECTORY
 pushd $DIRECTORY > /dev/null
 
 for USER in "$@"; do

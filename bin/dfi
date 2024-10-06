@@ -1,23 +1,21 @@
 #!/bin/bash
 
-# Required parameters:
+# Wraps `gh issue create` to create a title-only issue in my dotfiles repo.
+# With no arguments, it opens the dotfiles issues page.
+#
 # @raycast.schemaVersion 1
 # @raycast.title Create dotfiles issue
 # @raycast.mode compact
-
-# Optional parameters:
 # @raycast.icon 🤖
-# @raycast.argument1 { "type": "text", "placeholder": "Title" }
+# @raycast.argument1 { "type": "text", "placeholder": "Title", optional: true }
 # @raycast.packageName Productivity
-
-# Documentation:
 # @raycast.description Create a title-only issue in my dotfiles repo
 
-# Wraps `gh issue create` to create a title-only issue in my dotfiles repo.
-if [[ $# -eq 0 ]]; then
-  echo "Creates a title-only issue in my dotfiles repo."
-  echo "Usage: dfi <title>"
-  exit 1
-fi
+TITLE=$*
+REPO=derekprior/dotfiles
 
-gh issue create --repo=derekprior/dotfiles --title="$*" --body=""
+if [[ -n $TITLE ]]; then
+  gh issue create --repo=$REPO --title="$TITLE" --body=""
+else
+  open "https://github.com/$REPO/issues"
+fi
