@@ -7,8 +7,8 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
   keys = {
-    { "-", ":Neotree toggle reveal<CR>", desc = "Toggle Neotree"  },
-    { "<LEADER>b", ":Neotree toggle buffers right<CR>", desc = "Toggle Buffers" },
-    { "<LEADER>r", ":Neotree float git_status<CR>", desc = "Toggle Git Status" },
+    { "-", "<CMD>Neotree toggle reveal<CR>", desc = "Toggle Neotree" },
+    { "<LEADER>b", "<CMD>Neotree toggle buffers right<CR>", desc = "Toggle Buffers" },
+    { "<LEADER>r", "<CMD>Neotree float git_status<CR>", desc = "Toggle Git Status" },
   },
 }
