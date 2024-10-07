@@ -1,19 +1,23 @@
+local opt = vim.opt
+local keymap = vim.keymap
+
 vim.g.mapleader = " "
 
 -- whitespace management
-vim.cmd("set tabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set shiftround")
-vim.cmd("set expandtab")
-vim.cmd("set nowrap")
-vim.cmd("set nojoinspaces")
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.shiftround = true
+opt.expandtab = true
+opt.wrap = false
+opt.joinspaces = false
+opt.autoindent = true
 
 -- searching
-vim.cmd("set hlsearch")
-vim.cmd("set ignorecase")
-vim.cmd("set smartcase")
-vim.cmd("set incsearch")
-vim.keymap.set(
+opt.hlsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.incsearch = true
+keymap.set(
   "n",
   "<leader><CR>",
   ":noh<CR>",
@@ -21,17 +25,17 @@ vim.keymap.set(
 )
 
 -- splits
-vim.cmd("set winwidth=80")
-vim.cmd("set splitbelow")
-vim.cmd("set splitright")
-vim.keymap.set(
+opt.winwidth = 80
+opt.splitbelow = true
+opt.splitright = true
+keymap.set(
   "n",
   "<leader>o",
   ":only<CR>",
   { desc = "Close all other splits", silent = true }
 )
 
-vim.keymap.set(
+keymap.set(
   "n",
   "<leader>v",
   "<C-w>v",
@@ -39,26 +43,26 @@ vim.keymap.set(
 )
 
 -- no folds
-vim.cmd("set nofoldenable")
+opt.foldenable = false
 
 -- no backup files, ever
-vim.cmd("set nobackup")
-vim.cmd("set nowritebackup")
-vim.cmd("set noswapfile")
+opt.backup = false
+opt.writebackup = false
+opt.swapfile = false
 
 -- make it obvious where 80 characters is
-vim.cmd("set textwidth=80")
-vim.cmd("set colorcolumn=+1")
+opt.textwidth = 80
+opt.colorcolumn = "+1"
 
 -- line numbers
-vim.cmd("set number")
-vim.cmd("set numberwidth=4")
+opt.number = true
+opt.numberwidth = 4
 
 -- use OS clipboard
-vim.cmd("set clipboard=unnamed")
+opt.clipboard = "unnamed"
 
 -- switch between last two files
-vim.keymap.set(
+keymap.set(
   "n",
   "<leader><leader>",
   "<C-^>",
@@ -67,7 +71,7 @@ vim.keymap.set(
 
 -- beef up those window separators
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#191a21", bold = true })
-vim.opt.fillchars = {
+opt.fillchars = {
   horiz     = '━',
   horizup   = '┻',
   horizdown = '┳',
