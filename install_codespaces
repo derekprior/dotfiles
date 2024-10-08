@@ -72,4 +72,15 @@ cd $HOME
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
 RCRC=$HOME/dotfiles/rcrc rcup -t codespaces
 
+# If vim-plug does not exist, install it.
+if [ ! -d "$HOME"/.vim/autoload/plug.vim ]; then
+  curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+# If tmux package manager does not exist, install it.
+if [ ! -d "$HOME"/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm "$HOME"/.tmux/plugins/tpm
+fi
+
 sudo chsh -s "$(which zsh)" "$(whoami)"

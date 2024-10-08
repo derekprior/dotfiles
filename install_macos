@@ -43,6 +43,23 @@ install_dotfiles(){
   all_done
 }
 
+install_plugin_managers(){
+  output "installing plugin managers...\n"
+
+  # If vim-plug does not exist, install it.
+  if [ ! -d "$HOME"/.vim/autoload/plug.vim ]; then
+    curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
+
+  # If tmux package manager does not exist, install it.
+  if [ ! -d "$HOME"/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm "$HOME"/.tmux/plugins/tpm
+  fi
+
+  all_done
+}
+
 install_rdm() {
   output "Conditionally installing rdm..."
 
@@ -95,6 +112,7 @@ install_xcode_select
 brew_bundle
 
 install_dotfiles
+install_plugin_managers
 install_rdm
 install_gh_extensions
 
