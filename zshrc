@@ -31,7 +31,8 @@ alias be='bundle exec'
 alias rc='rails console'
 alias rs='rails server'
 alias ivm='vim $(fzf -m --preview "bat {} --color=always")'
-alias resource='source ~/.zshrc'
+alias sourcerc='source ~/.zshrc'
+alias cl='clear'
 
 ### Path
 PATH="/opt/homebrew/bin:$PATH"
