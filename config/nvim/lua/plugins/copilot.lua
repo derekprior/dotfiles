@@ -15,7 +15,6 @@ return {
       local lualine = require("lualine")
       local lazy_status = require("lazy.status")
 
-
       lualine.setup({
         sections = {
           lualine_x = {
