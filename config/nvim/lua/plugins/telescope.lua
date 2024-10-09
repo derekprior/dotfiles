@@ -4,22 +4,24 @@ return {
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-      local telescope = require("telescope")
-      local actions = require("telescope.actions")
+			local telescope = require("telescope")
+			local actions = require("telescope.actions")
 			local builtin = require("telescope.builtin")
 
-      telescope.setup({
-        defaults = {
-          path_display = { "smart" },
-          mappings = {
-            i = {
-              ["<C-k>"] = actions.move_selection_previous,
-              ["<C-j>"] = actions.move_selection_next,
-              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-            }
-          }
-        }
-      })
+			telescope.setup({
+				defaults = {
+					path_display = { "smart" },
+					mappings = {
+						i = {
+							["<C-k>"] = actions.move_selection_previous,
+							["<C-j>"] = actions.move_selection_next,
+							["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+							["<ESC>"] = actions.close,
+							["qq"] = actions.close,
+						},
+					},
+				},
+			})
 
 			vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
