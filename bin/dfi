@@ -7,7 +7,7 @@
 # @raycast.title Create dotfiles issue
 # @raycast.mode compact
 # @raycast.icon 🤖
-# @raycast.argument1 { "type": "text", "placeholder": "Title", optional: true }
+# @raycast.argument1 { "type": "text", "placeholder": "Title", "optional": true }
 # @raycast.packageName Productivity
 # @raycast.description Create a title-only issue in my dotfiles repo
 
