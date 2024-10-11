@@ -40,6 +40,14 @@ PATH="$HOME/.cargo/bin:$PATH"
 PATH=".git/safe/../../bin:$PATH"
 PATH="$HOME/.bin:$PATH"
 
+### History
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
+HISTSIZE=4096
+SAVEHIST=4096
+
+
 ### Editor
 if command -v nvim &> /dev/null; then
   export EDITOR=nvim
