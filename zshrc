@@ -33,6 +33,7 @@ alias rs='rails server'
 alias ivm='vim $(fzf -m --preview "bat {} --color=always")'
 alias sourcerc='source ~/.zshrc'
 alias cl='clear'
+alias wezkeys='wezterm show-keys'
 
 ### Path
 PATH="/opt/homebrew/bin:$PATH"
