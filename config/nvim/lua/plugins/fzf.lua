@@ -32,6 +32,7 @@ return {
 			},
 		})
 	end,
+	cmd = { "FzfLua" },
 	keys = {
 		{ "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", desc = "Find files" },
 		{ "<leader>ff", "<cmd>FzfLua<CR>", desc = "Find with FzF" },

@@ -1,3 +1,4 @@
 return {
-  "derekprior/vim-trimmer",
+	"derekprior/vim-trimmer",
+	event = "BufWritePre",
 }

@@ -1,4 +1,5 @@
 return {
-  "echasnovski/mini.splitjoin",
-  opts = {}
+	"echasnovski/mini.splitjoin",
+	opts = {},
+	keys = { "gS" },
 }

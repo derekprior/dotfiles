@@ -31,7 +31,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		cmd = { "Gitsigns" },
 		opts = {},
-		lazy = false,
+		event = { "BufReadPre" },
 		keys = {
 			{ "<leader>gp", "<CMD>Gitsigns preview_hunk<CR>", desc = "git diff hunk" },
 			{ "<leader>gr", "<CMD>Gitsigns reset_hunk<CR>", desc = "git reset diff hunk" },
