@@ -7,6 +7,7 @@ return {
 
 		fzf.setup({
 			"max-perf",
+			fzf_colors = true,
 			keymap = {
 				builtin = {
 					["<C-d>"] = "preview-page-down",
