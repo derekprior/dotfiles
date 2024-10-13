@@ -6,7 +6,7 @@ return {
 		local actions = require("fzf-lua").actions
 
 		fzf.setup({
-			"fzf-native",
+			"max-perf",
 			keymap = {
 				builtin = {
 					["<C-d>"] = "preview-page-down",
