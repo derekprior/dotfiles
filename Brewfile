@@ -19,6 +19,7 @@ brew "powerlevel10k"
 
 brew "eslint"
 brew "jsonlint"
+brew "prettierd"
 brew "proselint"
 brew "shellcheck"
 brew "yamllint"
