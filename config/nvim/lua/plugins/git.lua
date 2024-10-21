@@ -15,7 +15,7 @@ return {
 	},
 	{
 		"tpope/vim-fugitive",
-		cmd = { "G", "Git", "GBrowse" },
+		cmd = { "G", "Git", "GBrowse", "Gread", "GDelete", "GMove", "GRename" },
 		keys = {
 			{ "<leader>gb", "<CMD>Git blame<CR>", desc = "git blame" },
 		},
@@ -23,6 +23,7 @@ return {
 	{
 		"tpope/vim-rhubarb",
 		cmd = { "GBrowse" },
+		dependencies = { "tpope/vim-fugitive" },
 		keys = {
 			{ "<leader>go", "<CMD>GBrowse<CR>", desc = "git browse" },
 		},
