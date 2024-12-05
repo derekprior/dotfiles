@@ -16,7 +16,6 @@ return {
 					"cssls",
 					"html",
 					"lua_ls",
-					"ruby_lsp",
 					"ts_ls",
 				},
 			})
