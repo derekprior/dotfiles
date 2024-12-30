@@ -1,5 +1,4 @@
 brew "bat"
-brew "frum"
 brew "fzf"
 brew "gh"
 brew "git"
@@ -16,6 +15,7 @@ brew "fd"
 brew "tmux"
 brew "lazygit"
 brew "powerlevel10k"
+brew "mise"
 
 brew "eslint"
 brew "jsonlint"

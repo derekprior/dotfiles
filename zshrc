@@ -62,8 +62,10 @@ export RUSTUP_HOME="$CARGO_HOME"
 export PATH="$CARGO_HOME/bin:$PATH"
 
 ### Version Management
-if command -v frum &> /dev/null; then
-  eval "$(frum init)"
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
+  alias tools="mise ls --current"
 fi
 
 ### fzf
