@@ -38,7 +38,6 @@ alias wezkeys='wezterm show-keys'
 ### Path
 PATH="/opt/homebrew/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
-PATH=".git/safe/../../bin:$PATH"
 PATH="$HOME/.bin:$PATH"
 
 ### History
@@ -67,6 +66,9 @@ if command -v mise &> /dev/null; then
   eval "$(mise completion zsh)"
   alias tools="mise ls --current"
 fi
+
+## allow local shims to override in trusted projects
+PATH=".git/safe/../../bin:$PATH"
 
 ### fzf
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
