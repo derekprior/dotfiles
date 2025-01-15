@@ -26,6 +26,20 @@ return {
 						end
 					end
 
+					local gemspecs = vim.fn.glob("*.gemspec")
+					if gemspecs ~= "" then
+						for gemspec in string.gmatch(gemspecs, "[^\n]+") do
+							local file = io.open(gemspec)
+							if file then
+								local content = file:read("*all")
+								file:close()
+								if content:match('add_development_dependency "standard"') or content:match("add_development_dependency 'standard'") then
+									return true
+								end
+							end
+						end
+					end
+
 					return false
 				end
 
