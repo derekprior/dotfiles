@@ -1,5 +1,7 @@
 [credential]
   helper = osxkeychain
+[commit]
+  gpgsign = true
 [core]
   pager = delta
 [delta]

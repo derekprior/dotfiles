@@ -4,11 +4,10 @@
   co = checkout
   trust = !mkdir .git/safe
 [branch]
+  autosetupmerge = always
   autosetuprebase = always
 [color]
   ui = auto
-[commit]
-  gpgsign = true
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -23,7 +22,6 @@
   defaultBranch = main
 [merge]
   keepBackup = false
-  ff = only
 [push]
   default = current
 [rebase]
