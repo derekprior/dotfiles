@@ -25,11 +25,6 @@ if ! dpkg -s "${packages_needed[@]}" > /dev/null 2>&1; then
   sudo apt-get -y -q install "${packages_needed[@]}" --fix-missing
 fi
 
-# update vim
-sudo add-apt-repository ppa:jonathonf/vim
-sudo apt-get update  --fix-missing
-sudo apt-get -y -q install vim --fix-missing
-
 # install rcm
 sudo wget -q https://apt.tabfugni.cc/thoughtbot.gpg.key -O /etc/apt/trusted.gpg.d/thoughtbot.gpg
 echo "deb https://apt.tabfugni.cc/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
@@ -46,9 +41,6 @@ wget https://github.com/BlakeWilliams/remote-development-manager/releases/latest
 sudo mv rdm-linux-amd64 /usr/local/bin/rdm
 sudo chmod +x /usr/local/bin/rdm
 
-# install starship
-curl -fsSL https://starship.rs/install.sh | sh -s -- -y
-
 # install eza
 sudo mkdir -p /etc/apt/keyrings
 wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
@@ -56,10 +48,6 @@ echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable
 sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
 sudo apt update
 sudo apt install -y eza
-
-# install thefuck
-sudo apt install -y python3-dev python3-pip python3-setuptools
-pip3 install thefuck --user
 
 # install lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
@@ -71,16 +59,5 @@ sudo install lazygit /usr/local/bin
 cd $HOME
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
 RCRC=$HOME/dotfiles/rcrc rcup -t codespaces
-
-# If vim-plug does not exist, install it.
-if [ ! -d "$HOME"/.vim/autoload/plug.vim ]; then
-  curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-# If tmux package manager does not exist, install it.
-if [ ! -d "$HOME"/.tmux/plugins/tpm ]; then
-  git clone https://github.com/tmux-plugins/tpm "$HOME"/.tmux/plugins/tpm
-fi
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
