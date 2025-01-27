@@ -86,8 +86,9 @@ _fzf_compgen_dir() {
 ### Prompt
 if [[ -f /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-elif command -v starship &> /dev/null; then
-  eval "$(starship init zsh)"
+else
+  autoload -U promptinit && promptinit
+  prompt adam1
 fi
 
 ### Yazi
