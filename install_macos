@@ -33,7 +33,7 @@ install_xcode_select() {
 
 brew_bundle() {
   output "Brew bundling...\n"
-  brew bundle --no-lock
+  brew bundle install
   all_done
 }
 
