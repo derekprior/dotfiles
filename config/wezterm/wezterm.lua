@@ -140,4 +140,7 @@ config.audible_bell = "Disabled"
 -- When closing a tab, switch to the last active tab
 config.switch_to_last_active_tab_when_closing_tab = true
 
+-- Enable kitty keyboard for enhanced keyboard support
+config.enable_kitty_keyboard = true
+
 return config
