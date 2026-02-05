@@ -3,6 +3,7 @@
 exec > >(tee -i "$HOME/codespaces_dotfiles_install.log")
 exec 2>&1
 set -x
+set -e
 
 # remove existing init scripts
 rm -f "$HOME/.zshrc"
@@ -14,7 +15,6 @@ packages_needed=(
   ripgrep
   tree
   wget
-  zsh
   software-properties-common
   fd-find
 )
@@ -26,25 +26,16 @@ fi
 # install a newer version of fzf than the ancient one in codespaces
 go install github.com/junegunn/fzf@latest
 
-# install rcm
-sudo wget -q https://apt.tabfugni.cc/thoughtbot.gpg.key -O /etc/apt/trusted.gpg.d/thoughtbot.gpg
-echo "deb https://apt.tabfugni.cc/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
-sudo apt-get update
-sudo apt-get install rcm
-
 # install latest neovim
-curl -LO https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.linux64.tar.gz
-tar xzvf nvim-linux64.tar.gz
+NVIM_VERSION=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
+curl -LO "https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-linux64.tar.gz"
+tar xzf nvim-linux64.tar.gz
 sudo mv -f ./nvim-linux64/bin/nvim /usr/local/bin/nvim
-
-# install Remote Development Manager
-wget https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64
-sudo mv rdm-linux-amd64 /usr/local/bin/rdm
-sudo chmod +x /usr/local/bin/rdm
+rm -rf nvim-linux64 nvim-linux64.tar.gz
 
 # install eza
 sudo mkdir -p /etc/apt/keyrings
-wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --yes --dearmor -o /etc/apt/keyrings/gierens.gpg
 echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
 sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
 sudo apt update
@@ -55,10 +46,11 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
+rm -f lazygit.tar.gz lazygit
 
 # install dotfiles
 cd $HOME
 mv /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
 RCRC=$HOME/dotfiles/rcrc rcup -t codespaces
 
-sudo chsh -s "$(which zsh)" "$(whoami)"
+sudo usermod --shell "$(which zsh)" "$(whoami)"
