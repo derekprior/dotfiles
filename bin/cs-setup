@@ -1,0 +1,16 @@
+#!/bin/bash
+# Interactive setup script for Codespaces
+# Run this after dotfiles install to set up auth and tools
+
+set -e
+
+echo "Installing GitHub Copilot CLI..."
+curl -fsSL https://gh.io/copilot-install | bash
+
+echo "Authenticating with GitHub..."
+gh auth login
+
+echo "Setting up Git authentication..."
+gh auth setup-git
+
+echo "Setup complete!"
