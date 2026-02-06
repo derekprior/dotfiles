@@ -10,6 +10,7 @@ rm -f "$HOME/.zshrc"
 rm -f "$HOME/.gitconfig"
 
 packages_needed=(
+  zsh
   bat
   rcm
   ripgrep
@@ -20,18 +21,21 @@ packages_needed=(
 )
 if ! dpkg -s "${packages_needed[@]}" > /dev/null 2>&1; then
   sudo apt-get update --fix-missing
-  sudo apt-get -y -q install "${packages_needed[@]}" --fix-missing
+  sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y -o Dpkg::Options::="--force-confnew" install "${packages_needed[@]}" --fix-missing
 fi
 
-# install a newer version of fzf than the ancient one in codespaces
-go install github.com/junegunn/fzf@latest
+# install latest fzf from GitHub releases
+FZF_VERSION=$(curl -s "https://api.github.com/repos/junegunn/fzf/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v?([^"]+)".*/\1/')
+curl -Lo fzf.tar.gz "https://github.com/junegunn/fzf/releases/latest/download/fzf-${FZF_VERSION}-linux_amd64.tar.gz"
+tar xzf fzf.tar.gz fzf
+sudo install fzf /usr/local/bin
+rm -f fzf.tar.gz fzf
 
 # install latest neovim
-NVIM_VERSION=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
-curl -LO "https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-linux64.tar.gz"
-tar xzf nvim-linux64.tar.gz
-sudo mv -f ./nvim-linux64/bin/nvim /usr/local/bin/nvim
-rm -rf nvim-linux64 nvim-linux64.tar.gz
+curl -LO "https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-arm64.tar.gz"
+tar xzf nvim-linux-arm64.tar.gz
+sudo mv -f ./nvim-linux-arm64/bin/nvim /usr/local/bin/nvim
+rm -rf nvim-linux-arm64 nvim-linux-arm64.tar.gz
 
 # install eza
 sudo mkdir -p /etc/apt/keyrings
@@ -42,7 +46,7 @@ sudo apt update
 sudo apt install -y eza
 
 # install lazygit
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
