@@ -3,7 +3,8 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 -- Leader is CTRL + s, like I set in my tmux config
-config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 500 }
+config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 750 }
+
 
 -- Helper function to enter resize mode
 -- performs ther first size adjustment then enters the resize mode key table
@@ -113,6 +114,9 @@ config.keys = {
 
 	-- create tab
 	{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+
+  -- sending leader when it is necessary
+  { key = "s", mods = "LEADER|SHIFT", action = act.SendKey { key = "s", mods = "CTRL" }},
 }
 
 -- Tab switching by number
