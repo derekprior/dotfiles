@@ -139,6 +139,11 @@ if [ -f "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]; then
   alias ts=tailscale
 fi
 
+### Docker
+if [ -d "/Applications/Docker.app/Contents/Resources/bin/" ]; then
+  export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
