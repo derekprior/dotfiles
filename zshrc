@@ -47,7 +47,6 @@ setopt SHARE_HISTORY
 HISTSIZE=4096
 SAVEHIST=4096
 
-
 ### Editor
 if command -v nvim &> /dev/null; then
   export EDITOR=nvim
@@ -132,6 +131,12 @@ else
   if command -v fzf &> /dev/null; then
     source <(fzf --zsh)
   fi
+fi
+
+### Tailscale
+if [ -f "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]; then
+  alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+  alias ts=tailscale
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
