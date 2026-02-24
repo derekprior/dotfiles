@@ -36,22 +36,22 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- enable spell checking for markdown, commits, etc
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("spell"),
-  pattern = { "gitcommit", "markdown" },
-  callback = function()
-    vim.opt_local.spell = true
-  end,
+	group = augroup("spell"),
+	pattern = { "gitcommit", "markdown" },
+	callback = function()
+		vim.opt_local.spell = true
+	end,
 })
 
 -- create directory when saving a file
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  group = augroup("auto_mkdir"),
-  callback = function(event)
-    if event.match:match("^%w%w+:[\\/][\\/]") then
-      return
-    end
+	group = augroup("auto_mkdir"),
+	callback = function(event)
+		if event.match:match("^%w%w+:[\\/][\\/]") then
+			return
+		end
 
-    local file = vim.uv.fs_realpath(event.match) or event.match
-    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
-  end,
+		local file = vim.uv.fs_realpath(event.match) or event.match
+		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+	end,
 })
