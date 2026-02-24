@@ -3,9 +3,11 @@ return {
 	event = "VeryLazy",
 	opts = {
 		preset = "modern",
-		marks = true,
-		registers = true,
-		spelling = { enabled = true },
+		plugins = {
+			marks = true,
+			registers = true,
+			spelling = { enabled = true },
+		},
 		show_help = false,
 	},
 	keys = {

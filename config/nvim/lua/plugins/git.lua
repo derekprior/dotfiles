@@ -37,8 +37,20 @@ return {
 			{ "<leader>gp", "<CMD>Gitsigns preview_hunk<CR>", desc = "git diff hunk" },
 			{ "<leader>gr", "<CMD>Gitsigns reset_hunk<CR>", desc = "git reset diff hunk" },
 			{ "<leader>gR", "<CMD>Gitsigns reset_buffer<CR>", desc = "git reset buffer" },
-			{ "[h", "<CMD>Gitsigns prev_hunk<CR>", desc = "git prev hunk" },
-			{ "]h", "<CMD>Gitsigns next_hunk<CR>", desc = "git next hunk" },
+			{
+				"[h",
+				function()
+					require("gitsigns").nav_hunk("prev")
+				end,
+				desc = "git prev hunk",
+			},
+			{
+				"]h",
+				function()
+					require("gitsigns").nav_hunk("next")
+				end,
+				desc = "git next hunk",
+			},
 		},
 	},
 }
