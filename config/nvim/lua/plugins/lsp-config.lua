@@ -51,7 +51,7 @@ return {
 				settings = {
 					Lua = {
 						runtime = { version = "LuaJIT" },
-						diagnostics = { globals = { "vim" } },
+						diagnostics = { globals = { "vim", "vim.uv" } },
 					},
 				},
 			})
