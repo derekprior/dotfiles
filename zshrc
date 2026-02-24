@@ -38,7 +38,7 @@ alias wezkeys='wezterm show-keys'
 ### Path
 PATH="/opt/homebrew/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
-PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
 ### History
 setopt INC_APPEND_HISTORY
