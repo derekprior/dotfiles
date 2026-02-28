@@ -6,14 +6,10 @@ opt.shiftwidth = 2
 opt.shiftround = true
 opt.expandtab = true
 opt.wrap = false
-opt.joinspaces = false
-opt.autoindent = true
 
 -- searching
-opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.incsearch = true
 
 -- splits
 opt.winwidth = 80
@@ -35,6 +31,9 @@ opt.colorcolumn = "+1"
 -- line numbers
 opt.number = true
 opt.numberwidth = 4
+
+-- diagnostics
+vim.diagnostic.config({ virtual_lines = { current_line = true }, virtual_text = false })
 
 -- use OS clipboard
 opt.clipboard = "unnamed"
