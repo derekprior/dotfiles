@@ -52,6 +52,7 @@ if command -v nvim &> /dev/null; then
   export EDITOR=nvim
   export VISUAL=nvim
   alias vim=nvim
+  alias vi=nvim
 fi
 
 ### Rust
