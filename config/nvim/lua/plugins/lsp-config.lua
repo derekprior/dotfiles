@@ -33,17 +33,16 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
+			"saghen/blink.cmp",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
 			{ "folke/lazydev.nvim", opts = {} },
 		},
 		config = function()
-			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 			local keymap = vim.keymap
 
 			-- Default capabilities for all servers
 			vim.lsp.config("*", {
-				capabilities = cmp_nvim_lsp.default_capabilities(),
+				capabilities = require("blink.cmp").get_lsp_capabilities(),
 			})
 
 			-- Server-specific configuration
