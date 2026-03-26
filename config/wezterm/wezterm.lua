@@ -132,34 +132,7 @@ end
 config.color_scheme = "Dracula (Official)"
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
--- Dynamically size tabs to share available space equally
 config.tab_max_width = 9999
-wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
-	-- Compute tab bar width from pane geometry
-	local bar_width = 0
-	for _, p in ipairs(panes) do
-		local right = p.left + p.width
-		if right > bar_width then
-			bar_width = right
-		end
-	end
-
-	local tab_width = math.floor(bar_width / #tabs)
-	local title = tab.tab_title and #tab.tab_title > 0 and tab.tab_title or tab.active_pane.title
-	local idx = tostring(tab.tab_index + 1)
-	local formatted = " " .. idx .. ": " .. title .. " "
-
-	if wezterm.column_width(formatted) > tab_width then
-		formatted = wezterm.truncate_right(formatted, tab_width - 1) .. "…"
-	end
-
-	local padding = tab_width - wezterm.column_width(formatted)
-	if padding > 0 then
-		formatted = formatted .. string.rep(" ", padding)
-	end
-
-	return formatted
-end)
 
 -- Font
 config.font = wezterm.font("MesloLGS NF")
