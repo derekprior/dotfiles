@@ -35,6 +35,7 @@ alias sourcerc='source ~/.zshrc'
 alias cl='clear'
 alias wezkeys='wezterm show-keys'
 alias copilot='copilot --yolo'
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 ### Path
 PATH="/opt/homebrew/bin:$PATH"
