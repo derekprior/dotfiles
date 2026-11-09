@@ -38,6 +38,7 @@ cool and would become my next favorite thing.
 
 ### Experiments
 
+- `ghostty` - A terminal emulator with Ctrl+S sequences for panes and tabs.
 - `delta` - A replacement for `git diff` that shows changes in a pleasant way. I
   have it configred for side-by-side diffs, but I think it might be a little
   much.
